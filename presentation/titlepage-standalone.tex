@@ -1,0 +1,79 @@
+%% Minimal standalone to render the AION-1 title/abstract box.
+%% Build from this directory: lualatex titlepage-standalone.tex
+\documentclass[]{polymathic}
+\usepackage{amssymb}
+\usepackage[sort&compress]{natbib}
+\usepackage{aas_macros}
+
+\title{AION-1: Omnimodal Foundation Model for Astronomical Sciences}
+
+\author[*,1,2,3,4]{Liam Parker}
+\author[*,5,2]{Francois Lanusse}
+\author[*,6]{Jeff Shen}
+\author[7]{Ollie Liu}
+\author[8]{Tom Hehir}
+\author[3]{Leopoldo Sarra}
+\author[3]{Lucas Meyer}
+\author[9]{Micah Bowles}
+\author[2,3]{Sebastian Wagner-Carena}
+\author[2]{Helen Qu}
+\author[2,3]{Siavash Golkar}
+\author[2]{Alberto Bietti}
+\author[10]{Hatim Bourfoune}
+\author[10]{Nathan Cassereau}
+\author[10]{Pierre Cornette}
+\author[2,11]{Keiya Hirashima}
+\author[2]{Geraud Krawezik}
+\author[2]{Ruben Ohana}
+\author[3]{Nicholas Lourie}
+\author[2,3]{Michael McCabe}
+\author[2]{Rudy Morel}
+\author[1,8]{Payel Mukhopadhyay}
+\author[12]{Mariel Pettee}
+\author[2]{Bruno Regaldo-Saint Blancard}
+\author[3]{Kyunghyun Cho}
+\author[8]{Miles Cranmer}
+\author[2,3,6]{Shirley Ho}
+
+\affiliation[1]{University of California, Berkeley}
+\affiliation[2]{Flatiron Institute}
+\affiliation[3]{New York University}
+\affiliation[4]{Lawrence Berkeley National Laboratory}
+\affiliation[5]{Université Paris-Saclay, Université Paris Cité, CEA, CNRS, AIM}
+\affiliation[6]{Princeton University}
+\affiliation[7]{University of Southern California}
+\affiliation[8]{University of Cambridge}
+\affiliation[9]{University of Oxford}
+\affiliation[10]{IDRIS, CNRS}
+\affiliation[11]{RIKEN Center for iTHEMS}
+\affiliation[12]{University of Wisconsin--Madison}
+
+\contribution[*]{Equal Contribution.}
+
+\abstract{While foundation models have shown promise across a variety of
+fields, astronomy still lacks a unified framework for joint modeling across its
+highly diverse data modalities. In this paper, we present AION-1, a family of
+large-scale multimodal foundation models for astronomy. AION-1 integrates
+heterogeneous imaging, spectroscopic, and scalar data using a two-stage
+architecture: modality-specific tokenization followed by transformer-based
+masked modeling of cross-modal token sequences. The model is pretrained on five
+large-scale surveys: Legacy Survey, Hyper Suprime-Cam (HSC), Sloan Digital Sky
+Survey (SDSS), Dark Energy Spectroscopic Instrument (DESI), and Gaia. These
+span more than 200 million observations of stars, galaxies, and quasars. With a
+single frozen encoder, AION-1 achieves strong results on a broad suite of
+downstream tasks, including galaxy and stellar property estimation, galaxy
+morphology classification, similarity-based retrieval, galaxy image
+segmentation, and spectral super-resolution. We release AION-1 model variants
+ranging from 300 M to 3.1 B parameters. Beyond astronomy, AION-1 provides a
+scalable blueprint for multimodal scientific foundation models that can
+seamlessly integrate noisy, instrument-specific observations. All code,
+tokenizers, pretrained weights, and a lightweight evaluation suite are released
+under an open-source license.}
+
+\date{October 2025}
+\titlecorrespondence{Liam Parker: \texttt{lhparker@berkeley.edu}; Francois Lanusse: \texttt{francois.lanusse@cnrs.fr}}
+\titlecode{\url{https://github.com/PolymathicAI/AION/}}
+
+\begin{document}
+\maketitle
+\end{document}
