@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+"""Fetch all resources declared in resources.yaml."""
+
+import subprocess
+import sys
+from pathlib import Path
+
+import yaml
+
+ROOT = Path(__file__).parent.parent
+RESOURCES_DIR = ROOT / "resources"
+
+
+def run(cmd: list[str]) -> None:
+    result = subprocess.run(cmd, cwd=ROOT)
+    if result.returncode != 0:
+        sys.exit(result.returncode)
+
+
+def main() -> None:
+    with open(ROOT / "resources.yaml") as f:
+        config = yaml.safe_load(f)
+
+    # ── arXiv papers ──────────────────────────────────────────────────────────
+    for identifier, url in (config.get("arxiv-papers") or {}).items():
+        out_dir = RESOURCES_DIR / identifier
+        if (out_dir / "source").exists():
+            print(f"  skip  {identifier} (already fetched)")
+            continue
+        print(f"  fetch {identifier}")
+        run(["scripts/fetch-paper.sh", url, f"resources/{identifier}"])
+
+    # ── images ────────────────────────────────────────────────────────────────
+    for identifier, url in (config.get("images") or {}).items():
+        out_path = RESOURCES_DIR / "images" / identifier
+        if out_path.exists():
+            print(f"  skip  {identifier} (already fetched)")
+            continue
+        print(f"  fetch {identifier}")
+        run(["scripts/fetch-url.sh", url, f"resources/images/{identifier}"])
+
+
+if __name__ == "__main__":
+    main()

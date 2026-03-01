@@ -26,16 +26,16 @@ aion-talk/
 
 ## Setup
 
-On a fresh clone, fetch paper resources before building:
+On a fresh clone:
 
 ```sh
-make fetch
+uv sync       # create .venv and install Python dependencies
+make fetch    # fetch all resources declared in resources.yaml
 ```
 
-To fetch other papers or arbitrary resources:
+To add resources, edit `resources.yaml` and re-run `make fetch`. Resources can also be fetched ad hoc:
 
 ```sh
-scripts/fetch-paper.sh 2501.00001 resources/papers/2501.00001
 scripts/fetch-paper.sh https://arxiv.org/abs/2501.00001 resources/papers/2501.00001
 scripts/fetch-url.sh https://example.com/figure.png resources/images/figure.png
 ```

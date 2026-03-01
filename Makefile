@@ -4,7 +4,6 @@ BUILD_DIR     := build
 RESOURCES_DIR := resources
 PDF           := $(BUILD_DIR)/$(MAIN).pdf
 
-MAIN_PAPER_ID  := 2510.17960
 MAIN_PAPER_DIR := $(RESOURCES_DIR)/aion-1-paper
 
 .PHONY: all clean mrproper fetch release
@@ -12,10 +11,8 @@ MAIN_PAPER_DIR := $(RESOURCES_DIR)/aion-1-paper
 all: $(PDF)
 
 # ── fetch ─────────────────────────────────────────────────────────────────────
-fetch: $(MAIN_PAPER_DIR)/source
-
-$(MAIN_PAPER_DIR)/source:
-	./scripts/fetch-paper.sh $(MAIN_PAPER_ID) $(MAIN_PAPER_DIR)
+fetch:
+	uv run scripts/fetch-resources.py
 
 # ── build ─────────────────────────────────────────────────────────────────────
 $(BUILD_DIR):
@@ -23,7 +20,7 @@ $(BUILD_DIR):
 
 $(PDF): $(PRES_DIR)/$(MAIN).tex | $(BUILD_DIR)
 	@test -d $(MAIN_PAPER_DIR)/source || \
-	    (echo "ERROR: $(MAIN_PAPER_DIR)/source not found — run 'make fetch' first." && exit 1)
+	    (echo "ERROR: run 'make fetch' first." && exit 1)
 	cd $(PRES_DIR) && latexmk -interaction=nonstopmode -halt-on-error $(MAIN).tex
 
 # ── clean ─────────────────────────────────────────────────────────────────────
