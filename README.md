@@ -5,41 +5,71 @@ Beamer presentation of the AION-1 paper:
 
 ## Repository layout
 
-```
+```text
 aion-talk/
-├── presentation/       # LaTeX source
-│   └── presentation.tex
-├── paper/
-│   ├── aion-1-paper.pdf
-│   └── source/         # arXiv LaTeX source (figures reused in talk)
-├── build/              # gitignored — transient build artefacts
-├── presentation.pdf    # gitignored during iteration; committed at milestones
+├── presentation/
+│   └── presentation.tex        # LaTeX source
+├── notes/                      # planning — outline and ideas in markdown
+├── scripts/
+│   ├── fetch-paper.sh          # download arXiv PDF + source, write info.md
+│   └── fetch-url.sh            # download an arbitrary resource from a URL
+├── resources/                  # gitignored — populate with make fetch before building
+│   ├── aion-1-paper/           # AION-1 paper (required for build)
+│   │   ├── paper.pdf
+│   │   ├── info.md             # metadata and BibTeX citation
+│   │   └── source/             # extracted arXiv source; figures used in talk
+│   └── papers/<arxiv-id>/      # other referenced papers (ad hoc)
+├── build/                      # gitignored — transient build artefacts
+├── presentation.pdf            # gitignored during iteration; committed at milestones
 └── Makefile
+```
+
+## Setup
+
+On a fresh clone, fetch paper resources before building:
+
+```sh
+make fetch
+```
+
+To fetch other papers or arbitrary resources:
+
+```sh
+scripts/fetch-paper.sh 2501.00001 resources/papers/2501.00001
+scripts/fetch-paper.sh https://arxiv.org/abs/2501.00001 resources/papers/2501.00001
+scripts/fetch-url.sh https://example.com/figure.png resources/images/figure.png
 ```
 
 ## Building
 
 ```sh
-make          # produces build/presentation.pdf
+make          # → build/presentation.pdf
 make clean    # remove aux files
-make mrproper # remove entire build/ directory
+make mrproper # remove build/ entirely
 ```
 
-Requires a TeX Live installation with the `moloch` beamer theme and Fira Sans fonts (included in TeX Live 2025). The build uses LuaLaTeX via `latexmk`.
+Requires TeX Live 2025 with the `moloch` beamer theme and Fira Sans fonts. Builds with LuaLaTeX via `latexmk`.
 
 ## Milestone workflow
 
-When you want to snapshot the current slides (e.g. before a talk):
+Snapshot the slides before a talk:
 
 ```sh
-make release                          # copies build/presentation.pdf → presentation.pdf
+make release                       # copies build/presentation.pdf → presentation.pdf
 git add -f presentation.pdf
 git commit -m "slides: <occasion>"
-git tag -a <occasion> -m "<notes>"    # e.g. git tag -a group-meeting-2026-03 -m "..."
+git tag -a <occasion> -m "<notes>"
 ```
 
-To retrieve the PDF from a past milestone:
+Optionally snapshot resources at the same time:
+
+```sh
+git add -f resources/              # or selectively: git add -f resources/aion-1-paper/
+```
+
+Retrieve from a past milestone:
 
 ```sh
 git show <tag>:presentation.pdf > recovered.pdf
+git checkout <tag> -- resources/
 ```

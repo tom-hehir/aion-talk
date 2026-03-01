@@ -1,5 +1,8 @@
-# All transient build artefacts
+# Transient build artefacts
 build/
+
+# Downloaded paper resources (populate with: make fetch)
+resources/
 
 # Presentation PDF (use git add -f + tag for milestones)
 /presentation.pdf
