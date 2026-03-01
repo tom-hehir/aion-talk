@@ -4,7 +4,8 @@ BUILD_DIR     := presentation/build
 RESOURCES_DIR := resources
 PDF           := $(BUILD_DIR)/$(MAIN).pdf
 
-MAIN_PAPER_DIR    := $(RESOURCES_DIR)/aion-1-paper
+PAPERS_DIR        := $(RESOURCES_DIR)/papers
+MAIN_PAPER_DIR    := $(PAPERS_DIR)/aion-1-paper
 PAPER_SRC_DIR     := $(MAIN_PAPER_DIR)/source
 TITLEPAGE_STANDALONE := $(PRES_DIR)/titlepage-standalone.tex
 TITLEPAGE_PDF     := $(RESOURCES_DIR)/titlepage.pdf
