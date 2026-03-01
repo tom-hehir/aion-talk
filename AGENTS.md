@@ -8,7 +8,7 @@ Beamer presentation of the AION-1 paper (arXiv:2510.17960), presented by Tom Heh
 
 ## LaTeX conventions
 
-- Edit only `presentation/presentation.tex`
+- Edit only `presentation/presentation.tex`; build config is in `presentation/.latexmkrc`
 - Theme: `\usetheme{moloch}` — option macro is `\molochset{}` (**not** `\metroset`)
 - Valid `progressbar` values: `none`, `head`, `frametitle`, `foot`
 - The `numbering` moloch option is deprecated; use `\setbeamertemplate{frame numbering}[fraction]`

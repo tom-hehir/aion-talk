@@ -24,12 +24,11 @@ $(BUILD_DIR):
 $(PDF): $(PRES_DIR)/$(MAIN).tex | $(BUILD_DIR)
 	@test -d $(MAIN_PAPER_DIR)/source || \
 	    (echo "ERROR: $(MAIN_PAPER_DIR)/source not found — run 'make fetch' first." && exit 1)
-	cd $(PRES_DIR) && latexmk -lualatex -output-directory=../$(BUILD_DIR) \
-	    -interaction=nonstopmode -halt-on-error $(MAIN).tex
+	cd $(PRES_DIR) && latexmk -interaction=nonstopmode -halt-on-error $(MAIN).tex
 
 # ── clean ─────────────────────────────────────────────────────────────────────
 clean:
-	cd $(PRES_DIR) && latexmk -c -output-directory=../$(BUILD_DIR) $(MAIN).tex
+	cd $(PRES_DIR) && latexmk -c $(MAIN).tex
 
 mrproper:
 	rm -rf $(BUILD_DIR)

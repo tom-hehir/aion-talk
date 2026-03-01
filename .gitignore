@@ -1,8 +1,5 @@
 # Transient build artefacts
 build/
-*.fdb_latexmk
-*.fls
-*.log
 
 # Downloaded paper resources (populate with: make fetch)
 resources/

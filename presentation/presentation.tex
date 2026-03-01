@@ -1,5 +1,5 @@
 %% AION-1 talk — beamer/moloch
-%% Build: latexmk -lualatex talk.tex   (or use the top-level Makefile)
+%% Build: latexmk -lualatex presentation.tex   (or use the top-level Makefile)
 
 \documentclass[10pt]{beamer}
 
@@ -20,286 +20,26 @@
 \usepackage{xcolor}
 \usepackage{tikz}
 
-% ── graphicspath (figures live in paper-source) ───────────────────────────────
+% ── graphicspath ──────────────────────────────────────────────────────────────
 \graphicspath{{../resources/aion-1-paper/source/figures/}}
 
 % ── moloch customisation ──────────────────────────────────────────────────────
-\molochset{progressbar=frametitle}   % thin bar under every frame title
-\setbeamertemplate{frame numbering}[fraction]  % "3/12" slide counter
+\molochset{progressbar=frametitle}
+\setbeamertemplate{frame numbering}[fraction]
 
 % ── metadata ──────────────────────────────────────────────────────────────────
 \title{AION-1}
 \subtitle{Omnimodal Foundation Model for Astronomical Sciences}
 \author{Tom Hehir}
 \institute{Institute of Astronomy, University of Cambridge}
-\date{\today}
+\date{2 March 2026}
 
 % ── convenience macros ────────────────────────────────────────────────────────
 \newcommand{\aion}{AION-1}
-\newcommand{\eg}{\textit{e.g.}\xspace}
-\newcommand{\ie}{\textit{i.e.}\xspace}
 
 % ══════════════════════════════════════════════════════════════════════════════
 \begin{document}
 
 \maketitle
-
-% ── outline ───────────────────────────────────────────────────────────────────
-\begin{frame}{Outline}
-  \tableofcontents
-\end{frame}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Motivation}
-
-\begin{frame}{Why a foundation model for astronomy?}
-  \begin{itemize}
-    \item Astronomy produces \textbf{heterogeneous, multi-survey data}: images,
-          spectra, scalar measurements --- from different instruments with
-          different noise models.
-    \item Individual surveys are large but \textit{siloed}; cross-survey
-          science requires bespoke pipelines.
-    \item Foundation models have transformed NLP and vision ---
-          can the same paradigm work for \textbf{scientific data}?
-    \item \aion{} is a first attempt: a single model pretrained on
-          \(\sim\!200\,\text{M}\) multi-survey observations of stars,
-          galaxies, and quasars.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Overview figure}
-  \begin{center}
-    \includegraphics[width=\linewidth]{aion.png}
-  \end{center}
-  \vspace{-6pt}
-  {\footnotesize
-   39 data modalities → bespoke tokenisation → masked multimodal modelling →
-   broad downstream tasks.}
-\end{frame}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Data}
-
-\begin{frame}{Five large-scale surveys}
-  \begin{columns}[T]
-    \begin{column}{0.55\linewidth}
-      \begin{description}
-        \item[\textbf{Legacy Survey}] \(> 200\,\text{M}\) objects,
-              \(g/r/z\) + WISE bands, \(\sim\!14\,000\,\text{deg}^2\)
-        \item[\textbf{HSC}]    Deep \(grizy\) imaging, shape measurements
-        \item[\textbf{SDSS}]   Photometry + optical spectra of
-              \(\sim\!5\,\text{M}\) galaxies
-        \item[\textbf{DESI}]   \(40\,\text{M}\) spectra, dense sampling
-        \item[\textbf{Gaia}]   \(1.5\,\text{B}\) stars,
-              astrometry + BP/RP spectra
-      \end{description}
-    \end{column}
-    \begin{column}{0.42\linewidth}
-      % \includegraphics[width=\linewidth]{...survey map...}
-      \textit{(survey footprint figure)}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Cross-matching strategy}
-  \begin{itemize}
-    \item Objects linked across surveys by sky position (angular
-          cross-match).
-    \item Not all modalities present for every object ---
-          masking strategy must handle missing data naturally.
-    \item Result: a \textbf{heterogeneous, multi-modal dataset} covering
-          stars, galaxies, and quasars.
-  \end{itemize}
-\end{frame}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Architecture}
-
-\begin{frame}{Two-stage architecture}
-  \begin{block}{Stage 1 — Tokenisation}
-    Modality-specific encoders map raw observations
-    (images, spectra, scalars) into a \textbf{common token space}.
-  \end{block}
-  \begin{block}{Stage 2 — Multimodal Masked Modelling}
-    A shared transformer performs \textbf{masked token prediction}
-    across the concatenated multi-modal token sequence.
-  \end{block}
-
-  \vspace{8pt}
-  Key design principle: tokenisers are trained \textit{independently}
-  and then frozen during the backbone pretraining.
-\end{frame}
-
-% ── Tokenisation ──────────────────────────────────────────────────────────────
-\subsection{Tokenisation}
-
-\begin{frame}{Multi-survey image tokeniser}
-  \begin{itemize}
-    \item VQ-VAE–style tokeniser: encoder → discrete codebook → decoder.
-    \item Trained per survey to handle different \textbf{PSFs, pixel scales,
-          and band sets}.
-    \item Tokens encode \(16\times16\) patches; each patch → 1 discrete token.
-    \item Reconstruction quality measured by MSE on held-out images.
-  \end{itemize}
-  \begin{center}
-    \includegraphics[width=0.7\linewidth]{aion_fig2_real_samples_no_logo.png}
-  \end{center}
-\end{frame}
-
-\begin{frame}{Spectrum \& scalar tokenisers}
-  \begin{columns}[T]
-    \begin{column}{0.48\linewidth}
-      \textbf{Multi-survey spectrum tokeniser}
-      \begin{itemize}
-        \item 1-D convolutional encoder over flux bins.
-        \item Handles variable wavelength grids and resolution.
-        \item Trained with a masked reconstruction objective.
-      \end{itemize}
-      \begin{center}
-        \includegraphics[width=\linewidth]{spectrum_autoencoding.png}
-      \end{center}
-    \end{column}
-    \begin{column}{0.48\linewidth}
-      \textbf{Scalar tokeniser}
-      \begin{itemize}
-        \item Each scalar measurement (magnitude, colour, \ldots) →
-              a learned embedding.
-        \item \textbf{Scalar field tokeniser} handles ordered sets
-              (e.g.\ photometric bands).
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% ── Multimodal masked modelling ───────────────────────────────────────────────
-\subsection{Multimodal Masked Modelling}
-
-\begin{frame}{Multimodal masked modelling}
-  \begin{itemize}
-    \item Tokens from all modalities are \textbf{concatenated} with
-          modality and survey type embeddings.
-    \item A fraction of tokens is randomly masked;
-          the model predicts masked tokens from context.
-    \item \textbf{Modality masking strategy}: entire modalities
-          occasionally dropped to encourage cross-modal transfer.
-    \item Standard ViT-style transformer (BERT-like pretraining).
-  \end{itemize}
-\end{frame}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Model Family}
-
-\begin{frame}{\aion{} model variants}
-  \begin{center}
-    \begin{tabular}{lccc}
-      \toprule
-      Model & Parameters & Layers & Hidden dim \\
-      \midrule
-      \aion{}-S  & 300\,M  & 12 & 768  \\
-      \aion{}-M  & 700\,M  & 24 & 1024 \\
-      \aion{}-L  & 3.1\,B  & 32 & 2048 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-
-  \begin{itemize}
-    \item Larger models show consistent \textbf{scaling behaviour}
-          (lower eval loss).
-    \item All weights, tokenisers, and an evaluation suite released
-          open-source.
-  \end{itemize}
-  \begin{center}
-    \includegraphics[width=0.55\linewidth]{eval_loss.png}
-  \end{center}
-\end{frame}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Downstream Tasks}
-
-\begin{frame}{Broad evaluation suite}
-  With a \textit{single frozen encoder} + lightweight task head:
-  \begin{columns}[T]
-    \begin{column}{0.48\linewidth}
-      \textbf{Out-of-the-box tasks}
-      \begin{itemize}
-        \item Photometric redshift (image, spectrum, scalars)
-        \item Stellar metallicity ([Fe/H] from spectra)
-        \item Galaxy morphology (GZ10 classification)
-        \item Similarity-based retrieval
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.48\linewidth}
-      \textbf{Embedding tasks}
-      \begin{itemize}
-        \item HSC images from DESI spectra
-        \item Spectral super-resolution
-        \item GZ3D segmentation
-        \item Rare-object detection
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Selected results — photometric redshift}
-  \begin{center}
-    \includegraphics[width=0.48\linewidth]{redshift_image.png}\hfill
-    \includegraphics[width=0.48\linewidth]{redshift_photometry.png}
-  \end{center}
-  \vspace{4pt}
-  {\small Left: image-based. Right: photometry-based.
-   \aion{} matches or exceeds task-specific baselines.}
-\end{frame}
-
-\begin{frame}{Cross-modal transfer — HSC images from DESI spectra}
-  \begin{center}
-    \includegraphics[width=0.8\linewidth]{hsc_from_desi.png}
-  \end{center}
-  {\small The model learns a shared representation that allows
-   \textbf{cross-modal retrieval}: given a DESI spectrum, retrieve
-   the matching HSC image.}
-\end{frame}
-
-\begin{frame}{Spectral super-resolution}
-  \begin{center}
-    \includegraphics[width=0.75\linewidth]{spectrum_superresolution.pdf}
-  \end{center}
-  {\small Low-resolution photometry tokens → high-resolution spectral
-   prediction via the shared latent space.}
-\end{frame}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\section{Conclusion}
-
-\begin{frame}{Summary}
-  \begin{itemize}
-    \item \aion{} is the first \textbf{omnimodal foundation model} for
-          astronomy, jointly trained on images, spectra, and scalars from
-          five surveys (\(200\,\text{M}+\) observations).
-    \item A \textbf{two-stage design} (modality-specific tokenisation +
-          shared masked modelling) handles heterogeneous data cleanly.
-    \item A \textbf{single frozen encoder} achieves strong results across
-          a broad suite of downstream tasks.
-    \item Models scale from 300\,M to 3.1\,B parameters with consistent
-          improvements.
-    \item Open-source: weights, tokenisers, and evaluation harness at
-          \url{https://github.com/PolymathicAI/AION/}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Open questions \& future work}
-  \begin{itemize}
-    \item Extending to more surveys and modalities
-          (radio, X-ray, time series).
-    \item Fine-tuning strategies for low-data regimes.
-    \item Better understanding of \textit{which} cross-modal interactions
-          the model learns.
-    \item Scaling to trillion-parameter regime?
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[standout]
-  Thank you\\[8pt]
-  {\normalsize Questions?}
-\end{frame}
 
 \end{document}
