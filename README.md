@@ -46,9 +46,16 @@ scripts/fetch-url.sh https://example.com/figure.png resources/images/figure.png
 make          # → build/presentation.pdf
 make clean    # remove aux files
 make mrproper # remove build/ entirely
+make tidy-pres # remove stray build files from presentation/
 ```
 
 Requires TeX Live 2025 with the `moloch` beamer theme and Fira Sans fonts. Builds with LuaLaTeX via `latexmk`.
+
+Some stray build files are written to `presentation/` and cleaned up automatically. To retain them for debugging:
+
+```sh
+make DEBUG=1
+```
 
 ## Milestone workflow
 

@@ -111,4 +111,9 @@ else
 fi
 
 rm "$ARCHIVE"
+
+# ── Bibliography ──────────────────────────────────────────────────────────────
+# Copy .bib files from source/ to the top level for easy reference
+find "${OUT_DIR}/source" -maxdepth 1 -name "*.bib" -exec cp {} "${OUT_DIR}/" \;
+
 echo "Done → ${OUT_DIR}"
