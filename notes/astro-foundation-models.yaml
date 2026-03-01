@@ -1,0 +1,70 @@
+# Foundation model efforts in astronomy, grouped by approach.
+# Run `make bibliography` to regenerate the .bib file from these entries.
+# To fetch arXiv source (e.g. for figures), add the key to arxiv-papers-source in resources.yaml.
+
+supervised-pretraining:
+  - key: walmsley2023zoobot
+    label: Zoobot galaxy morphology library
+    journal: "JOSS 8:85 (2023)"
+    journal-url: https://joss.theoj.org/papers/10.21105/joss.05312
+    description: Open-source adaptable deep learning library for galaxy morphology, designed for transfer learning to new morphology tasks.
+    bibtex: |
+      @article{walmsley2023zoobot,
+        author  = {Walmsley, Mike and Allen, Campbell and Aussel, Ben and others},
+        title   = {Zoobot: Adaptable Deep Learning Models for Galaxy Morphology},
+        journal = {Journal of Open Source Software},
+        year    = {2023},
+        volume  = {8},
+        number  = {85},
+        pages   = {5312},
+        doi     = {10.21105/joss.05312},
+      }
+
+  - key: walmsley2024scalinglaws
+    label: Scaling laws for galaxy images
+    arxiv: "2404.02973"
+    description: First systematic study of supervised scaling laws for galaxy images using 840k Galaxy Zoo images.
+
+contrastive-learning:
+  - key: hayat2021selfsupervised
+    label: Contrastive SSL on SDSS photometry
+    arxiv: "2012.13083"
+    journal: "ApJL 911 (2021)"
+    journal-url: https://iopscience.iop.org/article/10.3847/2041-8213/abf2c7
+    description: Contrastive self-supervised learning on SDSS multi-band galaxy photometry; outperforms supervised baselines with 2–4× fewer labels.
+
+  - key: parker2024astroclip
+    label: AstroCLIP cross-modal foundation model
+    arxiv: "2310.03024"
+    journal: "MNRAS 531 (2024)"
+    journal-url: https://academic.oup.com/mnras/article/531/4/4990/7697182
+    description: Cross-modal foundation model aligning DESI galaxy images and spectra in a shared latent space via contrastive learning.
+
+  - key: rizhko2024astromm
+    label: "AstroM³ trimodal self-supervised model"
+    arxiv: "2411.08842"
+    journal: "AJ (2025)"
+    journal-url: https://iopscience.iop.org/article/10.3847/1538-3881/adcbad
+    description: First trimodal CLIP-style self-supervised model in astronomy, jointly embedding time-series photometry, spectra, and metadata.
+
+generative:
+  - key: smith2024astropt
+    label: AstroPT scaling for galaxy images
+    arxiv: "2405.14930"
+    journal: "ICML 2024"
+    journal-url: https://icml.cc/virtual/2024/36761
+    description: Autoregressive transformer pretrained on 8.6M DESI Legacy Survey galaxy images; scaling from 1M to 2.1B parameters.
+
+  - key: zhang2024maven
+    label: Maven supernova foundation model
+    arxiv: "2408.16829"
+    journal: "NeurIPS 2024"
+    journal-url: https://neurips.cc/virtual/2024/102928
+    description: First foundation model for supernova science, pretraining on 500k synthetic light curves and spectra then fine-tuning on ZTF.
+
+  - key: leung2023stellar
+    label: Transformer foundation model for stars
+    arxiv: "2308.10944"
+    journal: "MNRAS 527 (2023)"
+    journal-url: https://academic.oup.com/mnras/article/527/1/1494/7291945
+    description: Self-supervised transformer trained on multi-survey stellar data; performs both discriminative and generative downstream tasks.
