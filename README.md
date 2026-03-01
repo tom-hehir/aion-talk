@@ -11,7 +11,7 @@ aion-talk/
 │   └── presentation.tex        # LaTeX source
 ├── notes/                      # planning — outline and ideas in markdown
 ├── scripts/
-│   ├── fetch-paper.sh          # download arXiv PDF + source, write info.md
+│   ├── fetch-arxiv-paper.sh          # download arXiv PDF + source, write info.md
 │   └── fetch-url.sh            # download an arbitrary resource from a URL
 ├── resources/                  # gitignored — populate with make fetch before building
 │   ├── aion-1-paper/           # AION-1 paper (required for build)
@@ -36,7 +36,7 @@ make fetch    # fetch all resources declared in resources.yaml
 To add resources, edit `resources.yaml` and re-run `make fetch`. Resources can also be fetched ad hoc:
 
 ```sh
-scripts/fetch-paper.sh https://arxiv.org/abs/2501.00001 resources/papers/2501.00001
+scripts/fetch-arxiv-paper.sh https://arxiv.org/abs/2501.00001 resources/papers/2501.00001
 scripts/fetch-url.sh https://example.com/figure.png resources/images/figure.png
 ```
 

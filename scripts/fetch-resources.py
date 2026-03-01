@@ -28,7 +28,7 @@ def main() -> None:
             print(f"  skip  {identifier} (already fetched)")
             continue
         print(f"  fetch {identifier}")
-        run(["scripts/fetch-paper.sh", url, f"resources/{identifier}"])
+        run(["scripts/fetch-arxiv-paper.sh", url, f"resources/{identifier}"])
 
     # ── images ────────────────────────────────────────────────────────────────
     for identifier, url in (config.get("images") or {}).items():

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# fetch-paper.sh — download PDF and LaTeX source for an arXiv paper,
+# fetch-arxiv-paper.sh — download PDF and LaTeX source for an arXiv paper,
 #                  and write an info.md with metadata and citation.
 #
 # Usage:
-#   scripts/fetch-paper.sh <arxiv-id-or-url> <output-dir>
+#   scripts/fetch-arxiv-paper.sh <arxiv-id-or-url> <output-dir>
 #
 # Examples:
-#   scripts/fetch-paper.sh 2510.17960 resources/aion-1-paper
-#   scripts/fetch-paper.sh https://arxiv.org/abs/2510.17960 resources/papers/2510.17960
+#   scripts/fetch-arxiv-paper.sh 2510.17960 resources/aion-1-paper
+#   scripts/fetch-arxiv-paper.sh https://arxiv.org/abs/2510.17960 resources/papers/2510.17960
 
 set -euo pipefail
 
