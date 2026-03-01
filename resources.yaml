@@ -1,6 +1,15 @@
 arxiv-papers:
   aion-1-paper: https://arxiv.org/abs/2510.17960
 
+# Papers whose arXiv source is needed (e.g. to reuse figures).
+# Citation-only papers live in the .bib file; move them here only when source is needed.
+arxiv-papers-source:
+  # aion-1-paper is already above; add others here as needed, e.g.:
+  # parker2024astroclip: https://arxiv.org/abs/2310.03024
+
 images:
   # §2 Team slide
   polymathic-logo.svg: https://polymathic-ai.org/images/logo.svg
+  # §3 Abstract slide — shields.io badges
+  badge-arxiv.svg: "https://img.shields.io/badge/arXiv-2510.17960-B31B1B.svg?style=flat"
+  badge-neurips.svg: "https://img.shields.io/badge/NeurIPS-2025-b3b3b3.svg?style=flat&labelColor=68448B"
