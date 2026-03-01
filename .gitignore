@@ -1,0 +1,5 @@
+# All transient build artefacts
+build/
+
+# Presentation PDF (use git add -f + tag for milestones)
+/presentation.pdf
