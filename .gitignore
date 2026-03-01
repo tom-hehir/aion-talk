@@ -1,11 +1,11 @@
 # Python virtual environment
-.venv/
+.venv
 
 # Transient build artefacts
-build/
+presentation/build
 
 # Downloaded paper resources (populate with: make fetch)
-resources/
+resources
 
 # Presentation PDF (use git add -f + tag for milestones)
 /presentation.pdf

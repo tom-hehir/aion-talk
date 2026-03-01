@@ -8,10 +8,11 @@ Beamer presentation of the AION-1 paper:
 ```text
 aion-talk/
 ├── presentation/
-│   └── presentation.tex        # LaTeX source
+│   ├── presentation.tex        # LaTeX source
+│   └── build/                  # gitignored — transient build artefacts (make + IDE)
 ├── notes/                      # planning — outline and ideas in markdown
 ├── scripts/
-│   ├── fetch-arxiv-paper.sh          # download arXiv PDF + source, write info.md
+│   ├── fetch-arxiv-paper.sh    # download arXiv PDF + source, write info.md
 │   └── fetch-url.sh            # download an arbitrary resource from a URL
 ├── resources/                  # gitignored — populate with make fetch before building
 │   ├── aion-1-paper/           # AION-1 paper (required for build)
@@ -19,7 +20,6 @@ aion-talk/
 │   │   ├── info.md             # metadata and BibTeX citation
 │   │   └── source/             # extracted arXiv source; figures used in talk
 │   └── papers/<arxiv-id>/      # other referenced papers (ad hoc)
-├── build/                      # gitignored — transient build artefacts
 ├── presentation.pdf            # gitignored during iteration; committed at milestones
 └── Makefile
 ```
@@ -43,26 +43,23 @@ scripts/fetch-url.sh https://example.com/figure.png resources/images/figure.png
 ## Building
 
 ```sh
-make          # → build/presentation.pdf
+make          # → presentation/build/presentation.pdf
 make clean    # remove aux files
-make mrproper # remove build/ entirely
-make tidy-pres # remove stray build files from presentation/
+make mrproper # remove presentation/build/ entirely
 ```
 
 Requires TeX Live 2025 with the `moloch` beamer theme and Fira Sans fonts. Builds with LuaLaTeX via `latexmk`.
 
-Some stray build files are written to `presentation/` and cleaned up automatically. To retain them for debugging:
+### VS Code
 
-```sh
-make DEBUG=1
-```
+A `.vscode/settings.json` is included that configures LaTeX Workshop to use LuaLaTeX and output to `presentation/build/`, matching the `make` build.
 
 ## Milestone workflow
 
 Snapshot the slides before a talk:
 
 ```sh
-make release                       # copies build/presentation.pdf → presentation.pdf
+make release                       # copies presentation/build/presentation.pdf → presentation.pdf
 git add -f presentation.pdf
 git commit -m "slides: <occasion>"
 git tag -a <occasion> -m "<notes>"
