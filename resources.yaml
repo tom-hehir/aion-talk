@@ -1,4 +1,6 @@
 arxiv-papers:
   aion-1-paper: https://arxiv.org/abs/2510.17960
 
-images: {}
+images:
+  # §2 Team slide
+  polymathic-logo.svg: https://polymathic-ai.org/images/logo.svg

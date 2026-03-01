@@ -21,11 +21,11 @@ $(BUILD_DIR):
 $(PDF): $(PRES_DIR)/$(MAIN).tex | $(BUILD_DIR)
 	@test -d $(MAIN_PAPER_DIR)/source || \
 	    (echo "ERROR: run 'make fetch' first." && exit 1)
-	latexmk -interaction=nonstopmode -halt-on-error $(PRES_DIR)/$(MAIN).tex
+	cd $(PRES_DIR) && latexmk -interaction=nonstopmode -halt-on-error $(MAIN).tex
 
 # ── clean ─────────────────────────────────────────────────────────────────────
 clean:
-	latexmk -c $(PRES_DIR)/$(MAIN).tex
+	cd $(PRES_DIR) && latexmk -c $(MAIN).tex
 
 mrproper:
 	rm -rf $(BUILD_DIR)

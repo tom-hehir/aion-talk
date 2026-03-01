@@ -6,6 +6,8 @@ import sys
 from pathlib import Path
 
 import yaml
+from reportlab.graphics import renderPDF
+from svglib.svglib import svg2rlg
 
 ROOT = Path(__file__).parent.parent
 RESOURCES_DIR = ROOT / "resources"
@@ -38,6 +40,11 @@ def main() -> None:
             continue
         print(f"  fetch {identifier}")
         run(["scripts/fetch-url.sh", url, f"resources/images/{identifier}"])
+        if out_path.suffix == ".svg":
+            pdf_path = out_path.with_suffix(".pdf")
+            drawing = svg2rlg(str(out_path))
+            renderPDF.drawToFile(drawing, str(pdf_path))
+            print(f"  conv  {identifier} → {pdf_path.name}")
 
 
 if __name__ == "__main__":
