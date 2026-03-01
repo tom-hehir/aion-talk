@@ -1,0 +1,66 @@
+# AION-1 authors and their GitHub handles.
+# `github`  — used to fetch the profile avatar from github.com/<handle>.png
+# `photo`   — path to a local image (relative to repo root) or a URL;
+#             overrides `github` when set.
+
+authors:
+  - name: Liam Parker
+    github: lhparker1
+  - name: Francois Lanusse
+    github: EiffL
+  - name: Jeff Shen
+    github: al-jshen
+    photo: https://polymathic-ai.org/images/avatars/jeff_shen.png
+  - name: Ollie Liu
+    github: oliu-io
+  - name: Tom Hehir
+    github: tom-hehir
+  - name: Leopoldo Sarra
+    github: lsarra
+  - name: Lucas Meyer
+    github: LTMeyer
+  - name: Micah Bowles
+    github: mb010
+  - name: Sebastian Wagner-Carena
+    github: swagnercarena
+  - name: Helen Qu
+    github: helenqu
+  - name: Siavash Golkar
+    github: golkar
+  - name: Alberto Bietti
+    github: abietti
+  - name: Hatim Bourfoune
+    github:
+    photo: https://media.licdn.com/dms/image/v2/C4D03AQE073SUMGno8g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1643380117552?e=2147483647&v=beta&t=dQwqaXLYWjqT77_aiLyDyShqUe8yn1HUKBS_vC67fJY
+  - name: Nathan Cassereau
+    github: ncassereau
+    photo: https://media.licdn.com/dms/image/v2/D4E03AQGaNwH2lTrOEg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721470632531?e=2147483647&v=beta&t=LOdUye6Q8Y8AA0uetx555VHU7C5HWmaNCO9duTpTdEg
+  - name: Pierre Cornette
+    github: pierre-cornette
+    photo: https://media.licdn.com/dms/image/v2/D4D03AQFEyQr1nw4XJg/profile-displayphoto-shrink_200_200/B4DZbPeJ00IAAo-/0/1747237510926?e=2147483647&v=beta&t=JDs2jqA3qCN-G_7d9o3uyjPmUzd1vsIjklEev-HDTEQ
+  - name: Keiya Hirashima
+    github: kyaFUK
+  - name: Geraud Krawezik
+    github: gkrawezik
+    photo: https://polymathic-ai.org/images/avatars/geraud_krawezik.jpg
+  - name: Ruben Ohana
+    github: rubenohana
+  - name: Nicholas Lourie
+    github: nalourie
+  - name: Michael McCabe
+    github: mikemccabe210
+  - name: Rudy Morel
+    github: RudyMorel
+  - name: Payel Mukhopadhyay
+    github: payelmuk150
+  - name: Mariel Pettee
+    github: mariel-pettee
+  - name: Bruno Regaldo-Saint Blancard
+    github: bregaldo
+  - name: Kyunghyun Cho
+    github: kyunghyuncho
+    photo: https://polymathic-ai.org/images/avatars/kyunghyun_cho.jpg
+  - name: Miles Cranmer
+    github: MilesCranmer
+  - name: Shirley Ho
+    github: shirleysurelyho
