@@ -1,0 +1,430 @@
+\begin{thebibliography}{74}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Achiam et~al.(2023)Achiam, Adler, Agarwal, Ahmad, Akkaya, Aleman, Almeida, Altenschmidt, Altman, Anadkat, et~al.]{achiam2023gpt}
+Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Florencia~Leoni Aleman, Diogo Almeida, Janko Altenschmidt, Sam Altman, Shyamal Anadkat, et~al.
+\newblock Gpt-4 technical report.
+\newblock \emph{arXiv preprint arXiv:2303.08774}, 2023.
+
+\bibitem[Aghamousa et~al.(2016)Aghamousa, Aguilar, Ahlen, Alam, Allen, Prieto, Annis, Bailey, Balland, Ballester, et~al.]{aghamousa2016desi}
+Amir Aghamousa, Jessica Aguilar, Steve Ahlen, Shadab Alam, Lori~E Allen, Carlos~Allende Prieto, James Annis, Stephen Bailey, Christophe Balland, Otger Ballester, et~al.
+\newblock The desi experiment part i: science, targeting, and survey design.
+\newblock \emph{arXiv preprint arXiv:1611.00036}, 2016.
+
+\bibitem[Ahumada et~al.(2020)Ahumada, Prieto, Almeida, Anders, Anderson, Andrews, Anguiano, Arcodia, Armengaud, Aubert, et~al.]{ahumada202016th}
+Romina Ahumada, Carlos~Allende Prieto, Andr{\'e}s Almeida, Friedrich Anders, Scott~F Anderson, Brett~H Andrews, Borja Anguiano, Riccardo Arcodia, Eric Armengaud, Marie Aubert, et~al.
+\newblock The 16th data release of the sloan digital sky surveys: first release from the apogee-2 southern survey and full release of eboss spectra.
+\newblock \emph{The Astrophysical Journal Supplement Series}, 249\penalty0 (1):\penalty0 3, 2020.
+
+\bibitem[Aihara et~al.(2018)Aihara, Arimoto, Armstrong, Arnouts, Bahcall, Bickerton, Bosch, Bundy, Capak, Chan, et~al.]{aihara2018hyper}
+Hiroaki Aihara, Nobuo Arimoto, Robert Armstrong, St{\'e}phane Arnouts, Neta~A Bahcall, Steven Bickerton, James Bosch, Kevin Bundy, Peter~L Capak, James~HH Chan, et~al.
+\newblock The hyper suprime-cam ssp survey: overview and survey design.
+\newblock \emph{Publications of the Astronomical Society of Japan}, 70\penalty0 (SP1):\penalty0 S4, 2018.
+
+\bibitem[Anthropic(2024)]{claude}
+Anthropic.
+\newblock Claude.
+\newblock \url{https://anthropic.com/claude}, 2024.
+\newblock Large language model.
+
+\bibitem[Bachmann et~al.(2024)Bachmann, Kar, Mizrahi, Garjani, Gao, Griffiths, Hu, Dehghan, and Zamir]{4m-21}
+Roman Bachmann, Oğuzhan~Fatih Kar, David Mizrahi, Ali Garjani, Mingfei Gao, David Griffiths, Jiaming Hu, Afshin Dehghan, and Amir Zamir.
+\newblock 4m-21: An any-to-any vision model for tens of tasks and modalities, 2024.
+\newblock \url{https://arxiv.org/abs/2406.09406}.
+
+\bibitem[{Bina} et~al.(2016){Bina}, {Pell{\'o}}, {Richard}, {Lewis}, {Patr{\'\i}cio}, {Cantalupo}, {Herenz}, {Soto}, {Weilbacher}, {Bacon}, {Vernet}, {Wisotzki}, {Cl{\'e}ment}, {Cuby}, {Lagattuta}, {Soucail}, and {Verhamme}]{bina2016}
+D.~{Bina}, R.~{Pell{\'o}}, J.~{Richard}, J.~{Lewis}, V.~{Patr{\'\i}cio}, S.~{Cantalupo}, E.~C. {Herenz}, K.~{Soto}, P.~M. {Weilbacher}, R.~{Bacon}, J.~D.~R. {Vernet}, L.~{Wisotzki}, B.~{Cl{\'e}ment}, J.~G. {Cuby}, D.~J. {Lagattuta}, G.~{Soucail}, and A.~{Verhamme}.
+\newblock {MUSE observations of the lensing cluster Abell 1689}.
+\newblock \emph{\aap}, 590:\penalty0 A14, May 2016.
+\newblock \doi{10.1051/0004-6361/201527913}.
+
+\bibitem[{Bolton} et~al.(2006){Bolton}, {Burles}, {Koopmans}, {Treu}, and {Moustakas}]{bolton2006}
+Adam~S. {Bolton}, Scott {Burles}, L{\'e}on V.~E. {Koopmans}, Tommaso {Treu}, and Leonidas~A. {Moustakas}.
+\newblock {The Sloan Lens ACS Survey. I. A Large Spectroscopically Selected Sample of Massive Early-Type Lens Galaxies}.
+\newblock \emph{\apj}, 638\penalty0 (2):\penalty0 703--724, February 2006.
+\newblock \doi{10.1086/498884}.
+
+\bibitem[{Bolton} et~al.(2008){Bolton}, {Burles}, {Koopmans}, {Treu}, {Gavazzi}, {Moustakas}, {Wayth}, and {Schlegel}]{bolton2008}
+Adam~S. {Bolton}, Scott {Burles}, L{\'e}on V.~E. {Koopmans}, Tommaso {Treu}, Rapha{\"e}l {Gavazzi}, Leonidas~A. {Moustakas}, Randall {Wayth}, and David~J. {Schlegel}.
+\newblock {The Sloan Lens ACS Survey. V. The Full ACS Strong-Lens Sample}.
+\newblock \emph{\apj}, 682\penalty0 (2):\penalty0 964--984, August 2008.
+\newblock \doi{10.1086/589327}.
+
+\bibitem[{Ca{\~n}ameras} et~al.(2021){Ca{\~n}ameras}, {Schuldt}, {Shu}, {Suyu}, {Taubenberger}, {Meinhardt}, {Leal-Taix{\'e}}, {Chao}, {Inoue}, {Jaelani}, and {More}]{HOLISMOKES_VI}
+R.~{Ca{\~n}ameras}, S.~{Schuldt}, Y.~{Shu}, S.~H. {Suyu}, S.~{Taubenberger}, T.~{Meinhardt}, L.~{Leal-Taix{\'e}}, D.~C.~Y. {Chao}, K.~T. {Inoue}, A.~T. {Jaelani}, and A.~{More}.
+\newblock {HOLISMOKES. VI. New galaxy-scale strong lens candidates from the HSC-SSP imaging survey}.
+\newblock \emph{\aap}, 653:\penalty0 L6, September 2021.
+\newblock \doi{10.1051/0004-6361/202141758}.
+
+\bibitem[Collaboration et~al.(2016)]{gaia2016gaia}
+Gaia Collaboration et~al.
+\newblock The gaia mission.
+\newblock \emph{arXiv preprint arXiv:1609.04153}, 2016.
+
+\bibitem[{DESI Collaboration} et~al.(2016){DESI Collaboration}, {Aghamousa}, {Aguilar}, {Ahlen}, {Alam}, {Allen}, {Allende Prieto}, {Annis}, {Bailey}, {Balland}, {Ballester}, {Baltay}, {Beaufore}, {Bebek}, {Beers}, {Bell}, {Bernal}, {Besuner}, {Beutler}, {Blake}, {Bleuler}, {Blomqvist}, {Blum}, {Bolton}, {Briceno}, {Brooks}, {Brownstein}, {Buckley-Geer}, {Burden}, {Burtin}, {Busca}, {Cahn}, {Cai}, {Cardiel-Sas}, {Carlberg}, {Carton}, {Casas}, {Castander}, {Cervantes-Cota}, {Claybaugh}, {Close}, {Coker}, {Cole}, {Comparat}, {Cooper}, {Cousinou}, {Crocce}, {Cuby}, {Cunningham}, {Davis}, {Dawson}, {de la Macorra}, {De Vicente}, {Delubac}, {Derwent}, {Dey}, {Dhungana}, {Ding}, {Doel}, {Duan}, {Ealet}, {Edelstein}, {Eftekharzadeh}, {Eisenstein}, {Elliott}, {Escoffier}, {Evatt}, {Fagrelius}, {Fan}, {Fanning}, {Farahi}, {Farihi}, {Favole}, {Feng}, {Fernandez}, {Findlay}, {Finkbeiner}, {Fitzpatrick}, {Flaugher}, {Flender}, {Font-Ribera}, {Forero-Romero}, {Fosalba}, {Frenk}, {Fumagalli}, {Gaensicke}, {Gallo},
+  {Garcia-Bellido}, {Gaztanaga}, {Pietro Gentile Fusillo}, {Gerard}, {Gershkovich}, {Giannantonio}, {Gillet}, {Gonzalez-de-Rivera}, {Gonzalez-Perez}, {Gott}, {Graur}, {Gutierrez}, {Guy}, {Habib}, {Heetderks}, {Heetderks}, {Heitmann}, {Hellwing}, {Herrera}, {Ho}, {Holland}, {Honscheid}, {Huff}, {Hutchinson}, {Huterer}, {Hwang}, {Illa Laguna}, {Ishikawa}, {Jacobs}, {Jeffrey}, {Jelinsky}, {Jennings}, {Jiang}, {Jimenez}, {Johnson}, {Joyce}, {Jullo}, {Juneau}, {Kama}, {Karcher}, {Karkar}, {Kehoe}, {Kennamer}, {Kent}, {Kilbinger}, {Kim}, {Kirkby}, {Kisner}, {Kitanidis}, {Kneib}, {Koposov}, {Kovacs}, {Koyama}, {Kremin}, {Kron}, {Kronig}, {Kueter-Young}, {Lacey}, {Lafever}, {Lahav}, {Lambert}, {Lampton}, {Landriau}, {Lang}, {Lauer}, {Le Goff}, {Le Guillou}, {Le Van Suu}, {Lee}, {Lee}, {Leitner}, {Lesser}, {Levi}, {L'Huillier}, {Li}, {Liang}, {Lin}, {Linder}, {Loebman}, {Luki{\'c}}, {Ma}, {MacCrann}, {Magneville}, {Makarem}, {Manera}, {Manser}, {Marshall}, {Martini}, {Massey}, {Matheson}, {McCauley}, {McDonald},
+  {McGreer}, {Meisner}, {Metcalfe}, {Miller}, {Miquel}, {Moustakas}, {Myers}, {Naik}, {Newman}, {Nichol}, {Nicola}, {Nicolati da Costa}, {Nie}, {Niz}, {Norberg}, {Nord}, {Norman}, {Nugent}, {O'Brien}, {Oh}, and {Olsen}]{desi_survey}
+{DESI Collaboration}, Amir {Aghamousa}, Jessica {Aguilar}, Steve {Ahlen}, Shadab {Alam}, Lori~E. {Allen}, Carlos {Allende Prieto}, James {Annis}, Stephen {Bailey}, Christophe {Balland}, Otger {Ballester}, Charles {Baltay}, Lucas {Beaufore}, Chris {Bebek}, Timothy~C. {Beers}, Eric~F. {Bell}, Jos{\'e}~Luis {Bernal}, Robert {Besuner}, Florian {Beutler}, Chris {Blake}, Hannes {Bleuler}, Michael {Blomqvist}, Robert {Blum}, Adam~S. {Bolton}, Cesar {Briceno}, David {Brooks}, Joel~R. {Brownstein}, Elizabeth {Buckley-Geer}, Angela {Burden}, Etienne {Burtin}, Nicolas~G. {Busca}, Robert~N. {Cahn}, Yan-Chuan {Cai}, Laia {Cardiel-Sas}, Raymond~G. {Carlberg}, Pierre-Henri {Carton}, Ricard {Casas}, Francisco~J. {Castander}, Jorge~L. {Cervantes-Cota}, Todd~M. {Claybaugh}, Madeline {Close}, Carl~T. {Coker}, Shaun {Cole}, Johan {Comparat}, Andrew~P. {Cooper}, M.~C. {Cousinou}, Martin {Crocce}, Jean-Gabriel {Cuby}, Daniel~P. {Cunningham}, Tamara~M. {Davis}, Kyle~S. {Dawson}, Axel {de la Macorra}, Juan {De Vicente}, Timoth{\'e}e
+  {Delubac}, Mark {Derwent}, Arjun {Dey}, Govinda {Dhungana}, Zhejie {Ding}, Peter {Doel}, Yutong~T. {Duan}, Anne {Ealet}, Jerry {Edelstein}, Sarah {Eftekharzadeh}, Daniel~J. {Eisenstein}, Ann {Elliott}, St{\'e}phanie {Escoffier}, Matthew {Evatt}, Parker {Fagrelius}, Xiaohui {Fan}, Kevin {Fanning}, Arya {Farahi}, Jay {Farihi}, Ginevra {Favole}, Yu~{Feng}, Enrique {Fernandez}, Joseph~R. {Findlay}, Douglas~P. {Finkbeiner}, Michael~J. {Fitzpatrick}, Brenna {Flaugher}, Samuel {Flender}, Andreu {Font-Ribera}, Jaime~E. {Forero-Romero}, Pablo {Fosalba}, Carlos~S. {Frenk}, Michele {Fumagalli}, Boris~T. {Gaensicke}, Giuseppe {Gallo}, Juan {Garcia-Bellido}, Enrique {Gaztanaga}, Nicola {Pietro Gentile Fusillo}, Terry {Gerard}, Irena {Gershkovich}, Tommaso {Giannantonio}, Denis {Gillet}, Guillermo {Gonzalez-de-Rivera}, Violeta {Gonzalez-Perez}, Shelby {Gott}, Or~{Graur}, Gaston {Gutierrez}, Julien {Guy}, Salman {Habib}, Henry {Heetderks}, Ian {Heetderks}, Katrin {Heitmann}, Wojciech~A. {Hellwing}, David~A. {Herrera},
+  Shirley {Ho}, Stephen {Holland}, Klaus {Honscheid}, Eric {Huff}, Timothy~A. {Hutchinson}, Dragan {Huterer}, Ho~Seong {Hwang}, Joseph~Maria {Illa Laguna}, Yuzo {Ishikawa}, Dianna {Jacobs}, Niall {Jeffrey}, Patrick {Jelinsky}, Elise {Jennings}, Linhua {Jiang}, Jorge {Jimenez}, Jennifer {Johnson}, Richard {Joyce}, Eric {Jullo}, St{\'e}phanie {Juneau}, Sami {Kama}, Armin {Karcher}, Sonia {Karkar}, Robert {Kehoe}, Noble {Kennamer}, Stephen {Kent}, Martin {Kilbinger}, Alex~G. {Kim}, David {Kirkby}, Theodore {Kisner}, Ellie {Kitanidis}, Jean-Paul {Kneib}, Sergey {Koposov}, Eve {Kovacs}, Kazuya {Koyama}, Anthony {Kremin}, Richard {Kron}, Luzius {Kronig}, Andrea {Kueter-Young}, Cedric~G. {Lacey}, Robin {Lafever}, Ofer {Lahav}, Andrew {Lambert}, Michael {Lampton}, Martin {Landriau}, Dustin {Lang}, Tod~R. {Lauer}, Jean-Marc {Le Goff}, Laurent {Le Guillou}, Auguste {Le Van Suu}, Jae~Hyeon {Lee}, Su-Jeong {Lee}, Daniela {Leitner}, Michael {Lesser}, Michael~E. {Levi}, Benjamin {L'Huillier}, Baojiu {Li}, Ming {Liang},
+  Huan {Lin}, Eric {Linder}, Sarah~R. {Loebman}, Zarija {Luki{\'c}}, Jun {Ma}, Niall {MacCrann}, Christophe {Magneville}, Laleh {Makarem}, Marc {Manera}, Christopher~J. {Manser}, Robert {Marshall}, Paul {Martini}, Richard {Massey}, Thomas {Matheson}, Jeremy {McCauley}, Patrick {McDonald}, Ian~D. {McGreer}, Aaron {Meisner}, Nigel {Metcalfe}, Timothy~N. {Miller}, Ramon {Miquel}, John {Moustakas}, Adam {Myers}, Milind {Naik}, Jeffrey~A. {Newman}, Robert~C. {Nichol}, Andrina {Nicola}, Luiz {Nicolati da Costa}, Jundan {Nie}, Gustavo {Niz}, Peder {Norberg}, Brian {Nord}, Dara {Norman}, Peter {Nugent}, Thomas {O'Brien}, Minji {Oh}, and Knut A.~G. {Olsen}.
+\newblock {The DESI Experiment Part I: Science,Targeting, and Survey Design}.
+\newblock \emph{arXiv e-prints}, art. arXiv:1611.00036, October 2016.
+\newblock \doi{10.48550/arXiv.1611.00036}.
+
+\bibitem[{DESI Collaboration} et~al.(2024){DESI Collaboration}, {Adame}, {Aguilar}, {Ahlen}, {Alam}, {Aldering}, {Alexander}, {Alfarsy}, {Allende Prieto}, {Alvarez}, {Alves}, {Anand}, {Andrade-Oliveira}, {Armengaud}, {Asorey}, {Avila}, {Aviles}, {Bailey}, {Balaguera-Antol{\'\i}nez}, {Ballester}, {Baltay}, {Bault}, {Bautista}, {Behera}, {Beltran}, {BenZvi}, {Beraldo e Silva}, {Bermejo-Climent}, {Berti}, {Besuner}, {Beutler}, {Bianchi}, {Blake}, {Blum}, {Bolton}, {Brieden}, {Brodzeller}, {Brooks}, {Brown}, {Buckley-Geer}, {Burtin}, {Cabayol-Garcia}, {Cai}, {Canning}, {Cardiel-Sas}, {Carnero Rosell}, {Castander}, {Cervantes-Cota}, {Chabanier}, {Chaussidon}, {Chaves-Montero}, {Chen}, {Chen}, {Chuang}, {Claybaugh}, {Cole}, {Cooper}, {Cuceu}, {Davis}, {Dawson}, {de Belsunce}, {de la Cruz}, {de la Macorra}, {Della Costa}, {de Mattia}, {Demina}, {Demirbozan}, {DeRose}, {Dey}, {Dey}, {Dhungana}, {Ding}, {Ding}, {Doel}, {Doshi}, {Douglass}, {Edge}, {Eftekharzadeh}, {Eisenstein}, {Elliott}, {Ereza}, {Escoffier},
+  {Fagrelius}, {Fan}, {Fanning}, {Fawcett}, {Ferraro}, {Flaugher}, {Font-Ribera}, {Forero-Romero}, {Forero-S{\'a}nchez}, {Frenk}, {G{\"a}nsicke}, {Garc{\'\i}a}, {Garc{\'\i}a-Bellido}, {Garcia-Quintero}, {Garrison}, {Gil-Mar{\'\i}n}, {Golden-Marx}, {Gontcho A Gontcho}, {Gonzalez-Morales}, {Gonzalez-Perez}, {Gordon}, {Graur}, {Green}, {Gruen}, {Guy}, {Hadzhiyska}, {Hahn}, {Han}, {Hanif}, {Herrera-Alcantar}, {Honscheid}, {Hou}, {Howlett}, {Huterer}, {Ir{\v{s}}i{\v{c}}}, {Ishak}, {Jacques}, {Jana}, {Jiang}, {Jimenez}, {Jing}, {Joudaki}, {Joyce}, {Jullo}, {Juneau}, {Kara{\c{c}}ayl{\i}}, {Karim}, {Kehoe}, {Kent}, {Khederlarian}, {Kim}, {Kirkby}, {Kisner}, {Kitaura}, {Kizhuprakkat}, {Kneib}, {Koposov}, {Kov{\'a}cs}, {Kremin}, {Krolewski}, {L'Huillier}, {Lahav}, {Lambert}, {Lamman}, {Lan}, {Landriau}, {Lang}, {Lange}, {Lasker}, {Leauthaud}, {Le Guillou}, {Levi}, {Li}, {Linder}, {Lyons}, {Magneville}, {Manera}, {Manser}, {Margala}, {Martini}, {McDonald}, {Medina}, {Medina-Varela}, {Meisner}, {Mena-Fern{\'a}ndez},
+  {Meneses-Rizo}, {Mezcua}, {Miquel}, {Montero-Camacho}, {Moon}, {Moore}, {Moustakas}, {Mueller}, {Mundet}, {Mu{\~n}oz-Guti{\'e}rrez}, {Myers}, {Nadathur}, {Napolitano}, {Neveux}, {Newman}, {Nie}, {Nikutta}, {Niz}, {Norberg}, {Noriega}, {Paillas}, {Palanque-Delabrouille}, {Palmese}, {Pan}, {Parkinson}, {Penmetsa}, {Percival}, {P{\'e}rez-Fern{\'a}ndez}, {P{\'e}rez-R{\`a}fols}, {Pieri}, {Poppett}, {Porredon}, and {Pothier}]{desi_edr}
+{DESI Collaboration}, A.~G. {Adame}, J.~{Aguilar}, S.~{Ahlen}, S.~{Alam}, G.~{Aldering}, D.~M. {Alexander}, R.~{Alfarsy}, C.~{Allende Prieto}, M.~{Alvarez}, O.~{Alves}, A.~{Anand}, F.~{Andrade-Oliveira}, E.~{Armengaud}, J.~{Asorey}, S.~{Avila}, A.~{Aviles}, S.~{Bailey}, A.~{Balaguera-Antol{\'\i}nez}, O.~{Ballester}, C.~{Baltay}, A.~{Bault}, J.~{Bautista}, J.~{Behera}, S.~F. {Beltran}, S.~{BenZvi}, L.~{Beraldo e Silva}, J.~R. {Bermejo-Climent}, A.~{Berti}, R.~{Besuner}, F.~{Beutler}, D.~{Bianchi}, C.~{Blake}, R.~{Blum}, A.~S. {Bolton}, S.~{Brieden}, A.~{Brodzeller}, D.~{Brooks}, Z.~{Brown}, E.~{Buckley-Geer}, E.~{Burtin}, L.~{Cabayol-Garcia}, Z.~{Cai}, R.~{Canning}, L.~{Cardiel-Sas}, A.~{Carnero Rosell}, F.~J. {Castander}, J.~L. {Cervantes-Cota}, S.~{Chabanier}, E.~{Chaussidon}, J.~{Chaves-Montero}, S.~{Chen}, X.~{Chen}, C.~{Chuang}, T.~{Claybaugh}, S.~{Cole}, A.~P. {Cooper}, A.~{Cuceu}, T.~M. {Davis}, K.~{Dawson}, R.~{de Belsunce}, R.~{de la Cruz}, A.~{de la Macorra}, J.~{Della Costa}, A.~{de Mattia},
+  R.~{Demina}, U.~{Demirbozan}, J.~{DeRose}, A.~{Dey}, B.~{Dey}, G.~{Dhungana}, J.~{Ding}, Z.~{Ding}, P.~{Doel}, R.~{Doshi}, K.~{Douglass}, A.~{Edge}, S.~{Eftekharzadeh}, D.~J. {Eisenstein}, A.~{Elliott}, J.~{Ereza}, S.~{Escoffier}, P.~{Fagrelius}, X.~{Fan}, K.~{Fanning}, V.~A. {Fawcett}, S.~{Ferraro}, B.~{Flaugher}, A.~{Font-Ribera}, J.~E. {Forero-Romero}, D.~{Forero-S{\'a}nchez}, C.~S. {Frenk}, B.~T. {G{\"a}nsicke}, L.~{\'A}. {Garc{\'\i}a}, J.~{Garc{\'\i}a-Bellido}, C.~{Garcia-Quintero}, L.~H. {Garrison}, H.~{Gil-Mar{\'\i}n}, J.~{Golden-Marx}, S.~{Gontcho A Gontcho}, A.~X. {Gonzalez-Morales}, V.~{Gonzalez-Perez}, C.~{Gordon}, O.~{Graur}, D.~{Green}, D.~{Gruen}, J.~{Guy}, B.~{Hadzhiyska}, C.~{Hahn}, J.~J. {Han}, M.~M.~S. {Hanif}, H.~K. {Herrera-Alcantar}, K.~{Honscheid}, J.~{Hou}, C.~{Howlett}, D.~{Huterer}, V.~{Ir{\v{s}}i{\v{c}}}, M.~{Ishak}, A.~{Jacques}, A.~{Jana}, L.~{Jiang}, J.~{Jimenez}, Y.~P. {Jing}, S.~{Joudaki}, R.~{Joyce}, E.~{Jullo}, S.~{Juneau}, N.~G. {Kara{\c{c}}ayl{\i}}, T.~{Karim}, R.~{Kehoe},
+  S.~{Kent}, A.~{Khederlarian}, S.~{Kim}, D.~{Kirkby}, T.~{Kisner}, F.~{Kitaura}, N.~{Kizhuprakkat}, J.~{Kneib}, S.~E. {Koposov}, A.~{Kov{\'a}cs}, A.~{Kremin}, A.~{Krolewski}, B.~{L'Huillier}, O.~{Lahav}, A.~{Lambert}, C.~{Lamman}, T.~W. {Lan}, M.~{Landriau}, D.~{Lang}, J.~U. {Lange}, J.~{Lasker}, A.~{Leauthaud}, L.~{Le Guillou}, M.~E. {Levi}, T.~S. {Li}, E.~{Linder}, A.~{Lyons}, C.~{Magneville}, M.~{Manera}, C.~J. {Manser}, D.~{Margala}, P.~{Martini}, P.~{McDonald}, G.~E. {Medina}, L.~{Medina-Varela}, A.~{Meisner}, J.~{Mena-Fern{\'a}ndez}, J.~{Meneses-Rizo}, M.~{Mezcua}, R.~{Miquel}, P.~{Montero-Camacho}, J.~{Moon}, S.~{Moore}, J.~{Moustakas}, E.~{Mueller}, J.~{Mundet}, A.~{Mu{\~n}oz-Guti{\'e}rrez}, A.~D. {Myers}, S.~{Nadathur}, L.~{Napolitano}, R.~{Neveux}, J.~A. {Newman}, J.~{Nie}, R.~{Nikutta}, G.~{Niz}, P.~{Norberg}, H.~E. {Noriega}, E.~{Paillas}, N.~{Palanque-Delabrouille}, A.~{Palmese}, Z.~{Pan}, D.~{Parkinson}, S.~{Penmetsa}, W.~J. {Percival}, A.~{P{\'e}rez-Fern{\'a}ndez}, I.~{P{\'e}rez-R{\`a}fols},
+  M.~{Pieri}, C.~{Poppett}, A.~{Porredon}, and S.~{Pothier}.
+\newblock {The Early Data Release of the Dark Energy Spectroscopic Instrument}.
+\newblock \emph{\aj}, 168\penalty0 (2):\penalty0 58, August 2024.
+\newblock \doi{10.3847/1538-3881/ad3217}.
+
+\bibitem[Dey et~al.(2019)Dey, Schlegel, Lang, Blum, Burleigh, Fan, Findlay, Finkbeiner, Herrera, Juneau, et~al.]{dey2019overview}
+Arjun Dey, David~J Schlegel, Dustin Lang, Robert Blum, Kaylan Burleigh, Xiaohui Fan, Joseph~R Findlay, Doug Finkbeiner, David Herrera, St{\'e}phanie Juneau, et~al.
+\newblock Overview of the desi legacy imaging surveys.
+\newblock \emph{The Astronomical Journal}, 157\penalty0 (5):\penalty0 168, 2019.
+
+\bibitem[Dubey et~al.(2024)Dubey, Jauhri, Pandey, Kadian, Al-Dahle, Letman, Mathur, Schelten, Yang, Fan, et~al.]{dubey2024llama}
+Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Amy Yang, Angela Fan, et~al.
+\newblock The llama 3 herd of models.
+\newblock \emph{arXiv preprint arXiv:2407.21783}, 2024.
+
+\bibitem[{Faure} et~al.(2008){Faure}, {Kneib}, {Covone}, {Tasca}, {Leauthaud}, {Capak}, {Jahnke}, {Smolcic}, {de la Torre}, {Ellis}, {Finoguenov}, {Koekemoer}, {Le Fevre}, {Massey}, {Mellier}, {Refregier}, {Rhodes}, {Scoville}, {Schinnerer}, {Taylor}, {Van Waerbeke}, and {Walcher}]{Faure2008}
+Cecile {Faure}, Jean-Paul {Kneib}, Giovanni {Covone}, Lidia {Tasca}, Alexie {Leauthaud}, Peter {Capak}, Knud {Jahnke}, Vernesa {Smolcic}, Sylvain {de la Torre}, Richard {Ellis}, Alexis {Finoguenov}, Anton {Koekemoer}, Oliver {Le Fevre}, Richard {Massey}, Yannick {Mellier}, Alexandre {Refregier}, Jason {Rhodes}, Nick {Scoville}, Eva {Schinnerer}, James {Taylor}, Ludovic {Van Waerbeke}, and Jakob {Walcher}.
+\newblock {First Catalog of Strong Lens Candidates in the COSMOS Field}.
+\newblock \emph{\apjs}, 176\penalty0 (1):\penalty0 19--38, May 2008.
+\newblock \doi{10.1086/526426}.
+
+\bibitem[Gallegos et~al.(2024)Gallegos, Rossi, Barrow, Tanjim, Kim, Dernoncourt, Yu, Zhang, and Ahmed]{gallegos2024biasfairnesslargelanguage}
+Isabel~O. Gallegos, Ryan~A. Rossi, Joe Barrow, Md~Mehrab Tanjim, Sungchul Kim, Franck Dernoncourt, Tong Yu, Ruiyi Zhang, and Nesreen~K. Ahmed.
+\newblock Bias and fairness in large language models: A survey, 2024.
+\newblock \url{https://arxiv.org/abs/2309.00770}.
+
+\bibitem[Gemini~Team et~al.(2024)Gemini~Team, Lei, Burnell, Bai, Gulati, Tanzer, Vincent, Pan, Wang, et~al.]{team2024gemini}
+Petko Gemini~Team, Georgiev, Ving~Ian Lei, Ryan Burnell, Libin Bai, Anmol Gulati, Garrett Tanzer, Damien Vincent, Zhufeng Pan, Shibo Wang, et~al.
+\newblock Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context.
+\newblock \emph{arXiv preprint arXiv:2403.05530}, 2024.
+
+\bibitem[Girdhar et~al.(2023)Girdhar, El-Nouby, Liu, Singh, Alwala, Joulin, and Misra]{imagebind}
+Rohit Girdhar, Alaaeldin El-Nouby, Zhuang Liu, Mannat Singh, Kalyan~Vasudev Alwala, Armand Joulin, and Ishan Misra.
+\newblock Imagebind: One embedding space to bind them all, 2023.
+\newblock \url{https://arxiv.org/abs/2305.05665}.
+
+\bibitem[{Goullaud} et~al.(2018){Goullaud}, {Jensen}, {Blakeslee}, {Ma}, {Greene}, and {Thomas}]{Goullaud2018}
+Charles~F. {Goullaud}, Joseph~B. {Jensen}, John~P. {Blakeslee}, Chung-Pei {Ma}, Jenny~E. {Greene}, and Jens {Thomas}.
+\newblock {The MASSIVE Survey. IX. Photometric Analysis of 35 High-mass Early-type Galaxies with HST WFC3/IR}.
+\newblock \emph{\apj}, 856\penalty0 (1):\penalty0 11, March 2018.
+\newblock \doi{10.3847/1538-4357/aab1f3}.
+
+\bibitem[Hahn et~al.(2023)Hahn, Kwon, Tojeiro, Siudek, Canning, Mezcua, Tinker, Brooks, Doel, Fanning, et~al.]{hahn2023desi}
+ChangHoon Hahn, KJ~Kwon, Rita Tojeiro, Malgorzata Siudek, Rebecca~EA Canning, Mar Mezcua, Jeremy~L Tinker, David Brooks, Peter Doel, Kevin Fanning, et~al.
+\newblock The desi probabilistic value-added bright galaxy survey (provabgs) mock challenge.
+\newblock \emph{The Astrophysical Journal}, 945\penalty0 (1):\penalty0 16, 2023.
+
+\bibitem[{Hayat} et~al.(2021){Hayat}, {Stein}, {Harrington}, {Luki{\'c}}, and {Mustafa}]{Hayat2021}
+Md~Abul {Hayat}, George {Stein}, Peter {Harrington}, Zarija {Luki{\'c}}, and Mustafa {Mustafa}.
+\newblock {Self-supervised Representation Learning for Astronomical Images}.
+\newblock \emph{\apjl}, 911\penalty0 (2):\penalty0 L33, April 2021.
+\newblock \doi{10.3847/2041-8213/abf2c7}.
+
+\bibitem[{Jacobs} et~al.(2019){Jacobs}, {Collett}, {Glazebrook}, {Buckley-Geer}, {Diehl}, {Lin}, {McCarthy}, {Qin}, {Odden}, {Caso Escudero}, {Dial}, {Yung}, {Gaitsch}, {Pellico}, {Lindgren}, {Abbott}, {Annis}, {Avila}, {Brooks}, {Burke}, {Carnero Rosell}, {Carrasco Kind}, {Carretero}, {da Costa}, {De Vicente}, {Fosalba}, {Frieman}, {Garc{\'\i}a-Bellido}, {Gaztanaga}, {Goldstein}, {Gruen}, {Gruendl}, {Gschwend}, {Hollowood}, {Honscheid}, {Hoyle}, {James}, {Krause}, {Kuropatkin}, {Lahav}, {Lima}, {Maia}, {Marshall}, {Miquel}, {Plazas}, {Roodman}, {Sanchez}, {Scarpine}, {Serrano}, {Sevilla-Noarbe}, {Smith}, {Sobreira}, {Suchyta}, {Swanson}, {Tarle}, {Vikram}, {Walker}, {Zhang}, and {DES Collaboration}]{Jacobs2019}
+C.~{Jacobs}, T.~{Collett}, K.~{Glazebrook}, E.~{Buckley-Geer}, H.~T. {Diehl}, H.~{Lin}, C.~{McCarthy}, A.~K. {Qin}, C.~{Odden}, M.~{Caso Escudero}, P.~{Dial}, V.~J. {Yung}, S.~{Gaitsch}, A.~{Pellico}, K.~A. {Lindgren}, T.~M.~C. {Abbott}, J.~{Annis}, S.~{Avila}, D.~{Brooks}, D.~L. {Burke}, A.~{Carnero Rosell}, M.~{Carrasco Kind}, J.~{Carretero}, L.~N. {da Costa}, J.~{De Vicente}, P.~{Fosalba}, J.~{Frieman}, J.~{Garc{\'\i}a-Bellido}, E.~{Gaztanaga}, D.~A. {Goldstein}, D.~{Gruen}, R.~A. {Gruendl}, J.~{Gschwend}, D.~L. {Hollowood}, K.~{Honscheid}, B.~{Hoyle}, D.~J. {James}, E.~{Krause}, N.~{Kuropatkin}, O.~{Lahav}, M.~{Lima}, M.~A.~G. {Maia}, J.~L. {Marshall}, R.~{Miquel}, A.~A. {Plazas}, A.~{Roodman}, E.~{Sanchez}, V.~{Scarpine}, S.~{Serrano}, I.~{Sevilla-Noarbe}, M.~{Smith}, F.~{Sobreira}, E.~{Suchyta}, M.~E.~C. {Swanson}, G.~{Tarle}, V.~{Vikram}, A.~R. {Walker}, Y.~{Zhang}, and {DES Collaboration}.
+\newblock {An Extended Catalog of Galaxy-Galaxy Strong Gravitational Lenses Discovered in DES Using Convolutional Neural Networks}.
+\newblock \emph{\apjs}, 243\penalty0 (1):\penalty0 17, July 2019.
+\newblock \doi{10.3847/1538-4365/ab26b6}.
+
+\bibitem[Jaegle et~al.(2022)Jaegle, Borgeaud, Alayrac, Doersch, Ionescu, Ding, Koppula, Zoran, Brock, Shelhamer, Hénaff, Botvinick, Zisserman, Vinyals, and Carreira]{perceiverio}
+Andrew Jaegle, Sebastian Borgeaud, Jean-Baptiste Alayrac, Carl Doersch, Catalin Ionescu, David Ding, Skanda Koppula, Daniel Zoran, Andrew Brock, Evan Shelhamer, Olivier Hénaff, Matthew~M. Botvinick, Andrew Zisserman, Oriol Vinyals, and Joāo Carreira.
+\newblock Perceiver io: A general architecture for structured inputs \& outputs, 2022.
+\newblock \url{https://arxiv.org/abs/2107.14795}.
+
+\bibitem[{Jaelani} et~al.(2020){Jaelani}, {More}, {Oguri}, {Sonnenfeld}, {Suyu}, {Rusu}, {Wong}, {Chan}, {Kayo}, {Lee}, {Chao}, {Coupon}, {Inoue}, and {Futamase}]{SUGOHI_V}
+Anton~T. {Jaelani}, Anupreeta {More}, Masamune {Oguri}, Alessandro {Sonnenfeld}, Sherry~H. {Suyu}, Cristian~E. {Rusu}, Kenneth~C. {Wong}, James H.~H. {Chan}, Issha {Kayo}, Chien-Hsiu {Lee}, Dani C.~Y. {Chao}, Jean {Coupon}, Kaiki~T. {Inoue}, and Toshifumi {Futamase}.
+\newblock {Survey of Gravitationally lensed Objects in HSC Imaging (SuGOHI) - V. Group-to-cluster scale lens search from the HSC-SSP Survey}.
+\newblock \emph{\mnras}, 495\penalty0 (1):\penalty0 1291--1310, June 2020.
+\newblock \doi{10.1093/mnras/staa1062}.
+
+\bibitem[{Jaelani} et~al.(2024){Jaelani}, {More}, {Wong}, {Inoue}, {Chao}, {Premadi}, and {Ca{\~n}ameras}]{SUGOHI_X}
+Anton~T. {Jaelani}, Anupreeta {More}, Kenneth~C. {Wong}, Kaiki~T. {Inoue}, Dani C.~Y. {Chao}, Premana~W. {Premadi}, and Raoul {Ca{\~n}ameras}.
+\newblock {Survey of gravitationally lensed objects in HSC imaging (SuGOHI) - X. Strong lens finding in the HSC-SSP using convolutional neural networks}.
+\newblock \emph{\mnras}, 535\penalty0 (2):\penalty0 1625--1639, December 2024.
+\newblock \doi{10.1093/mnras/stae2442}.
+
+\bibitem[Kingma et~al.(2020)Kingma, Ba, and Adam]{adamkingma}
+Diederik~P Kingma, J~Adam Ba, and J~Adam.
+\newblock A method for stochastic optimization. arxiv 2014.
+\newblock \emph{arXiv preprint arXiv:1412.6980}, 106:\penalty0 6, 2020.
+
+\bibitem[Kirillov et~al.(2023)Kirillov, Mintun, Ravi, Mao, Rolland, Gustafson, Xiao, Whitehead, Berg, Lo, et~al.]{sam}
+Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura Gustafson, Tete Xiao, Spencer Whitehead, Alexander~C Berg, Wan-Yen Lo, et~al.
+\newblock Segment anything.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on Computer Vision}, pages 4015--4026, 2023.
+
+\bibitem[{Koblischke} and {Bovy}(2024)]{Koblischke2024}
+Nolan {Koblischke} and Jo~{Bovy}.
+\newblock {SpectraFM: Tuning into Stellar Foundation Models}.
+\newblock \emph{arXiv e-prints}, art. arXiv:2411.04750, November 2024.
+\newblock \doi{10.48550/arXiv.2411.04750}.
+
+\bibitem[Kumar et~al.(2022)Kumar, Raghunathan, Jones, Ma, and Liang]{kumar2022finetuningdistortpretrainedfeatures}
+Ananya Kumar, Aditi Raghunathan, Robbie Jones, Tengyu Ma, and Percy Liang.
+\newblock Fine-tuning can distort pretrained features and underperform out-of-distribution, 2022.
+\newblock \url{https://arxiv.org/abs/2202.10054}.
+
+\bibitem[Leung and Bovy(2018)]{Leung_2018gz10}
+Henry~W Leung and Jo~Bovy.
+\newblock Deep learning of multi-element abundances from high-resolution spectroscopic data.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society}, November 2018.
+\newblock ISSN 1365-2966.
+\newblock \doi{10.1093/mnras/sty3217}.
+\newblock \url{http://dx.doi.org/10.1093/mnras/sty3217}.
+
+\bibitem[{Leung} and {Bovy}(2024)]{Leung2024}
+Henry~W. {Leung} and Jo~{Bovy}.
+\newblock {Towards an astronomical foundation model for stars with a transformer-based model}.
+\newblock \emph{\mnras}, 527\penalty0 (1):\penalty0 1494--1520, January 2024.
+\newblock \doi{10.1093/mnras/stad3015}.
+
+\bibitem[{Li} et~al.(2019){Li}, {Shu}, {Su}, {Feng}, {Zhang}, {Wang}, and {Liu}]{rui2019}
+Rui {Li}, Yiping {Shu}, Jianlin {Su}, Haicheng {Feng}, Guobao {Zhang}, Jiancheng {Wang}, and Hongtao {Liu}.
+\newblock {Using deep Residual Networks to search for galaxy-Ly {\ensuremath{\alpha}} emitter lens candidates based on spectroscopic selection}.
+\newblock \emph{\mnras}, 482\penalty0 (1):\penalty0 313--320, January 2019.
+\newblock \doi{10.1093/mnras/sty2708}.
+
+\bibitem[Liu et~al.(2023)Liu, Li, Wu, and Lee]{liu2023llava}
+Haotian Liu, Chunyuan Li, Qingyang Wu, and Yong~Jae Lee.
+\newblock Visual instruction tuning.
+\newblock \emph{arXiv preprint arXiv:2304.08485}, 2023.
+
+\bibitem[Loshchilov and Hutter(2019)]{loshchilov2018decoupled}
+Ilya Loshchilov and Frank Hutter.
+\newblock Decoupled weight decay regularization.
+\newblock In \emph{International Conference on Learning Representations}, 2019.
+\newblock \url{https://openreview.net/forum?id=Bkg6RiCqY7}.
+
+\bibitem[Masters et~al.(2021)Masters, Krawczyk, Shamsi, Todd, Finnegan, Bershady, Bundy, Cherinka, Fraser-McKelvie, Krishnarao, Kruk, Lane, Law, Lintott, Merrifield, Simmons, Weijmans, and Yan]{10.1093/mnras/stab2282}
+Karen~L Masters, Coleman Krawczyk, Shoaib Shamsi, Alexander Todd, Daniel Finnegan, Matthew Bershady, Kevin Bundy, Brian Cherinka, Amelia Fraser-McKelvie, Dhanesh Krishnarao, Sandor Kruk, Richard~R Lane, David Law, Chris Lintott, Michael Merrifield, Brooke Simmons, Anne-Marie Weijmans, and Renbin Yan.
+\newblock {Galaxy Zoo: 3D - crowdsourced bar, spiral, and foreground star masks for MaNGA target galaxies}.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society}, 507\penalty0 (3):\penalty0 3923--3935, 08 2021.
+\newblock ISSN 0035-8711.
+\newblock \doi{10.1093/mnras/stab2282}.
+\newblock \url{https://doi.org/10.1093/mnras/stab2282}.
+
+\bibitem[Melchior et~al.(2023)Melchior, Liang, Hahn, and Goulding]{melchior2023autoencoding}
+Peter Melchior, Yan Liang, ChangHoon Hahn, and Andy Goulding.
+\newblock Autoencoding galaxy spectra. i. architecture.
+\newblock \emph{The Astronomical Journal}, 166\penalty0 (2):\penalty0 74, 2023.
+
+\bibitem[Mentzer et~al.(2023)Mentzer, Minnen, Agustsson, and Tschannen]{mentzer2023finite}
+Fabian Mentzer, David Minnen, Eirikur Agustsson, and Michael Tschannen.
+\newblock Finite scalar quantization: Vq-vae made simple.
+\newblock \emph{arXiv preprint arXiv:2309.15505}, 2023.
+
+\bibitem[{Mishra-Sharma} et~al.(2024){Mishra-Sharma}, {Song}, and {Thaler}]{Mishra-Sharma2024}
+Siddharth {Mishra-Sharma}, Yiding {Song}, and Jesse {Thaler}.
+\newblock {PAPERCLIP: Associating Astronomical Observations and Natural Language with Multi-Modal Models}.
+\newblock \emph{arXiv e-prints}, art. arXiv:2403.08851, March 2024.
+\newblock \doi{10.48550/arXiv.2403.08851}.
+
+\bibitem[Mizrahi et~al.(2023)Mizrahi, Bachmann, Kar, Yeo, Gao, Dehghan, and Zamir]{mizrahi20234m}
+David Mizrahi, Roman Bachmann, Oğuzhan~Fatih Kar, Teresa Yeo, Mingfei Gao, Afshin Dehghan, and Amir Zamir.
+\newblock 4m: Massively multimodal masked modeling, 2023.
+\newblock \url{https://arxiv.org/abs/2312.06647}.
+
+\bibitem[{More} et~al.(2014){More}, {Cabanac}, {More}, {Alard}, {Limousin}, {Kneib}, {Gavazzi}, and {Motta}]{more2014}
+A.~{More}, R.~{Cabanac}, S.~{More}, C.~{Alard}, M.~{Limousin}, J.~P. {Kneib}, R.~{Gavazzi}, and V.~{Motta}.
+\newblock {The CFHTLS-Strong Lensing Legacy Survey (SL2S): Investigating the group-scale lenses with the SARCS sample}.
+\newblock In \emph{Journal of Physics Conference Series}, volume 484 of \emph{Journal of Physics Conference Series}, page 012041. IOP, March 2014.
+\newblock \doi{10.1088/1742-6596/484/1/012041}.
+
+\bibitem[{Oguri} et~al.(2012){Oguri}, {Bayliss}, {Dahle}, {Sharon}, {Gladders}, {Natarajan}, {Hennawi}, and {Koester}]{Oguri2012}
+Masamune {Oguri}, Matthew~B. {Bayliss}, H{\^a}kon {Dahle}, Keren {Sharon}, Michael~D. {Gladders}, Priyamvada {Natarajan}, Joseph~F. {Hennawi}, and Benjamin~P. {Koester}.
+\newblock {Combined strong and weak lensing analysis of 28 clusters from the Sloan Giant Arcs Survey}.
+\newblock \emph{\mnras}, 420\penalty0 (4):\penalty0 3213--3239, March 2012.
+\newblock \doi{10.1111/j.1365-2966.2011.20248.x}.
+
+\bibitem[Oquab et~al.(2023)Oquab, Darcet, Moutakanni, Vo, Szafraniec, Khalidov, Fernandez, Haziza, Massa, El-Nouby, et~al.]{oquab2023dinov2}
+Maxime Oquab, Timoth{\'e}e Darcet, Th{\'e}o Moutakanni, Huy Vo, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez, Daniel Haziza, Francisco Massa, Alaaeldin El-Nouby, et~al.
+\newblock Dinov2: Learning robust visual features without supervision.
+\newblock \emph{arXiv preprint arXiv:2304.07193}, 2023.
+
+\bibitem[{Parker} et~al.(2024){Parker}, {Lanusse}, {Golkar}, {Sarra}, {Cranmer}, {Bietti}, {Eickenberg}, {Krawezik}, {McCabe}, {Morel}, {Ohana}, {Pettee}, {R{\'e}galdo-Saint Blancard}, {Cho}, {Ho}, and {Polymathic AI Collaboration}]{Parker2024}
+Liam {Parker}, Francois {Lanusse}, Siavash {Golkar}, Leopoldo {Sarra}, Miles {Cranmer}, Alberto {Bietti}, Michael {Eickenberg}, Geraud {Krawezik}, Michael {McCabe}, Rudy {Morel}, Ruben {Ohana}, Mariel {Pettee}, Bruno {R{\'e}galdo-Saint Blancard}, Kyunghyun {Cho}, Shirley {Ho}, and {Polymathic AI Collaboration}.
+\newblock {AstroCLIP: a cross-modal foundation model for galaxies}.
+\newblock \emph{\mnras}, 531\penalty0 (4):\penalty0 4990--5011, July 2024.
+\newblock \doi{10.1093/mnras/stae1450}.
+
+\bibitem[Raffel et~al.(2020)Raffel, Shazeer, Roberts, Lee, Narang, Matena, Zhou, Li, and Liu]{raffel2020exploring}
+Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, and Peter~J Liu.
+\newblock Exploring the limits of transfer learning with a unified text-to-text transformer.
+\newblock \emph{Journal of machine learning research}, 21\penalty0 (140):\penalty0 1--67, 2020.
+
+\bibitem[Rizhko and Bloom(2024)]{rizhko2024astrom3}
+Mariia Rizhko and Joshua~S. Bloom.
+\newblock Astrom$^3$: A self-supervised multimodal model for astronomy.
+\newblock 2024.
+\newblock \url{https://arxiv.org/abs/2411.08842}.
+
+\bibitem[Rozet et~al.(2024)Rozet, Andry, Lanusse, and Louppe]{rozet2024learning}
+Fran{\c{c}}ois Rozet, G{\'e}r{\^o}me Andry, Fran{\c{c}}ois Lanusse, and Gilles Louppe.
+\newblock Learning diffusion priors from observations by expectation maximization.
+\newblock \emph{Advances in Neural Information Processing Systems}, 37:\penalty0 87647--87682, 2024.
+
+\bibitem[{Ruff} et~al.(2011){Ruff}, {Gavazzi}, {Marshall}, {Treu}, {Auger}, and {Brault}]{ruff2011}
+Andrea~J. {Ruff}, Rapha{\"e}l {Gavazzi}, Philip~J. {Marshall}, Tommaso {Treu}, Matthew~W. {Auger}, and Florence {Brault}.
+\newblock {The SL2S Galaxy-scale Lens Sample. II. Cosmic Evolution of Dark and Luminous Mass in Early-type Galaxies}.
+\newblock \emph{\apj}, 727\penalty0 (2):\penalty0 96, February 2011.
+\newblock \doi{10.1088/0004-637X/727/2/96}.
+
+\bibitem[Saharia et~al.(2022)Saharia, Chan, Saxena, Li, Whang, Denton, Ghasemipour, Ayan, Mahdavi, Lopes, et~al.]{saharia2022imagen}
+Chitwan Saharia, William Chan, Saurabh Saxena, Lala Li, Jay Whang, Emily Denton, Seyed Kamyar~Seyed Ghasemipour, Burcu~Karagol Ayan, S~Sara Mahdavi, Rapha~Gontijo Lopes, et~al.
+\newblock Imagen: Photorealistic text-to-image diffusion models with deep language understanding.
+\newblock \emph{arXiv preprint arXiv:2205.11487}, 2022.
+
+\bibitem[{Schuldt} et~al.(2024){Schuldt}, {Ca{\~n}ameras}, {Andika}, {Bag}, {Melo}, {Shu}, {Suyu}, {Taubenberger}, and {Grillo}]{HOLISMOKES_XIII}
+Stefan {Schuldt}, Raoul {Ca{\~n}ameras}, Irham~T. {Andika}, Satadru {Bag}, Alejandra {Melo}, Yiping {Shu}, Sherry~H. {Suyu}, Stefan {Taubenberger}, and Claudio {Grillo}.
+\newblock {HOLISMOKES XIII: Strong-lens candidates at all mass scales and their environments from the Hyper-Suprime Cam and deep learning}.
+\newblock \emph{arXiv e-prints}, art. arXiv:2405.20383, May 2024.
+\newblock \doi{10.48550/arXiv.2405.20383}.
+
+\bibitem[{Shu} et~al.(2022){Shu}, {Ca{\~n}ameras}, {Schuldt}, {Suyu}, {Taubenberger}, {Inoue}, and {Jaelani}]{HOLISMOKES_VIII}
+Yiping {Shu}, Raoul {Ca{\~n}ameras}, Stefan {Schuldt}, Sherry~H. {Suyu}, Stefan {Taubenberger}, Kaiki~Taro {Inoue}, and Anton~T. {Jaelani}.
+\newblock {HOLISMOKES. VIII. High-redshift, strong-lens search in the Hyper Suprime-Cam Subaru Strategic Program}.
+\newblock \emph{\aap}, 662:\penalty0 A4, June 2022.
+\newblock \doi{10.1051/0004-6361/202243203}.
+
+\bibitem[{Smith} et~al.(2024){Smith}, {Roberts}, {Angeloudi}, and {Huertas-Company}]{Smith2024}
+Michael~J. {Smith}, Ryan~J. {Roberts}, Eirini {Angeloudi}, and Marc {Huertas-Company}.
+\newblock {AstroPT: Scaling Large Observation Models for Astronomy}.
+\newblock \emph{arXiv e-prints}, art. arXiv:2405.14930, May 2024.
+\newblock \doi{10.48550/arXiv.2405.14930}.
+
+\bibitem[{Sonnenfeld} et~al.(2018){Sonnenfeld}, {Chan}, {Shu}, {More}, {Oguri}, {Suyu}, {Wong}, {Lee}, {Coupon}, {Yonehara}, {Bolton}, {Jaelani}, {Tanaka}, {Miyazaki}, and {Komiyama}]{SUGOHI_I}
+Alessandro {Sonnenfeld}, James H.~H. {Chan}, Yiping {Shu}, Anupreeta {More}, Masamune {Oguri}, Sherry~H. {Suyu}, Kenneth~C. {Wong}, Chien-Hsiu {Lee}, Jean {Coupon}, Atsunori {Yonehara}, Adam~S. {Bolton}, Anton~T. {Jaelani}, Masayuki {Tanaka}, Satoshi {Miyazaki}, and Yutaka {Komiyama}.
+\newblock {Survey of Gravitationally-lensed Objects in HSC Imaging (SuGOHI). I. Automatic search for galaxy-scale strong lenses}.
+\newblock \emph{\pasj}, 70:\penalty0 S29, January 2018.
+\newblock \doi{10.1093/pasj/psx062}.
+
+\bibitem[{Sonnenfeld} et~al.(2019){Sonnenfeld}, {Jaelani}, {Chan}, {More}, {Suyu}, {Wong}, {Oguri}, and {Lee}]{SUGOHI_III}
+Alessandro {Sonnenfeld}, Anton~T. {Jaelani}, James {Chan}, Anupreeta {More}, Sherry~H. {Suyu}, Kenneth~C. {Wong}, Masamune {Oguri}, and Chien-Hsiu {Lee}.
+\newblock {Survey of gravitationally-lensed objects in HSC imaging (SuGOHI). III. Statistical strong lensing constraints on the stellar IMF of CMASS galaxies}.
+\newblock \emph{\aap}, 630:\penalty0 A71, October 2019.
+\newblock \doi{10.1051/0004-6361/201935743}.
+
+\bibitem[{Sonnenfeld} et~al.(2020){Sonnenfeld}, {Verma}, {More}, {Baeten}, {Macmillan}, {Wong}, {Chan}, {Jaelani}, {Lee}, {Oguri}, {Rusu}, {Veldthuis}, {Trouille}, {Marshall}, {Hutchings}, {Allen}, {O'Donnell}, {Cornen}, {Davis}, {McMaster}, {Lintott}, and {Miller}]{SUGOHI_VI}
+Alessandro {Sonnenfeld}, Aprajita {Verma}, Anupreeta {More}, Elisabeth {Baeten}, Christine {Macmillan}, Kenneth~C. {Wong}, James H.~H. {Chan}, Anton~T. {Jaelani}, Chien-Hsiu {Lee}, Masamune {Oguri}, Cristian~E. {Rusu}, Marten {Veldthuis}, Laura {Trouille}, Philip~J. {Marshall}, Roger {Hutchings}, Campbell {Allen}, James {O'Donnell}, Claude {Cornen}, Christopher~P. {Davis}, Adam {McMaster}, Chris {Lintott}, and Grant {Miller}.
+\newblock {Survey of Gravitationally-lensed Objects in HSC Imaging (SuGOHI). VI. Crowdsourced lens finding with Space Warps}.
+\newblock \emph{\aap}, 642:\penalty0 A148, October 2020.
+\newblock \doi{10.1051/0004-6361/202038067}.
+
+\bibitem[StabilityAI(2022)]{stabilityai2022stable}
+StabilityAI.
+\newblock Stable diffusion, 2022.
+\newblock \url{https://github.com/CompVis/stable-diffusion}.
+
+\bibitem[Stein et~al.(2021)Stein, Harrington, Blaum, Medan, and Lukic]{stein2021self}
+George Stein, Peter Harrington, Jacqueline Blaum, Tomislav Medan, and Zarija Lukic.
+\newblock Self-supervised similarity search for large scientific datasets.
+\newblock \emph{arXiv preprint arXiv:2110.13151}, 2021.
+
+\bibitem[Stein et~al.(2022)Stein, Blaum, Harrington, Medan, and Luki{\'c}]{stein2022mining}
+George Stein, Jacqueline Blaum, Peter Harrington, Tomislav Medan, and Zarija Luki{\'c}.
+\newblock Mining for strong gravitational lenses with self-supervised learning.
+\newblock \emph{The Astrophysical Journal}, 932\penalty0 (2):\penalty0 107, 2022.
+
+\bibitem[{Talbot} et~al.(2021){Talbot}, {Brownstein}, {Dawson}, {Kneib}, and {Bautista}]{talbot2021}
+Michael~S. {Talbot}, Joel~R. {Brownstein}, Kyle~S. {Dawson}, Jean-Paul {Kneib}, and Julian {Bautista}.
+\newblock {The completed SDSS-IV extended Baryon Oscillation Spectroscopic Survey: a catalogue of strong galaxy-galaxy lens candidates}.
+\newblock \emph{\mnras}, 502\penalty0 (3):\penalty0 4617--4640, April 2021.
+\newblock \doi{10.1093/mnras/stab267}.
+
+\bibitem[Tan and Le(2019)]{tan2019efficientnet}
+Mingxing Tan and Quoc Le.
+\newblock Efficientnet: Rethinking model scaling for convolutional neural networks.
+\newblock In \emph{International conference on machine learning}, pages 6105--6114. PMLR, 2019.
+
+\bibitem[Team(2024)]{chameleonteam}
+Chameleon Team.
+\newblock Chameleon: Mixed-modal early-fusion foundation models, 2024.
+\newblock \url{https://arxiv.org/abs/2405.09818}.
+
+\bibitem[Thaler et~al.(2024)Thaler, Köksal, Leidinger, Korhonen, and Schütze]{thaler2024farbiasgo}
+Marion Thaler, Abdullatif Köksal, Alina Leidinger, Anna Korhonen, and Hinrich Schütze.
+\newblock How far can bias go? -- tracing bias from pretraining data to alignment, 2024.
+\newblock \url{https://arxiv.org/abs/2411.19240}.
+
+\bibitem[{The Multimodal Universe Collaboration} et~al.(2024){The Multimodal Universe Collaboration}, {Audenaert}, {Bowles}, {Boyd}, {Chemaly}, {Cherinka}, {Ciuc{\u{a}}}, {Cranmer}, {Do}, {Grayling}, {Hayes}, {Hehir}, {Ho}, {Huertas-Company}, {Iyer}, {Jablonska}, {Lanusse}, {Leung}, {Mandel}, {Mart{\'\i}nez-Galarza}, {Melchior}, {Meyer}, {Parker}, {Qu}, {Shen}, {Smith}, {Stone}, {Walmsley}, and {Wu}]{MMU}
+{The Multimodal Universe Collaboration}, Jeroen {Audenaert}, Micah {Bowles}, Benjamin~M. {Boyd}, David {Chemaly}, Brian {Cherinka}, Ioana {Ciuc{\u{a}}}, Miles {Cranmer}, Aaron {Do}, Matthew {Grayling}, Erin~E. {Hayes}, Tom {Hehir}, Shirley {Ho}, Marc {Huertas-Company}, Kartheik~G. {Iyer}, Maja {Jablonska}, Francois {Lanusse}, Henry~W. {Leung}, Kaisey {Mandel}, Juan~Rafael {Mart{\'\i}nez-Galarza}, Peter {Melchior}, Lucas {Meyer}, Liam~H. {Parker}, Helen {Qu}, Jeff {Shen}, Michael~J. {Smith}, Connor {Stone}, Mike {Walmsley}, and John~F. {Wu}.
+\newblock {The Multimodal Universe: Enabling Large-Scale Machine Learning with 100TB of Astronomical Scientific Data}.
+\newblock \emph{arXiv e-prints}, art. arXiv:2412.02527, December 2024.
+\newblock \doi{10.48550/arXiv.2412.02527}.
+
+\bibitem[van~den Oord et~al.(2017)van~den Oord, Vinyals, and Kavukcuoglu]{vq-vae}
+A{\"{a}}ron van~den Oord, Oriol Vinyals, and Koray Kavukcuoglu.
+\newblock Neural discrete representation learning.
+\newblock \emph{CoRR}, abs/1711.00937, 2017.
+\newblock \url{http://arxiv.org/abs/1711.00937}.
+
+\bibitem[Walmsley and Spindler(2023)]{walmsley2023deeplearningsegmentationspiral}
+Mike Walmsley and Ashley Spindler.
+\newblock Deep learning segmentation of spiral arms and bars, 2023.
+\newblock \url{https://arxiv.org/abs/2312.02908}.
+
+\bibitem[Walmsley et~al.(2022)Walmsley, Lintott, G{\'e}ron, Kruk, Krawczyk, Willett, Bamford, Kelvin, Fortson, Gal, et~al.]{walmsley2022galaxy}
+Mike Walmsley, Chris Lintott, Tobias G{\'e}ron, Sandor Kruk, Coleman Krawczyk, Kyle~W Willett, Steven Bamford, Lee~S Kelvin, Lucy Fortson, Yarin Gal, et~al.
+\newblock Galaxy zoo decals: Detailed visual morphology measurements from volunteers and deep learning for 314 000 galaxies.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society}, 509\penalty0 (3):\penalty0 3966--3988, 2022.
+
+\bibitem[{Walmsley} et~al.(2024){Walmsley}, {Bowles}, {Scaife}, {Shingirai Makechemu}, {Gordon}, {Ferguson}, {Mann}, {Pearson}, {Popp}, {Bovy}, {Speagle}, {Dickinson}, {Fortson}, {G{\'e}ron}, {Kruk}, {Lintott}, {Mantha}, {Mohan}, {O'Ryan}, and {Slijepevic}]{Walmsley2024}
+Mike {Walmsley}, Micah {Bowles}, Anna M.~M. {Scaife}, Jason {Shingirai Makechemu}, Alexander~J. {Gordon}, Annette M.~N. {Ferguson}, Robert~G. {Mann}, James {Pearson}, J{\"u}rgen~J. {Popp}, Jo~{Bovy}, Josh {Speagle}, Hugh {Dickinson}, Lucy {Fortson}, Tobias {G{\'e}ron}, Sandor {Kruk}, Chris~J. {Lintott}, Kameswara {Mantha}, Devina {Mohan}, David {O'Ryan}, and Inigo~V. {Slijepevic}.
+\newblock {Scaling Laws for Galaxy Images}.
+\newblock \emph{arXiv e-prints}, art. arXiv:2404.02973, April 2024.
+\newblock \doi{10.48550/arXiv.2404.02973}.
+
+\bibitem[{Wong} et~al.(2018){Wong}, {Sonnenfeld}, {Chan}, {Rusu}, {Tanaka}, {Jaelani}, {Lee}, {More}, {Oguri}, {Suyu}, and {Komiyama}]{SUGOHI_II}
+Kenneth~C. {Wong}, Alessandro {Sonnenfeld}, James H.~H. {Chan}, Cristian~E. {Rusu}, Masayuki {Tanaka}, Anton~T. {Jaelani}, Chien-Hsiu {Lee}, Anupreeta {More}, Masamune {Oguri}, Sherry~H. {Suyu}, and Yutaka {Komiyama}.
+\newblock {Survey of Gravitationally Lensed Objects in HSC Imaging (SuGOHI). II. Environments and Line-of-Sight Structure of Strong Gravitational Lens Galaxies to z {\ensuremath{\sim}} 0.8}.
+\newblock \emph{\apj}, 867\penalty0 (2):\penalty0 107, November 2018.
+\newblock \doi{10.3847/1538-4357/aae381}.
+
+\bibitem[{Wong} et~al.(2022){Wong}, {Chan}, {Chao}, {Jaelani}, {Kayo}, {Lee}, {More}, and {Oguri}]{SUGOHI_VIII}
+Kenneth~C. {Wong}, James H.~H. {Chan}, Dani C.~Y. {Chao}, Anton~T. {Jaelani}, Issha {Kayo}, Chien-Hsiu {Lee}, Anupreeta {More}, and Masamune {Oguri}.
+\newblock {Survey of Gravitationally lensed objects in HSC Imaging (SuGOHI). VIII. New galaxy-scale lenses from the HSC SSP}.
+\newblock \emph{\pasj}, 74\penalty0 (5):\penalty0 1209--1219, October 2022.
+\newblock \doi{10.1093/pasj/psac065}.
+
+\bibitem[Woo et~al.(2023)Woo, Debnath, Hu, Chen, Liu, Kweon, and Xie]{woo2023convnext}
+Sanghyun Woo, Shoubhik Debnath, Ronghang Hu, Xinlei Chen, Zhuang Liu, In~So Kweon, and Saining Xie.
+\newblock Convnext v2: Co-designing and scaling convnets with masked autoencoders.
+\newblock In \emph{Proceedings of the IEEE/CVF conference on computer vision and pattern recognition}, pages 16133--16142, 2023.
+
+\bibitem[York et~al.(2000)York, Adelman, Anderson~Jr, Anderson, Annis, Bahcall, Bakken, Barkhouser, Bastian, Berman, et~al.]{york2000sloan}
+Donald~G York, J~Adelman, John~E Anderson~Jr, Scott~F Anderson, James Annis, Neta~A Bahcall, JA~Bakken, Robert Barkhouser, Steven Bastian, Eileen Berman, et~al.
+\newblock The sloan digital sky survey: Technical summary.
+\newblock \emph{The Astronomical Journal}, 120\penalty0 (3):\penalty0 1579, 2000.
+
+\bibitem[Yu et~al.(2023{\natexlab{a}})Yu, Cheng, Sohn, Lezama, Zhang, Chang, Hauptmann, Yang, Hao, Essa, et~al.]{yu2023magvit}
+Lijun Yu, Yong Cheng, Kihyuk Sohn, Jos{\'e} Lezama, Han Zhang, Huiwen Chang, Alexander~G Hauptmann, Ming-Hsuan Yang, Yuan Hao, Irfan Essa, et~al.
+\newblock Magvit: Masked generative video transformer.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pages 10459--10469, 2023{\natexlab{a}}.
+
+\bibitem[Yu et~al.(2023{\natexlab{b}})Yu, Lezama, Gundavarapu, Versari, Sohn, Minnen, Cheng, Birodkar, Gupta, Gu, et~al.]{yu2023language}
+Lijun Yu, Jos{\'e} Lezama, Nitesh~B Gundavarapu, Luca Versari, Kihyuk Sohn, David Minnen, Yong Cheng, Vighnesh Birodkar, Agrim Gupta, Xiuye Gu, et~al.
+\newblock Language model beats diffusion--tokenizer is key to visual generation.
+\newblock \emph{arXiv preprint arXiv:2310.05737}, 2023{\natexlab{b}}.
+
+\bibitem[{Zhang} et~al.(2024){Zhang}, {Xiang}, {Ting}, {Wang}, {Li}, {Zou}, {Nie}, {Mou}, {Wu}, {Wu}, and {Liu}]{Zhang2024}
+Meng {Zhang}, Maosheng {Xiang}, Yuan-Sen {Ting}, Jiahui {Wang}, Haining {Li}, Hu~{Zou}, Jundan {Nie}, Lanya {Mou}, Tianmin {Wu}, Yaqian {Wu}, and Jifeng {Liu}.
+\newblock {Determining Stellar Elemental Abundances from DESI Spectra with the Data-driven Payne}.
+\newblock \emph{\apjs}, 273\penalty0 (2):\penalty0 19, August 2024.
+\newblock \doi{10.3847/1538-4365/ad51dd}.
+
+\end{thebibliography}
