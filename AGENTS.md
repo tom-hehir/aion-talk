@@ -27,3 +27,11 @@ Beamer presentation of the AION-1 paper (arXiv:2510.17960), presented by Tom Heh
 ## Presentation structure
 
 Motivation → Data → Architecture (Tokenisation, Multimodal Masked Modelling) → Model Family → Downstream Tasks → Conclusion
+
+## Commit co-authoring (Codex)
+
+When Codex creates a commit on the user's behalf at the user's request, include this co-author trailer in the commit message:
+
+```
+Co-Authored-By: Codex <noreply@openai.com>
+```

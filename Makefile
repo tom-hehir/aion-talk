@@ -10,7 +10,7 @@ PAPER_SRC_DIR     := $(MAIN_PAPER_DIR)/source
 TITLEPAGE_STANDALONE := $(PRES_DIR)/titlepage-standalone.tex
 TITLEPAGE_PDF     := $(RESOURCES_DIR)/titlepage.pdf
 
-.PHONY: all clean mrproper fetch bibliography release
+.PHONY: all clean mrproper fetch bibliography release tables
 
 all: $(PDF)
 
@@ -21,6 +21,10 @@ fetch:
 # ── bibliography (regenerate .bib from notes/*.yaml) ─────────────────────────
 bibliography:
 	uv run scripts/update-bibliography.py
+
+# ── tables (render paper tables to cached PDFs) ───────────────────────────────
+tables:
+	uv run scripts/render-tables.py
 
 # ── titlepage (rendered from paper source, pdfcropped) ────────────────────────
 $(TITLEPAGE_PDF): $(TITLEPAGE_STANDALONE)

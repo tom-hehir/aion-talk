@@ -1,0 +1,13 @@
+papers:
+  aion-1-paper:
+    source: resources/papers/aion-1-paper/source/extended_paper.tex
+    labels:
+      - tab:model-size
+      - tab:galaxy_properties_full
+      - tab:wrap_acc
+      - tab:segmentation_iou
+      - tab:stellar_properties_full
+      - tab:stellar_properties_comparison
+      - tab:retrieval_query_stats
+      - tab:retrieval-scores
+      - tab:transfer_ls_hsc
