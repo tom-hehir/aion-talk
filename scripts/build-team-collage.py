@@ -20,13 +20,13 @@ OUT_PATH = ROOT / "resources" / "team-collage.png"
 
 # ── layout constants ──────────────────────────────────────────────────────────
 COLS = 7
-PHOTO_SIZE = 120          # px — diameter of circular photo
-NAME_HEIGHT = 32          # px — space below photo for name
-CELL_PAD_X = 18           # px — horizontal padding between cells
-CELL_PAD_Y = 24           # px — vertical padding between rows
+PHOTO_SIZE = 480          # px — diameter of circular photo
+NAME_HEIGHT = 128         # px — space below photo for name
+CELL_PAD_X = 72           # px — horizontal padding between cells
+CELL_PAD_Y = 96           # px — vertical padding between rows
 BG_COLOR = (255, 255, 255, 0)   # transparent background
 TEXT_COLOR = (40, 40, 40)
-FONT_SIZE = 13
+FONT_SIZE = 52
 
 
 def circular_crop(img: Image.Image, size: int) -> Image.Image:
