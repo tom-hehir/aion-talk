@@ -82,6 +82,51 @@
   }
 \end{frame}
 
+% ── §3 Status Quo ─────────────────────────────────────────────────────────────
+\begin{frame}{Status Quo: Task- and Data-Specific Models}
+  \begin{columns}[T]
+
+    \begin{column}{0.32\textwidth}
+      \centering
+      \includegraphics[height=0.42\textheight]{sketch.pdf}
+      \par\smallskip
+      {\small\textbf{Physical inductive bias}}\\[0.3em]
+      {\small
+        Architecture encodes redshift and instrument response explicitly
+        \parencite{melchior2023spender};
+        or via the training objective
+        \parencite{korber2023pinion}.
+      }
+    \end{column}
+
+    \begin{column}{0.32\textwidth}
+      \centering
+      \includegraphics[height=0.42\textheight]{nn-sketch.png}
+      \par\smallskip
+      {\small\textbf{Data-specific regression}}\\[0.3em]
+      {\small
+        Multi-task net with probabilistic outputs for joint redshift and
+        galaxy property estimation on simulated MOONS spectra
+        \parencite{ginolfi2024moons}.
+        Bayesian SED emulation: \parencite{alsing2020speculator}.
+      }
+    \end{column}
+
+    \begin{column}{0.32\textwidth}
+      \centering
+      \includegraphics[height=0.42\textheight]{fig-braai3.png}
+      \par\smallskip
+      {\small\textbf{Survey-specific classification}}\\[0.3em]
+      {\small
+        VGG6 on ZTF science/reference/difference triplets for real-bogus
+        discrimination \parencite{duev2019realbogus};
+        CNNs for strong lens finding \parencite{metcalf2019lensfinding}.
+      }
+    \end{column}
+
+  \end{columns}
+\end{frame}
+
 % ── §4 Prior Foundation Model Efforts ─────────────────────────────────────────
 \begin{frame}{Prior Work: Supervised Pre-Training}
   \begin{columns}[T]
@@ -134,49 +179,10 @@
   \end{columns}
 \end{frame}
 
-% ── §3 Status Quo ─────────────────────────────────────────────────────────────
-\begin{frame}{Status Quo: Task- and Data-Specific Models}
-  \begin{columns}[T]
-
-    \begin{column}{0.32\textwidth}
-      \centering
-      \includegraphics[height=0.42\textheight]{sketch.pdf}
-      \par\smallskip
-      {\small\textbf{Physical inductive bias}}\\[0.3em]
-      {\small
-        Architecture encodes redshift and instrument response explicitly
-        \parencite{melchior2023spender};
-        or via the training objective
-        \parencite{korber2023pinion}.
-      }
-    \end{column}
-
-    \begin{column}{0.32\textwidth}
-      \centering
-      \includegraphics[height=0.42\textheight]{nn-sketch.png}
-      \par\smallskip
-      {\small\textbf{Data-specific regression}}\\[0.3em]
-      {\small
-        Multi-task net with probabilistic outputs for joint redshift and
-        galaxy property estimation on simulated MOONS spectra
-        \parencite{ginolfi2024moons}.
-        Bayesian SED emulation: \parencite{alsing2020speculator}.
-      }
-    \end{column}
-
-    \begin{column}{0.32\textwidth}
-      \centering
-      \includegraphics[height=0.42\textheight]{fig-braai3.png}
-      \par\smallskip
-      {\small\textbf{Survey-specific classification}}\\[0.3em]
-      {\small
-        VGG6 on ZTF science/reference/difference triplets for real-bogus
-        discrimination \parencite{duev2019realbogus};
-        CNNs for strong lens finding \parencite{metcalf2019lensfinding}.
-      }
-    \end{column}
-
-  \end{columns}
+% ── §5 Introducing AION-1 ─────────────────────────────────────────────────────
+\begin{frame}{Introducing AION-1}
+  \centering
+  \includegraphics[width=\textwidth, height=0.82\textheight, keepaspectratio]{aion.png}
 \end{frame}
 
 \end{document}
