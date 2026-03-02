@@ -10,6 +10,10 @@ arxiv-papers-source:
   melchior2023spender: https://arxiv.org/abs/2211.07890
   ginolfi2024moons: https://arxiv.org/abs/2410.22420
   duev2019realbogus: https://arxiv.org/abs/1907.11259
+  # §4 Prior foundation model figures
+  hayat2021selfsupervised: https://arxiv.org/abs/2012.13083
+  walmsley2022gzdecals: https://arxiv.org/abs/2102.08414
+  smith2024astropt: https://arxiv.org/abs/2405.14930
 
 images:
   # §2 Team slide

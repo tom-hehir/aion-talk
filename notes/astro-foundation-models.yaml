@@ -3,6 +3,11 @@
 # To fetch arXiv source (e.g. for figures), add the key to arxiv-papers-source in resources.yaml.
 
 # supervised-pretraining
+- key: walmsley2022gzdecals
+  arxiv: "2102.08414"
+  journal: "MNRAS 509 (2022)"
+  journal-url: https://academic.oup.com/mnras/article/509/3/3966/6378289
+
 - key: walmsley2023zoobot
   journal: "JOSS 8:85 (2023)"
   journal-url: https://joss.theoj.org/papers/10.21105/joss.05312

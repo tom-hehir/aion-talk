@@ -32,6 +32,9 @@
   {../resources/papers/melchior2023spender/source/figures/}%
   {../resources/papers/ginolfi2024moons/source/figures/}%
   {../resources/papers/duev2019realbogus/source/}%
+  {../resources/papers/hayat2021selfsupervised/source/figures/}%
+  {../resources/papers/walmsley2022gzdecals/source/figures/}%
+  {../resources/papers/smith2024astropt/source/figures/}%
   {../resources/}%
   {../resources/images/}%
   {../resources/papers/}%
@@ -77,6 +80,66 @@
   \href{https://polymathic-ai.org}{%
     \includegraphics[height=1.2em]{polymathic-logo.pdf}%
   }
+\end{frame}
+
+% ── §4 Prior Foundation Model Efforts ─────────────────────────────────────────
+\begin{frame}{Prior Work: Supervised Pre-Training}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{dr5_tree_with_icons_new_format_larger_arrows_inverted.png}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \textbf{Large, rich supervised label sets}\\[0.6em]
+      Galaxy Zoo DECaLS \parencite{walmsley2022gzdecals} collected
+      volunteer morphology classifications across a branching question
+      tree for 314,000 galaxies.\\[0.5em]
+      Zoobot \parencite{walmsley2023zoobot} distils this into a
+      reusable library: pretrain on GZ labels, then transfer to new
+      morphology tasks with few labels.\\[0.5em]
+      Supervised scaling laws on galaxy images show smooth power-law
+      behaviour up to 840k examples \parencite{walmsley2024scalinglaws}.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Prior Work: Contrastive Learning}
+  \begin{columns}[T]
+    \begin{column}{0.58\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{network_illustration.pdf}
+    \end{column}
+    \begin{column}{0.39\textwidth}
+      \textbf{Self-supervised representations}\\[0.6em]
+      Contrastive SSL on SDSS multi-band photometry
+      \parencite{hayat2021selfsupervised}: augmented views of the same
+      galaxy are pulled together in embedding space, no labels
+      required.\\[0.5em]
+      Extended to \textbf{multi-modal}: AstroCLIP
+      \parencite{parker2024astroclip} aligns galaxy images and spectra;
+      AstroM$^3$ \parencite{rizhko2024astromm} adds
+      time-series photometry for a trimodal embedding.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Prior Work: Generative Models}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{scaling.pdf}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \textbf{Autoregressive pre-training at scale}\\[0.6em]
+      AstroPT \parencite{smith2024astropt} tokenises galaxy images into
+      spiral-ordered patches and trains a GPT-style transformer on 8.6M
+      DESI Legacy Survey images; downstream performance follows a clear
+      scaling law from 1M to 2.1B parameters.\\[0.5em]
+      Also: Maven \parencite{zhang2024maven} for supernovae light
+      curves; transformer foundation model for stellar spectra
+      \parencite{leung2023stellar}.
+    \end{column}
+  \end{columns}
 \end{frame}
 
 % ── §3 Status Quo ─────────────────────────────────────────────────────────────
