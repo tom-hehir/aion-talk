@@ -191,6 +191,7 @@
 
 % ── Prior Work: AstroCLIP ─────────────────────────────────────────────────────
 \begin{frame}{Contrastive learning (multimodal)}
+  \vfill
   \begin{columns}[c]
     \begin{column}{0.48\textwidth}
       \centering
@@ -205,12 +206,23 @@
       {\small AstroM$^3$ \parencite{rizhko2024astromm}}
     \end{column}
   \end{columns}
+  \vfill
 \end{frame}
 
 \begin{frame}{Generative models}
+  \vfill
+  \begin{columns}[c]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{galaxy_im.pdf}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{scaling.pdf}
+    \end{column}
+  \end{columns}
+  \vfill
   \centering
-  \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{scaling.pdf}
-  \par\smallskip
   {\small AstroPT \parencite{smith2024astropt}}
 \end{frame}
 
@@ -237,10 +249,14 @@
       \begin{minipage}[t][0.82\textheight][s]{\linewidth}
         \centering
         \vfill
-        \includegraphics[width=\linewidth, height=0.42\textheight, keepaspectratio]{aion.png}
-        \vfill
-        \includegraphics[width=\linewidth, height=0.34\textheight, keepaspectratio]{method_figure.pdf}
-        \vfill
+        \includegraphics[width=\linewidth, height=0.38\textheight, keepaspectratio]{aion.png}
+        \par\smallskip
+        {\small AION-1 \parencite{hehir2025aion}}
+        \par\vfill
+        \includegraphics[width=\linewidth, height=0.30\textheight, keepaspectratio]{method_figure.pdf}
+        \par\smallskip
+        {\small 4M \parencite{mizrahi2023}}
+        \par\vfill
         \mbox{}
       \end{minipage}
     \end{column}
@@ -604,22 +620,52 @@
   \includegraphics[width=\textwidth]{tab_retrieval_query_stats.pdf}
 \end{frame}
 
+% ── Appendix: ROAR Sampling ───────────────────────────────────────────────────
+\begin{frame}{Inference sampling: ROAR}
+  At inference time, draw posterior samples of any modality via iterative token resampling:
+  \begin{equation*}
+    p_\theta\!\bigl(\mathbf{x}^{\mathrm{qry}} \mid \mathbf{x}^{\mathrm{in}}\bigr)
+    \;=\;
+    \prod_{j\in\mathcal{Q}}
+    p_\theta\!\bigl(x_j \mid \mathbf{x}^{\mathrm{in}}\bigr)
+  \end{equation*}
+  \textbf{ROAR generation} \parencite{mizrahi2023}: at each iteration $t$:
+  \begin{enumerate}\small
+    \item Draw a random permutation $\pi_t\!:\mathcal{Q}_t\!\to\!\mathcal{Q}_t$ of the unknown query indices
+    \item Reveal the first $\rho_t = \lfloor r^{\,t}|\mathcal{Q}_t|\rfloor$ positions:
+          $\;\mathcal{S}_t = \{\pi_t(1),\dots,\pi_t(\rho_t)\}$
+    \item Sample those tokens:
+          $\;x_j^{(t)} \sim p_\theta\!\bigl(\cdot \mid \mathbf{x}^{\mathrm{in}} \cup
+          \mathbf{x}^{(t-1)}_{\mathcal{Q}_{t-1}\setminus\mathcal{S}_t}\bigr),\; j\in\mathcal{S}_t$
+    \item Promote to inputs and update:
+          $\;\mathbf{x}^{\mathrm{in}} \leftarrow \mathbf{x}^{\mathrm{in}} \cup \{x_j^{(t)}\}_{j\in\mathcal{S}_t}$,
+          $\;\mathcal{Q}_{t+1} = \mathcal{Q}_t\setminus\mathcal{S}_t$
+  \end{enumerate}
+  With decay $r\in[0,1)$, full sample generated in $T=\mathcal{O}(\log|\mathcal{Q}|)$ decoder calls.
+\end{frame}
+
 % ── Appendix: Latent Diffusion Models ────────────────────────────────────────
 \begin{frame}{Semantic versus perceptual compression}
   \centering
-  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{generativevscompressive4.jpg}
+  \includegraphics[width=\textwidth, height=0.74\textheight, keepaspectratio]{generativevscompressive4.jpg}
+  \par\smallskip
+  {\small LDM \parencite{rombach2021ldm}}
 \end{frame}
 
 % ── Appendix: VQ-VAE ──────────────────────────────────────────────────────────
 \begin{frame}{VQ-VAE}
   \centering
-  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{Figure1_9.png}
+  \includegraphics[width=\textwidth, height=0.74\textheight, keepaspectratio]{Figure1_9.png}
+  \par\smallskip
+  {\small VQ-VAE \parencite{oord2017vqvae}}
 \end{frame}
 
 % ── Appendix: MaskGIT iterative decoding ─────────────────────────────────────
 \begin{frame}{MaskGIT}
   \centering
-  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{iterative_decoding.pdf}
+  \includegraphics[width=\textwidth, height=0.74\textheight, keepaspectratio]{iterative_decoding.pdf}
+  \par\smallskip
+  {\small MaskGIT \parencite{chang2022maskgit}}
 \end{frame}
 
 \end{document}
