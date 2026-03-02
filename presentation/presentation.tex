@@ -176,76 +176,42 @@
 \end{frame}
 
 \begin{frame}{Multitask supervised pre-training with rich labels}
-  \begin{columns}[T]
-    \begin{column}{0.45\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{dr5_tree_with_icons_new_format_larger_arrows_inverted.png}
-    \end{column}
-    \begin{column}{0.52\textwidth}
-      \textbf{Large, rich supervised label sets}\\[0.6em]
-      Galaxy Zoo DECaLS \parencite{walmsley2022gzdecals} collected
-      volunteer morphology classifications across a branching question
-      tree for 314,000 galaxies.\\[0.5em]
-      Zoobot \parencite{walmsley2023zoobot} distils this into a
-      reusable library: pretrain on GZ labels, then transfer to new
-      morphology tasks with few labels.\\[0.5em]
-      Supervised scaling laws on galaxy images show smooth power-law
-      behaviour up to 840k examples \parencite{walmsley2024scalinglaws}.
-    \end{column}
-  \end{columns}
+  \centering
+  \includegraphics[width=0.65\textwidth, height=0.72\textheight, keepaspectratio]{dr5_tree_with_icons_new_format_larger_arrows_inverted.png}
+  \par\smallskip
+  {\small Zoobot \parencite{walmsley2023zoobot}}
 \end{frame}
 
 \begin{frame}{Contrastive learning (unimodal)}
   \centering
   \includegraphics[width=\textwidth]{network_illustration.pdf}
   \par\smallskip
-  {\small
-    \textbf{Self-supervised representations:}
-    contrastive SSL on SDSS photometry \parencite{hayat2021selfsupervised};
-    extended to multi-modal with AstroCLIP \parencite{parker2024astroclip}
-    and AstroM$^3$ \parencite{rizhko2024astromm}.
-  }
+  {\small \parencite{hayat2021selfsupervised}}
 \end{frame}
 
 % ── Prior Work: AstroCLIP ─────────────────────────────────────────────────────
 \begin{frame}{Contrastive learning (multimodal)}
-  \begin{columns}[T]
-    \begin{column}{0.55\textwidth}
+  \begin{columns}[c]
+    \begin{column}{0.48\textwidth}
       \centering
-      \includegraphics[width=\linewidth, height=0.38\textheight, keepaspectratio]{im_embedding.pdf}
-      \par\vspace{0.4em}
-      \includegraphics[width=\linewidth, height=0.38\textheight, keepaspectratio]{astroclip.png}
+      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{im_embedding.pdf}
+      \par\smallskip
+      {\small AstroCLIP \parencite{parker2024astroclip}}
     \end{column}
-    \begin{column}{0.42\textwidth}
-      \textbf{Cross-modal contrastive alignment}\\[0.6em]
-      AstroCLIP \parencite{parker2024astroclip} aligns galaxy images and
-      spectra into a shared embedding space using a CLIP-style
-      contrastive objective.\\[0.5em]
-      Enables zero-shot cross-modal retrieval and downstream parameter
-      estimation without task-specific labels.\\[0.5em]
-      Extended to three modalities (image, spectrum, photometry)
-      in AstroM$^3$ \parencite{rizhko2024astromm}.
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{astroclip.png}
+      \par\smallskip
+      {\small AstroM$^3$ \parencite{rizhko2024astromm}}
     \end{column}
   \end{columns}
 \end{frame}
 
 \begin{frame}{Generative models}
-  \begin{columns}[T]
-    \begin{column}{0.55\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{scaling.pdf}
-    \end{column}
-    \begin{column}{0.42\textwidth}
-      \textbf{Autoregressive pre-training at scale}\\[0.6em]
-      AstroPT \parencite{smith2024astropt} tokenises galaxy images into
-      spiral-ordered patches and trains a GPT-style transformer on 8.6M
-      DESI Legacy Survey images; downstream performance follows a clear
-      scaling law from 1M to 2.1B parameters.\\[0.5em]
-      Also: Maven \parencite{zhang2024maven} for supernovae light
-      curves; transformer foundation model for stellar spectra
-      \parencite{leung2023stellar}.
-    \end{column}
-  \end{columns}
+  \centering
+  \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{scaling.pdf}
+  \par\smallskip
+  {\small AstroPT \parencite{smith2024astropt}}
 \end{frame}
 
 % ── §5 Introducing AION-1 ─────────────────────────────────────────────────────
@@ -279,19 +245,21 @@
       \end{minipage}
     \end{column}
     \begin{column}{0.45\textwidth}
-      \textbf{Encoder token embedding}
-      \begin{equation*}
-        \mathbf{e}_t^{(\mathrm{enc})} = \mathrm{Embed}_i(x_t^i) + \mathbf{m}_i + \mathbf{p}_t
-      \end{equation*}
-      \textbf{Decoder token embedding}
-      \begin{equation*}
-        \mathbf{e}_t^{(\mathrm{dec})} = \mathbf{m}_i + \mathbf{p}_t
-      \end{equation*}
-      {\small
-        $\mathbf{m}_i$: learnable modality embedding, one per modality
-        \emph{and} survey (encodes instrument provenance).\\[0.4em]
-        $\mathbf{p}_t$: positional embedding.
-      }
+      \begin{minipage}[c][0.82\textheight][c]{\linewidth}
+        \textbf{Encoder token embedding}
+        \begin{equation*}
+          \mathbf{e}_t^{(\mathrm{enc})} = \mathrm{Embed}_i(x_t^i) + \mathbf{m}_i + \mathbf{p}_t
+        \end{equation*}
+        \textbf{Decoder token embedding}
+        \begin{equation*}
+          \mathbf{e}_t^{(\mathrm{dec})} = \mathbf{m}_i + \mathbf{p}_t
+        \end{equation*}
+        {\small
+          $\mathbf{m}_i$: learnable modality embedding, one per modality
+          \emph{and} survey (encodes instrument provenance).\\[0.4em]
+          $\mathbf{p}_t$: positional embedding.
+        }
+      \end{minipage}
     \end{column}
   \end{columns}
 \end{frame}
@@ -299,13 +267,6 @@
 \begin{frame}{Tokenization: autoencoders}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{autoencoder_schema.jpg}
-\end{frame}
-
-\begin{frame}{Tokenization: discrete codes}
-  \centering
-  \includegraphics[width=0.78\textwidth, height=0.78\textheight, keepaspectratio]{overview_v2_a.pdf}
-  \par\smallskip
-  {\small \textbf{Finite Scalar Quantization} \parencite{mentzer2023fsq}}
 \end{frame}
 
 \begin{frame}{Tokenization: tokenizer objective}
@@ -324,6 +285,13 @@
     $\hat{\mathbf{m}}(\lambda)$ and ground-truth sky/quality mask
     $\mathbf{m}(\lambda)$
   \end{alertblock}
+\end{frame}
+
+\begin{frame}{Tokenization: discrete codes}
+  \centering
+  \includegraphics[width=0.78\textwidth, height=0.78\textheight, keepaspectratio]{overview_v2_a.pdf}
+  \par\smallskip
+  {\small \textbf{Finite Scalar Quantization} \parencite{mentzer2023fsq}}
 \end{frame}
 
 \begin{frame}{Image tokenizer}
@@ -354,24 +322,26 @@
       \includegraphics[width=\linewidth]{scalar-quantization-binning.png}
     \end{column}
     \begin{column}{0.49\textwidth}
-      \small
-      Map each scalar to a standard normal variate via the empirical CDF:
-      \begin{equation*}
-        z_i \;=\; \Phi^{-1}\!\bigl(F_x(x_i)\bigr)
-      \end{equation*}
-      \vspace{-0.3em}
-      Fixed centroids at equally spaced normal quantiles:
-      \begin{equation*}
-        c_k \;=\; \Phi^{-1}\!\!\left(\frac{k - \tfrac{1}{2}}{K}\right), \quad K = 1024
-      \end{equation*}
-      \vspace{-0.3em}
-      Reconstruction inverts the mapping:
-      \begin{equation*}
-        \hat{x}_i \;=\; F_x^{-1}\!\bigl(\Phi(c_i)\bigr)
-      \end{equation*}
-      \vspace{-0.2em}
-      No parameters learned; no loss required. Equal probability
-      mass per bin adapts automatically to long tails.
+      \begin{alertblock}{Architecture}
+        \small
+        Map each scalar to a standard normal variate via the empirical CDF:
+        \begin{equation*}
+          z_i \;=\; \Phi^{-1}\!\bigl(F_x(x_i)\bigr)
+        \end{equation*}
+        \vspace{-0.3em}
+        Fixed centroids at equally spaced normal quantiles:
+        \begin{equation*}
+          c_k \;=\; \Phi^{-1}\!\!\left(\frac{k - \tfrac{1}{2}}{K}\right), \quad K = 1024
+        \end{equation*}
+        \vspace{-0.3em}
+        Reconstruction inverts the mapping:
+        \begin{equation*}
+          \hat{x}_i \;=\; F_x^{-1}\!\bigl(\Phi(c_i)\bigr)
+        \end{equation*}
+        \vspace{-0.2em}
+        No parameters learned; no loss required. Equal probability
+        mass per bin adapts automatically to long tails.
+      \end{alertblock}
     \end{column}
   \end{columns}
 \end{frame}
@@ -584,9 +554,9 @@
     Repo    & \href{https://github.com/MultimodalUniverse/MultimodalUniverse}%
               {\texttt{github.com/MultimodalUniverse}} \\
     Data    & \href{https://huggingface.co/MultimodalUniverse}%
-              {\texttt{huggingface.co/MultimodalUniverse}} \\
-            & \href{https://app.globus.org/file-manager?origin_id=57136152-fc1d-418e-b74e-75ca52bddd21}%
-              {Globus} (recommended for large downloads) \\
+              {\texttt{huggingface.co/MultimodalUniverse}} and
+              \href{https://app.globus.org/file-manager?origin_id=57136152-fc1d-418e-b74e-75ca52bddd21}%
+              {Globus} \\
   \end{tabular}}
 
   \vspace{0.8em}
