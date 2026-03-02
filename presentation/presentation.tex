@@ -113,7 +113,7 @@
 
 % ── §3 Status Quo ─────────────────────────────────────────────────────────────
 \begin{frame}[standout]
-  Task- and data-specific models
+  Motivation: moving beyond task- and data-specific models
 \end{frame}
 
 \begin{frame}{Status quo: survey-specific classification}
@@ -172,7 +172,7 @@
 
 % ── §4 Prior Foundation Model Efforts ─────────────────────────────────────────
 \begin{frame}[standout]
-  Pre-trained models in astronomy
+  Related work: pre-training for astronomy
 \end{frame}
 
 \begin{frame}{Multitask supervised pre-training with rich labels}
@@ -602,6 +602,7 @@
 % ── §12 Resources ─────────────────────────────────────────────────────────────
 \begingroup
 \molochset{progressbar=none}
+\setbeamertemplate{frame numbering}{}
 \begin{frame}[noframenumbering]{Resources}
   \textbf{Multimodal Universe}\\[0.2em]
   {\small\begin{tabular}{@{}ll@{}}
@@ -631,11 +632,80 @@
   Appendix
 \end{frame}
 
+% ── Appendix: Subsampled Linear Projection ───────────────────────────────────
+\begin{frame}{Subsampled linear projection}
+  \textbf{Multi-survey image tokenizer}: 9-channel input (5 HSC $+$ 4 LS bands)
+  projected to a ${\approx}6C = 54$-dimensional space:
+  \begin{equation*}
+    \hat{\mathbf{x}} \;=\; \alpha(\mathbf{m}_c)\bigl(\tilde{\mathbf{x}}W + b\bigr),
+    \qquad
+    W\!\in\!\mathbb{R}^{C\times\mathrm{dim}_\mathrm{out}},\;
+    b\!\in\!\mathbb{R}^{\mathrm{dim}_\mathrm{out}}
+  \end{equation*}
+  \begin{alertblock}{Purpose}
+    Disentangles survey-specific channel information into a higher-dimensional embedding.
+    The scale factor $\alpha(\mathbf{m}_c)$ keeps the feature norm invariant to missing
+    channels (i.e.\ when a survey provides fewer than 9 bands).
+    Projection is inverted after decoding.
+  \end{alertblock}
+  \vspace{0.3em}
+  The 54-dimensional output feeds into the ResNet (MagViT-style) autoencoder.
+\end{frame}
+
+% ── Appendix: ROAR Sampling ───────────────────────────────────────────────────
+\begin{frame}{Inference sampling: ROAR}
+  At inference time, draw posterior samples of any modality via iterative token resampling:
+  \begin{equation*}
+    p_\theta\!\bigl(\mathbf{x}^{\mathrm{qry}} \mid \mathbf{x}^{\mathrm{in}}\bigr)
+    \;=\;
+    \prod_{j\in\mathcal{Q}}
+    p_\theta\!\bigl(x_j \mid \mathbf{x}^{\mathrm{in}}\bigr)
+  \end{equation*}
+  \textbf{ROAR generation} \parencite{mizrahi2023}: at each iteration $t$:
+  \begin{enumerate}\small
+    \item Draw a random permutation $\pi_t\!:\mathcal{Q}_t\!\to\!\mathcal{Q}_t$ of the unknown query indices
+    \item Reveal the first $\rho_t = \lfloor r^{\,t}|\mathcal{Q}_t|\rfloor$ positions:
+          $\;\mathcal{S}_t = \{\pi_t(1),\dots,\pi_t(\rho_t)\}$
+    \item Sample those tokens:
+          $\;x_j^{(t)} \sim p_\theta\!\bigl(\cdot \mid \mathbf{x}^{\mathrm{in}} \cup
+          \mathbf{x}^{(t-1)}_{\mathcal{Q}_{t-1}\setminus\mathcal{S}_t}\bigr),\; j\in\mathcal{S}_t$
+    \item Promote to inputs and update:
+          $\;\mathbf{x}^{\mathrm{in}} \leftarrow \mathbf{x}^{\mathrm{in}} \cup \{x_j^{(t)}\}_{j\in\mathcal{S}_t}$,
+          $\;\mathcal{Q}_{t+1} = \mathcal{Q}_t\setminus\mathcal{S}_t$
+  \end{enumerate}
+  With decay $r\in[0,1)$, full sample generated in $T=\mathcal{O}(\log|\mathcal{Q}|)$ decoder calls.
+\end{frame}
+
+% ── Appendix: Latent Diffusion Models ────────────────────────────────────────
+\begin{frame}{Semantic versus perceptual compression}
+  \centering
+  \includegraphics[width=\textwidth, height=0.74\textheight, keepaspectratio]{generativevscompressive4.jpg}
+  \par\smallskip
+  {\small LDM \parencite{rombach2021ldm}}
+\end{frame}
+
+% ── Appendix: VQ-VAE ──────────────────────────────────────────────────────────
+\begin{frame}{VQ-VAE}
+  \centering
+  \includegraphics[width=\textwidth, height=0.74\textheight, keepaspectratio]{Figure1_9.png}
+  \par\smallskip
+  {\small VQ-VAE \parencite{oord2017vqvae}}
+\end{frame}
+
+% ── Appendix: MaskGIT iterative decoding ─────────────────────────────────────
+\begin{frame}{MaskGIT}
+  \centering
+  \includegraphics[width=\textwidth, height=0.74\textheight, keepaspectratio]{iterative_decoding.pdf}
+  \par\smallskip
+  {\small MaskGIT \parencite{chang2022maskgit}}
+\end{frame}
+
 % ── Appendix: Galaxy Image Segmentation ──────────────────────────────────────
 \begin{frame}{Galaxy image segmentation}
   \centering
   \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{fig_segmentation_qual_quant.pdf}
-  {\small Galaxy Zoo 3D bar \& spiral arm labels \parencite{masters2021gz3d}}
+  {\small Galaxy Zoo 3D bar \& spiral arm labels \parencite{masters2021gz3d};
+  U-Net baseline \parencite{walmsley2023deeplearningsegmentationspiral}}
   \begin{equation*}
     \mathrm{IoU} \;=\;
     \frac{|M_\text{pred}\cap M_\text{true}|}{|M_\text{pred}\cup M_\text{true}|}
@@ -663,74 +733,6 @@
 \begin{frame}{Retrieval datasets}
   \centering
   \includegraphics[width=\textwidth]{tab_retrieval_query_stats.pdf}
-\end{frame}
-
-% ── Appendix: ROAR Sampling ───────────────────────────────────────────────────
-\begin{frame}{Inference sampling: ROAR}
-  At inference time, draw posterior samples of any modality via iterative token resampling:
-  \begin{equation*}
-    p_\theta\!\bigl(\mathbf{x}^{\mathrm{qry}} \mid \mathbf{x}^{\mathrm{in}}\bigr)
-    \;=\;
-    \prod_{j\in\mathcal{Q}}
-    p_\theta\!\bigl(x_j \mid \mathbf{x}^{\mathrm{in}}\bigr)
-  \end{equation*}
-  \textbf{ROAR generation} \parencite{mizrahi2023}: at each iteration $t$:
-  \begin{enumerate}\small
-    \item Draw a random permutation $\pi_t\!:\mathcal{Q}_t\!\to\!\mathcal{Q}_t$ of the unknown query indices
-    \item Reveal the first $\rho_t = \lfloor r^{\,t}|\mathcal{Q}_t|\rfloor$ positions:
-          $\;\mathcal{S}_t = \{\pi_t(1),\dots,\pi_t(\rho_t)\}$
-    \item Sample those tokens:
-          $\;x_j^{(t)} \sim p_\theta\!\bigl(\cdot \mid \mathbf{x}^{\mathrm{in}} \cup
-          \mathbf{x}^{(t-1)}_{\mathcal{Q}_{t-1}\setminus\mathcal{S}_t}\bigr),\; j\in\mathcal{S}_t$
-    \item Promote to inputs and update:
-          $\;\mathbf{x}^{\mathrm{in}} \leftarrow \mathbf{x}^{\mathrm{in}} \cup \{x_j^{(t)}\}_{j\in\mathcal{S}_t}$,
-          $\;\mathcal{Q}_{t+1} = \mathcal{Q}_t\setminus\mathcal{S}_t$
-  \end{enumerate}
-  With decay $r\in[0,1)$, full sample generated in $T=\mathcal{O}(\log|\mathcal{Q}|)$ decoder calls.
-\end{frame}
-
-% ── Appendix: Subsampled Linear Projection ───────────────────────────────────
-\begin{frame}{Subsampled linear projection}
-  \textbf{Multi-survey image tokenizer}: 9-channel input (5 HSC $+$ 4 LS bands)
-  projected to a ${\approx}6C = 54$-dimensional space:
-  \begin{equation*}
-    \hat{\mathbf{x}} \;=\; \alpha(\mathbf{m}_c)\bigl(\tilde{\mathbf{x}}W + b\bigr),
-    \qquad
-    W\!\in\!\mathbb{R}^{C\times\mathrm{dim}_\mathrm{out}},\;
-    b\!\in\!\mathbb{R}^{\mathrm{dim}_\mathrm{out}}
-  \end{equation*}
-  \begin{alertblock}{Purpose}
-    Disentangles survey-specific channel information into a higher-dimensional embedding.
-    The scale factor $\alpha(\mathbf{m}_c)$ keeps the feature norm invariant to missing
-    channels (i.e.\ when a survey provides fewer than 9 bands).
-    Projection is inverted after decoding.
-  \end{alertblock}
-  \vspace{0.3em}
-  The 54-dimensional output feeds into the ResNet (MagViT-style) autoencoder.
-\end{frame}
-
-% ── Appendix: Latent Diffusion Models ────────────────────────────────────────
-\begin{frame}{Semantic versus perceptual compression}
-  \centering
-  \includegraphics[width=\textwidth, height=0.74\textheight, keepaspectratio]{generativevscompressive4.jpg}
-  \par\smallskip
-  {\small LDM \parencite{rombach2021ldm}}
-\end{frame}
-
-% ── Appendix: VQ-VAE ──────────────────────────────────────────────────────────
-\begin{frame}{VQ-VAE}
-  \centering
-  \includegraphics[width=\textwidth, height=0.74\textheight, keepaspectratio]{Figure1_9.png}
-  \par\smallskip
-  {\small VQ-VAE \parencite{oord2017vqvae}}
-\end{frame}
-
-% ── Appendix: MaskGIT iterative decoding ─────────────────────────────────────
-\begin{frame}{MaskGIT}
-  \centering
-  \includegraphics[width=\textwidth, height=0.74\textheight, keepaspectratio]{iterative_decoding.pdf}
-  \par\smallskip
-  {\small MaskGIT \parencite{chang2022maskgit}}
 \end{frame}
 
 \end{document}
