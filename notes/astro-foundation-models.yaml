@@ -2,6 +2,10 @@
 # Run `make bibliography` to regenerate the .bib file from these entries.
 # To fetch arXiv source (e.g. for figures), add the key to arxiv-papers-source in resources.yaml.
 
+# dataset
+- key: multimodaluniverse2024
+  arxiv: "2412.02527"
+
 # supervised-pretraining
 - key: walmsley2022gzdecals
   arxiv: "2102.08414"
