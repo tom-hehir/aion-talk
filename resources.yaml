@@ -17,6 +17,8 @@ arxiv-papers-source:
   # §7 Architecture / tokenization figures
   mentzer2023fsq: https://arxiv.org/abs/2309.15505
   oord2017vqvae: https://arxiv.org/abs/1711.00937
+  # Appendix
+  maskgit: https://arxiv.org/abs/2202.04200
 
 images:
   # §2 Team slide

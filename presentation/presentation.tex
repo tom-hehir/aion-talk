@@ -12,6 +12,7 @@
   ItalicFont = {Fira Sans Italic},
 ]
 \setmonofont{Fira Mono}
+\usefonttheme[onlymath]{serif}
 
 % ── packages ──────────────────────────────────────────────────────────────────
 \usepackage{graphicx}
@@ -36,6 +37,8 @@
   {../resources/papers/walmsley2022gzdecals/source/figures/}%
   {../resources/papers/smith2024astropt/source/figures/}%
   {../resources/papers/mentzer2023fsq/source/figs/}%
+  {../resources/papers/oord2017vqvae/source/figures/}%
+  {../resources/papers/maskgit/source/figures/}%
   {../resources/}%
   {../resources/images/}%
   {../resources/papers/}%
@@ -732,6 +735,31 @@
     Weights & \href{https://huggingface.co/PolymathicAI}%
               {\texttt{huggingface.co/PolymathicAI}} \\
   \end{tabular}}
+\end{frame}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\appendix
+
+% ── Appendix: VQ-VAE ──────────────────────────────────────────────────────────
+\begin{frame}{VQ-VAE}
+  \centering
+  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{Figure1_9.png}
+  \par\smallskip
+  {\small Left: VQ-VAE architecture. Right: embedding space — encoder output
+    $z(x)$ is mapped to the nearest codebook vector $e_2$; the gradient
+    $\nabla_z\mathcal{L}$ (red) pushes the encoder towards that entry.
+    \parencite{oord2017vqvae}}
+\end{frame}
+
+% ── Appendix: MaskGIT iterative decoding ─────────────────────────────────────
+\begin{frame}{MaskGIT: Scheduled Parallel Decoding}
+  \centering
+  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{iterative_decoding.pdf}
+  \par\smallskip
+  {\small Rows 1\,\&\,3: latent masks; rows 2\,\&\,4: generated samples.
+    MaskGIT fills tokens in parallel under a cosine mask schedule,
+    completing in 8 iterations vs.\ 256 for autoregressive decoding.
+    \parencite{chang2022maskgit}}
 \end{frame}
 
 \end{document}
