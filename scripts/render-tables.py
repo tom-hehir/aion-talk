@@ -112,7 +112,7 @@ def build_wrapper(docclass_line: str, preamble_lines: list[str], env: str, table
     )
 
     body_lines = table_lines
-    if env in {"table", "table*"}:
+    if env in {"table", "table*", "wraptable"}:
         begin_token = f"\\begin{{{env}}}"
         end_token = f"\\end{{{env}}}"
         stripped = [line for line in table_lines if begin_token not in line and end_token not in line]
