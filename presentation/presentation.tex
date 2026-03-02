@@ -51,18 +51,21 @@
 \institute{Institute of Astronomy, University of Cambridge}
 \date{2 March 2026}
 
-\titlegraphic{%
-  \small\href{https://github.com/tom-hehir/aion-talk}%
-  {\texttt{github.com/tom-hehir/aion-talk}}%
-}
-
 % ── convenience macros ────────────────────────────────────────────────────────
 \newcommand{\aion}{AION-1}
 
 % ══════════════════════════════════════════════════════════════════════════════
 \begin{document}
 
-\maketitle
+\begin{frame}[plain, noframenumbering]
+  \titlepage
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south, yshift=3mm] at (current page.south) {%
+      \small\href{https://github.com/tom-hehir/aion-talk}%
+      {\texttt{github.com/tom-hehir/aion-talk}}%
+    };
+  \end{tikzpicture}
+\end{frame}
 
 % ── §2 Abstract ───────────────────────────────────────────────────────────────
 \begin{frame}{Abstract}
