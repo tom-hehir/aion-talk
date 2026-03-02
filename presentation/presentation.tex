@@ -99,7 +99,7 @@
 \end{frame}
 
 % ── §3 Team ───────────────────────────────────────────────────────────────────
-\begin{frame}{The Team}
+\begin{frame}{Team}
   \centering
   \includegraphics[width=\textwidth]{team-collage.png}
   \par\vspace{0.5em}
@@ -109,7 +109,11 @@
 \end{frame}
 
 % ── §3 Status Quo ─────────────────────────────────────────────────────────────
-\begin{frame}{Status Quo: Survey-Specific Classification}
+\begin{frame}[standout]
+  Motivation
+\end{frame}
+
+\begin{frame}{Status quo: survey-specific classification}
   \begin{columns}[T]
     \begin{column}{0.50\textwidth}
       \centering
@@ -127,7 +131,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Status Quo: Data-Specific Regression}
+\begin{frame}{Status quo: data-specific regression}
   \begin{columns}[T]
     \begin{column}{0.50\textwidth}
       \centering
@@ -145,7 +149,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Status Quo: Physical Inductive Bias}
+\begin{frame}{Status quo: physical inductive bias}
   \begin{columns}[T]
     \begin{column}{0.50\textwidth}
       \centering
@@ -164,7 +168,11 @@
 \end{frame}
 
 % ── §4 Prior Foundation Model Efforts ─────────────────────────────────────────
-\begin{frame}{Prior Work: Supervised Pre-Training}
+\begin{frame}[standout]
+  Prior Work
+\end{frame}
+
+\begin{frame}{Prior work: supervised pre-training}
   \begin{columns}[T]
     \begin{column}{0.45\textwidth}
       \centering
@@ -184,7 +192,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Prior Work: Contrastive Learning}
+\begin{frame}{Prior work: contrastive learning}
   \centering
   \includegraphics[width=\textwidth]{network_illustration.pdf}
   \par\smallskip
@@ -196,27 +204,8 @@
   }
 \end{frame}
 
-\begin{frame}{Prior Work: Generative Models}
-  \begin{columns}[T]
-    \begin{column}{0.55\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{scaling.pdf}
-    \end{column}
-    \begin{column}{0.42\textwidth}
-      \textbf{Autoregressive pre-training at scale}\\[0.6em]
-      AstroPT \parencite{smith2024astropt} tokenises galaxy images into
-      spiral-ordered patches and trains a GPT-style transformer on 8.6M
-      DESI Legacy Survey images; downstream performance follows a clear
-      scaling law from 1M to 2.1B parameters.\\[0.5em]
-      Also: Maven \parencite{zhang2024maven} for supernovae light
-      curves; transformer foundation model for stellar spectra
-      \parencite{leung2023stellar}.
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% ── Prior Work: AstroCLIP ────────────────────────────────────────────────────
-\begin{frame}{Prior Work: AstroCLIP}
+% ── Prior Work: AstroCLIP ─────────────────────────────────────────────────────
+\begin{frame}{Prior work: multimodal contrastive learning}
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
       \centering
@@ -235,14 +224,37 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Prior work: generative models}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{scaling.pdf}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \textbf{Autoregressive pre-training at scale}\\[0.6em]
+      AstroPT \parencite{smith2024astropt} tokenises galaxy images into
+      spiral-ordered patches and trains a GPT-style transformer on 8.6M
+      DESI Legacy Survey images; downstream performance follows a clear
+      scaling law from 1M to 2.1B parameters.\\[0.5em]
+      Also: Maven \parencite{zhang2024maven} for supernovae light
+      curves; transformer foundation model for stellar spectra
+      \parencite{leung2023stellar}.
+    \end{column}
+  \end{columns}
+\end{frame}
+
 % ── §5 Introducing AION-1 ─────────────────────────────────────────────────────
+\begin{frame}[standout]
+  AION-1
+\end{frame}
+
 \begin{frame}{Introducing AION-1}
   \centering
   \includegraphics[width=\textwidth, height=0.82\textheight, keepaspectratio]{aion.png}
 \end{frame}
 
 % ── §6 Data ───────────────────────────────────────────────────────────────────
-\begin{frame}{Data: Five Surveys, 200M Observations}
+\begin{frame}{Data}
   \begin{columns}[T]
     \begin{column}{0.50\textwidth}
       \centering
@@ -263,7 +275,7 @@
 \end{frame}
 
 % ── §7 Architecture & Objective ───────────────────────────────────────────────
-\begin{frame}{Architecture: Encoder–Decoder Transformer}
+\begin{frame}{Architecture: 4M}
   \begin{columns}[T]
     \begin{column}{0.52\textwidth}
       \centering
@@ -293,7 +305,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Tokenization: Autoencoders}
+\begin{frame}{Tokenization: autoencoders}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{autoencoder_schema.jpg}
   \par\smallskip
@@ -303,7 +315,7 @@
     for the transformer.}
 \end{frame}
 
-\begin{frame}{Tokenization: Discretising Continuous Data}
+\begin{frame}{Tokenization: discrete codes}
   \begin{columns}[T]
     \begin{column}{0.54\textwidth}
       \centering
@@ -330,7 +342,7 @@
   }
 \end{frame}
 
-\begin{frame}{Tokenizer Training: Negative Log-Likelihood}
+\begin{frame}{Tokenization: tokenizer objective}
   \textbf{Image \& spectrum flux loss} — inverse-variance-weighted Gaussian NLL,
   leveraging known per-pixel noise from survey pipelines:
   \begin{equation*}
@@ -352,7 +364,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Image Tokenizer}
+\begin{frame}{Image tokenizer}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{legacy_survey_comparison.png}
   \par\smallskip
@@ -360,7 +372,7 @@
     Columns: original, reconstruction, Tractor model, $r$-band residuals.}
 \end{frame}
 
-\begin{frame}{Spectrum Tokenizer}
+\begin{frame}{Spectrum tokenizer}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{spectrum_autoencoding.png}
   \par\smallskip
@@ -368,7 +380,32 @@
     red = reconstruction). Bottom: residuals in units of $\sigma$.}
 \end{frame}
 
-\begin{frame}{Pre-Training Objective: Masked Token Modelling}
+\begin{frame}{Scalar tokenizer}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{scalar-quantization-binning.png}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      Map each scalar to a standard normal variate via the empirical CDF:
+      \begin{equation*}
+        z_i \;=\; \Phi^{-1}\!\bigl(F_x(x_i)\bigr)
+      \end{equation*}
+      Fixed centroids at equally spaced normal quantiles:
+      \begin{equation*}
+        c_k \;=\; \Phi^{-1}\!\!\left(\frac{k - \tfrac{1}{2}}{K}\right), \quad K = 1024
+      \end{equation*}
+      Reconstruction inverts the mapping:
+      \begin{equation*}
+        \hat{x}_i \;=\; F_x^{-1}\!\bigl(\Phi(c_i)\bigr)
+      \end{equation*}
+      {\small No parameters learned; no loss required. Equal probability
+        mass per bin adapts automatically to long tails.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Pre-training objective: masked token modelling}
   \begin{center}
     \begin{align*}
       \mathcal{L}(\theta)
@@ -405,7 +442,7 @@
 \end{frame}
 
 % ── §8 Model Training & Variants ──────────────────────────────────────────────
-\begin{frame}{Model Family \& Training}
+\begin{frame}{Model family \& training}
   \begin{columns}[T]
     \begin{column}{0.54\textwidth}
       \centering
@@ -431,9 +468,12 @@
 \end{frame}
 
 % ── §9 Downstream Tasks ───────────────────────────────────────────────────────
+\begin{frame}[standout]
+  Results
+\end{frame}
 
 % ── 9.1 Out-of-the-Box: Redshift Estimation ───────────────────────────────────
-\begin{frame}{Redshift Estimation}
+\begin{frame}{Galaxy redshift estimation (generative)}
   {\small \textbf{Generation}: iterative masked decoding under a cosine
     schedule (MaskGIT-style).  The redshift token is predicted from
     increasingly rich conditioning contexts; posteriors contract accordingly.}
@@ -461,7 +501,7 @@
 \end{frame}
 
 % ── 9.1 Out-of-the-Box: Spectral Super-Resolution ────────────────────────────
-\begin{frame}{Spectral Super-Resolution}
+\begin{frame}{Spectral super-resolution}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{spectrum_superresolution.pdf}
   \par\smallskip
@@ -471,7 +511,7 @@
 \end{frame}
 
 % ── 9.2 Galaxy Parameter Estimation ──────────────────────────────────────────
-\begin{frame}{Galaxy Parameter Estimation}
+\begin{frame}{Galaxy parameter estimation}
   {\small \textbf{Protocol}: freeze encoder; pool tokens; train lightweight MLP head.
     $R^2$ on PROVABGS \parencite{hahn2023provabgs} (${\sim}120\text{k}$ galaxies).}
   \vspace{0.3em}
@@ -480,7 +520,7 @@
 \end{frame}
 
 % ── 9.2 Galaxy Morphology Classification ─────────────────────────────────────
-\begin{frame}{Galaxy Morphology Classification}
+\begin{frame}{Galaxy morphology classification}
   \begin{columns}[T]
     \begin{column}{0.42\textwidth}
       {\small GZ10 dataset: 10 classes, ${\sim}8\,000$ galaxies.
@@ -508,7 +548,7 @@
 \end{frame}
 
 % ── 9.2 Galaxy Image Segmentation ────────────────────────────────────────────
-\begin{frame}{Galaxy Image Segmentation}
+\begin{frame}{Galaxy image segmentation}
   \begin{columns}[T]
     \begin{column}{0.54\textwidth}
       \centering
@@ -535,7 +575,7 @@
 \end{frame}
 
 % ── 9.2 Stellar Parameter Estimation ─────────────────────────────────────────
-\begin{frame}{Stellar Parameter Estimation}
+\begin{frame}{Stellar parameter estimation}
   {\small Gaia + DESI stellar validation set (never seen during pre-training).
     Frozen AION-1-B encoder $+$ cross-attention pooling $+$ linear probe. $R^2$.}
   \vspace{0.3em}
@@ -544,7 +584,7 @@
 \end{frame}
 
 % ── 9.2 Low-Data Regime ───────────────────────────────────────────────────────
-\begin{frame}{Low-Data Regime}
+\begin{frame}{Low-data regime}
   \begin{columns}[T]
     \begin{column}{0.32\textwidth}
       \centering
@@ -576,7 +616,7 @@
 \end{frame}
 
 % ── 9.3 Rare Object Detection ─────────────────────────────────────────────────
-\begin{frame}{Rare Object Detection}
+\begin{frame}{Rare object detection}
   \begin{columns}[T]
     \begin{column}{0.44\textwidth}
       \centering
@@ -600,7 +640,7 @@
 \end{frame}
 
 % ── 9.4 Emergent Transfer: HSC → DESI ────────────────────────────────────────
-\begin{frame}{Emergent Transfer: HSC $\to$ DESI Spectra}
+\begin{frame}{Cross-modal generation (in unseen combinations!)}
   \centering
   \includegraphics[width=0.88\textwidth]{hsc_from_desi.png}
   \par\smallskip
@@ -611,7 +651,7 @@
 \end{frame}
 
 % ── 9.4 Cross-Survey Morphology Transfer ─────────────────────────────────────
-\begin{frame}{Cross-Survey Morphology Transfer}
+\begin{frame}{Cross-survey morphology transfer}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       {\small Train a GZ10 classifier on \textbf{Legacy Survey} embeddings.
@@ -632,7 +672,11 @@
 \end{frame}
 
 % ── §10 Future Work ───────────────────────────────────────────────────────────
-\begin{frame}{Future Work}
+\begin{frame}[standout]
+  Conclusions
+\end{frame}
+
+\begin{frame}{Future work}
   \textbf{Architecture}
   \begin{itemize}
     \item Replace quantised tokens with \textbf{continuous tokens} to lift
@@ -680,13 +724,15 @@
 
 % ── §12 Resources ─────────────────────────────────────────────────────────────
 \begin{frame}{Resources}
-  \textbf{Multimodal Universe} \parencite{multimodaluniverse2024}\\[0.2em]
+  \textbf{Multimodal Universe}\\[0.2em]
   {\small\begin{tabular}{@{}ll@{}}
     Paper   & \href{https://arxiv.org/abs/2412.02527}{arXiv:2412.02527} \\
     Repo    & \href{https://github.com/MultimodalUniverse/MultimodalUniverse}%
               {\texttt{github.com/MultimodalUniverse}} \\
     Data    & \href{https://huggingface.co/MultimodalUniverse}%
               {\texttt{huggingface.co/MultimodalUniverse}} \\
+            & \href{https://app.globus.org/file-manager?origin_id=57136152-fc1d-418e-b74e-75ca52bddd21}%
+              {Globus} (recommended for large downloads) \\
   \end{tabular}}
 
   \vspace{0.8em}
@@ -704,8 +750,12 @@
 % ══════════════════════════════════════════════════════════════════════════════
 \appendix
 
+\begin{frame}[standout]
+  Appendix
+\end{frame}
+
 % ── Appendix: Latent Diffusion Models ────────────────────────────────────────
-\begin{frame}{Latent Diffusion Models}
+\begin{frame}{Semantic versus perceptual compression}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{generativevscompressive4.jpg}
   \par\smallskip
@@ -726,7 +776,7 @@
 \end{frame}
 
 % ── Appendix: MaskGIT iterative decoding ─────────────────────────────────────
-\begin{frame}{MaskGIT: Scheduled Parallel Decoding}
+\begin{frame}{MaskGIT}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{iterative_decoding.pdf}
   \par\smallskip
