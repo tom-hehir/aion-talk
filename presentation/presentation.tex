@@ -116,58 +116,25 @@
   Motivation: moving beyond task- and data-specific models
 \end{frame}
 
-\begin{frame}{Status quo: survey-specific classification}
-  \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
+\begin{frame}{Task- and data-specific models}
+  % Triangle layout: two figures on top row, one centred below
+  \begin{columns}[c]
+    \begin{column}{0.47\textwidth}
       \centering
-      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{fig-braai3.png}
+      \includegraphics[width=\linewidth, height=0.36\textheight, keepaspectratio]{fig-braai3.png}\\[0.2em]
+      {\tiny Real-bogus classification \parencite{duev2019realbogus}}
     \end{column}
     \begin{column}{0.47\textwidth}
-      \textbf{Task- and data-specific models}\\[0.6em]
-      VGG6 on ZTF science/reference/difference image triplets for
-      real-bogus discrimination \parencite{duev2019realbogus}.\\[0.5em]
-      CNNs for strong gravitational lens finding
-      \parencite{metcalf2019lensfinding}.\\[0.5em]
-      Each classifier is coupled to a specific survey and task; new
-      surveys or science cases require retraining from scratch.
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Status quo: data-specific regression}
-  \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
       \centering
-      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{nn-sketch.png}
-    \end{column}
-    \begin{column}{0.47\textwidth}
-      \textbf{Task- and data-specific models}\\[0.6em]
-      Multi-task net with probabilistic outputs for joint redshift and
-      galaxy property estimation on simulated MOONS spectra
-      \parencite{ginolfi2024moons}.\\[0.5em]
-      Bayesian SED emulation \parencite{alsing2020speculator}: fast
-      surrogate for full spectral energy distribution fitting, but
-      trained for a fixed survey and parameter set.
+      \includegraphics[width=\linewidth, height=0.36\textheight, keepaspectratio]{nn-sketch.png}\\[0.2em]
+      {\tiny Redshift \& property estimation \parencite{ginolfi2024moons}}
     \end{column}
   \end{columns}
-\end{frame}
-
-\begin{frame}{Status quo: physical inductive bias}
-  \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
-      \centering
-      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{sketch.pdf}
-    \end{column}
-    \begin{column}{0.47\textwidth}
-      \textbf{Task- and data-specific models}\\[0.6em]
-      Architecture encodes redshift and instrument response
-      \textbf{explicitly} in the model design
-      \parencite{melchior2023spender}, or via the training objective
-      \parencite{korber2023pinion}.\\[0.5em]
-      Strong physical priors improve performance on the target task but
-      limit reuse across surveys or science cases.
-    \end{column}
-  \end{columns}
+  \vfill
+  \begin{center}
+    \includegraphics[width=0.50\textwidth, height=0.36\textheight, keepaspectratio]{sketch.pdf}\\[0.2em]
+    {\tiny Physical inductive bias \parencite{melchior2023spender}}
+  \end{center}
 \end{frame}
 
 % ── §4 Prior Foundation Model Efforts ─────────────────────────────────────────
@@ -278,20 +245,24 @@
       \end{minipage}
     \end{column}
     \begin{column}{0.45\textwidth}
-      \begin{minipage}[c][0.82\textheight][c]{\linewidth}
+      \begin{minipage}[t][0.82\textheight][s]{\linewidth}
+        \vfill
         \textbf{Encoder token embedding}
         \begin{equation*}
           \mathbf{e}_t^{(\mathrm{enc})} = \mathrm{Embed}_i(x_t^i) + \mathbf{m}_i + \mathbf{p}_t
         \end{equation*}
+        \par\vfill
         \textbf{Decoder token embedding}
         \begin{equation*}
           \mathbf{e}_t^{(\mathrm{dec})} = \mathbf{m}_i + \mathbf{p}_t
         \end{equation*}
+        \par\vfill
         {\small
           $\mathbf{m}_i$: learnable modality embedding, one per modality
           \emph{and} survey (encodes instrument provenance).\\[0.4em]
           $\mathbf{p}_t$: positional embedding.
         }
+        \par\vfill\mbox{}
       \end{minipage}
     \end{column}
   \end{columns}
