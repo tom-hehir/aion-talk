@@ -236,6 +236,23 @@
   \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_main-figure.pdf}
 \end{frame}
 
+\begin{frame}{Capabilities \& contributions}
+  \textbf{Emergent behaviours} (\S1)
+  \begin{itemize}\small
+    \item \textbf{Emergent Physical Understanding} — solves non-trivial scientific tasks with a simple linear head on learned representations
+    \item \textbf{Superior Performance in the Low-Data Regime} — competitive results with orders of magnitude less data than supervised counterparts
+    \item \textbf{Flexible Data Fusion} — arbitrary combinations of observations; cross-modal conditional generation
+    \item \textbf{Physical Structure of the Latent Space} — embedding space organizes along physically meaningful directions; powerful rare-object retrieval
+  \end{itemize}
+  \vspace{0.4em}
+  \textbf{Contributions} (\S1.1)
+  \begin{itemize}\small
+    \item Token-based multimodal foundation models: 300M–3B parameters
+    \item Bespoke tokenization for heterogeneous multi-survey astronomical data
+    \item Competitive to state-of-the-art with simple probing; significantly outperforms supervised baselines in the low-data regime
+  \end{itemize}
+\end{frame}
+
 % ── §6 Data ───────────────────────────────────────────────────────────────────
 \begin{frame}{Data}
   \centering
@@ -251,7 +268,7 @@
         \vfill
         \includegraphics[width=\linewidth, height=0.38\textheight, keepaspectratio]{aion.png}
         \par\smallskip
-        {\small AION-1 \parencite{hehir2025aion}}
+        {\small AION-1}
         \par\vfill
         \includegraphics[width=\linewidth, height=0.30\textheight, keepaspectratio]{method_figure.pdf}
         \par\smallskip
@@ -398,7 +415,16 @@
 % ── §8 Model Training & Variants ──────────────────────────────────────────────
 \begin{frame}{Model family \& training}
   \centering
-  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_aion-loss-and-sizes.pdf}
+  \includegraphics[width=\textwidth, height=0.60\textheight, keepaspectratio]{fig_aion-loss-and-sizes.pdf}
+  \begin{alertblock}{Training}
+    AdamW ($\beta_1\!=\!0.9$, $\beta_2\!=\!0.95$, wd$\,=\!0.05$) \textbf{·}
+    205k steps \textbf{·}
+    batch 8096 \textbf{·}
+    peak LR $2\!\times\!10^{-4}$ \textbf{·}
+    linear warmup + cosine decay \textbf{·}
+    bfloat16 + FSDP ZeRO-2 \textbf{·}
+    input 256 tokens, output 128 tokens
+  \end{alertblock}
 \end{frame}
 
 % ── §9 Downstream Tasks ───────────────────────────────────────────────────────
@@ -420,7 +446,12 @@
 % ── 9.1 Out-of-the-Box: Spectral Super-Resolution ────────────────────────────
 \begin{frame}{Spectral super-resolution}
   \centering
-  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_conditional-generation.pdf}
+  \includegraphics[width=\textwidth, height=0.62\textheight, keepaspectratio]{fig_conditional-generation.pdf}
+  \begin{alertblock}{Note on calibration}
+    Samples visually and quantitatively track key features, but should not be
+    interpreted as calibrated joint posteriors over the full spectrum —
+    multi-token dependencies may be underrepresented.
+  \end{alertblock}
 \end{frame}
 
 % ── 9.1 Cross-modal generation ────────────────────────────────────────────────
@@ -474,12 +505,13 @@
   \begin{itemize}\small
     \item AION-1-L matches ZooBot within 2.4 pp despite seeing
           two orders of magnitude fewer labeled galaxy images
-    \item ZooBot was pre-trained on ${\sim}300\text{k}$ galaxy images
-          with GZ-DECaLS volunteer labels \parencite{walmsley2022gzdecals};
-          acts as an approximate upper bound
     \item DINOv2 trained on natural images transfers poorly to
           galaxy morphology ($-15.8$ pp vs.\ AION-1-L)
   \end{itemize}
+  \begin{alertblock}{ZooBot as approximate upper bound}
+    Pre-trained on ${\sim}300\text{k}$ galaxy images with GZ-DECaLS volunteer
+    labels \parencite{walmsley2022gzdecals}
+  \end{alertblock}
 \end{frame}
 
 
@@ -642,6 +674,26 @@
           $\;\mathcal{Q}_{t+1} = \mathcal{Q}_t\setminus\mathcal{S}_t$
   \end{enumerate}
   With decay $r\in[0,1)$, full sample generated in $T=\mathcal{O}(\log|\mathcal{Q}|)$ decoder calls.
+\end{frame}
+
+% ── Appendix: Subsampled Linear Projection ───────────────────────────────────
+\begin{frame}{Subsampled linear projection}
+  \textbf{Multi-survey image tokenizer}: 9-channel input (5 HSC $+$ 4 LS bands)
+  projected to a ${\approx}6C = 54$-dimensional space:
+  \begin{equation*}
+    \hat{\mathbf{x}} \;=\; \alpha(\mathbf{m}_c)\bigl(\tilde{\mathbf{x}}W + b\bigr),
+    \qquad
+    W\!\in\!\mathbb{R}^{C\times\mathrm{dim}_\mathrm{out}},\;
+    b\!\in\!\mathbb{R}^{\mathrm{dim}_\mathrm{out}}
+  \end{equation*}
+  \begin{alertblock}{Purpose}
+    Disentangles survey-specific channel information into a higher-dimensional embedding.
+    The scale factor $\alpha(\mathbf{m}_c)$ keeps the feature norm invariant to missing
+    channels (i.e.\ when a survey provides fewer than 9 bands).
+    Projection is inverted after decoding.
+  \end{alertblock}
+  \vspace{0.3em}
+  The 54-dimensional output feeds into the ResNet (MagViT-style) autoencoder.
 \end{frame}
 
 % ── Appendix: Latent Diffusion Models ────────────────────────────────────────
