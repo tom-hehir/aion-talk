@@ -1,2 +1,9 @@
 # General ML papers relevant to the talk.
 # Run `make bibliography` to regenerate the .bib file from these entries.
+
+# quantization / tokenization
+- key: oord2017vqvae
+  arxiv: "1711.00937"
+
+- key: mentzer2023fsq
+  arxiv: "2309.15505"

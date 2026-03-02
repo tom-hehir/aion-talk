@@ -35,6 +35,7 @@
   {../resources/papers/hayat2021selfsupervised/source/figures/}%
   {../resources/papers/walmsley2022gzdecals/source/figures/}%
   {../resources/papers/smith2024astropt/source/figures/}%
+  {../resources/papers/mentzer2023fsq/source/figs/}%
   {../resources/}%
   {../resources/images/}%
   {../resources/papers/}%
@@ -204,6 +205,116 @@
       \end{itemize}
     \end{column}
   \end{columns}
+\end{frame}
+
+% ── §7 Architecture & Objective ───────────────────────────────────────────────
+\begin{frame}{Architecture: Encoder–Decoder Transformer}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \centering
+      \includegraphics[width=\linewidth, height=0.78\textheight, keepaspectratio]{aion.png}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \textbf{Encoder token embedding}
+      \begin{equation*}
+        \mathbf{e}_t^{(\mathrm{enc})} = \mathrm{Embed}_i(x_t^i) + \mathbf{m}_i + \mathbf{p}_t
+      \end{equation*}
+      \textbf{Decoder token embedding}
+      \begin{equation*}
+        \mathbf{e}_t^{(\mathrm{dec})} = \mathbf{m}_i + \mathbf{p}_t
+      \end{equation*}
+      {\small
+        $\mathbf{m}_i$: learnable modality embedding, one per modality
+        \emph{and} survey (encodes instrument provenance).\\[0.4em]
+        $\mathbf{p}_t$: positional embedding.\\[0.4em]
+        Decoder omits $\mathrm{Embed}_i(x_t^i)$ — it receives only
+        modality $+$ position, not the token value.
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Tokenization: Discretising Continuous Data}
+  \begin{columns}[T]
+    \begin{column}{0.54\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{overview_v2_a.pdf}
+      \par\smallskip
+      {\small \textbf{FSQ \parencite{mentzer2023fsq}}: project latent into
+        an integer grid $L_1\!\times\!\cdots\!\times\!L_d$; no codebook
+        collapse.}
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{scalar-quantization-binning.png}
+      \par\smallskip
+      {\small \textbf{Scalar binning}: map via empirical CDF to
+        $\mathcal{N}(0,1)$, then equal-width bins $\Rightarrow$ equal
+        probability mass per bin.}
+    \end{column}
+  \end{columns}
+  \par\smallskip
+  {\small
+    \textbf{Images}: FSQ (1024 codes)\enspace
+    \textbf{Spectra}: LFQ (1024 codes)\enspace
+    \textbf{Scalars}: CDF binning (1024 bins)
+  }
+\end{frame}
+
+\begin{frame}{Tokenizer Training: Negative Log-Likelihood}
+  \textbf{Image \& spectrum flux loss} — inverse-variance-weighted Gaussian NLL,
+  leveraging known per-pixel noise from survey pipelines:
+  \begin{equation*}
+    \mathcal{L}_\mathrm{NLL}
+    = \sum_i \frac{1}{2}
+      \left\|
+        \mathbf{\Sigma}_i^{-\frac{1}{2}}\,\mathbf{m}_i
+        \!\left(\mathbf{x}_i - \mathrm{Dec}_\theta\!\left(\mathrm{Enc}_\phi(\mathbf{x}_i)\right)\right)
+      \right\|_2^2
+  \end{equation*}
+  \vspace{0.4em}
+  \textbf{Spectrum tokenizer adds a mask loss:}
+  \begin{itemize}
+    \item Binary cross-entropy between predicted reliability map
+          $\hat{\mathbf{m}}(\lambda)$ and ground-truth sky/quality mask
+          $\mathbf{m}(\lambda)$
+    \item Likelihood-based, but no principled way to weight against the
+          flux NLL
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Image Tokenizer}
+  \centering
+  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{legacy_survey_comparison.png}
+  \par\smallskip
+  {\small FSQ autoencoder on 9-channel multi-survey images.
+    Columns: original, reconstruction, Tractor model, $r$-band residuals.}
+\end{frame}
+
+\begin{frame}{Spectrum Tokenizer}
+  \centering
+  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{spectrum_autoencoding.png}
+  \par\smallskip
+  {\small LFQ autoencoder on DESI spectra. Top: flux (black = input,
+    red = reconstruction). Bottom: residuals in units of $\sigma$.}
+\end{frame}
+
+\begin{frame}{Pre-Training Objective: Masked Token Modelling}
+  \begin{center}
+    \begin{equation*}
+      \mathcal{L}(\theta)
+      \;=\;
+      -\sum_{t=1}^{N}
+        \log\,p_\theta\!\left(\mathbf{x}_t^{\mathrm{tgt}}
+          \;\Big|\; \mathbf{x}^{\mathrm{obs}}\right)
+    \end{equation*}
+  \end{center}
+  \vspace{0.3em}
+  Tokens are split into disjoint observed $\mathbf{x}^{\mathrm{obs}}$ and
+  target $\mathbf{x}^{\mathrm{tgt}}$ sets \emph{across all modalities},
+  so the model learns both intra- and cross-modal relationships.\\[0.6em]
+  Discretisation is necessary: cross-entropy over discrete tokens gives a
+  \textbf{proper probabilistic objective} — continuous latents do not.
 \end{frame}
 
 \end{document}
