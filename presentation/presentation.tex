@@ -39,6 +39,7 @@
   {../resources/papers/walmsley2022gzdecals/source/figures/}%
   {../resources/papers/smith2024astropt/source/figures/}%
   {../resources/papers/astroclip2023/source/figures/}%
+  {../resources/papers/rizhko2024astromm/source/images/}%
   {../resources/papers/4m2023/source/resources/}%
   {../resources/papers/mentzer2023fsq/source/figs/}%
   {../resources/papers/rombach2021ldm/source/img/}%
@@ -112,7 +113,7 @@
 
 % ── §3 Status Quo ─────────────────────────────────────────────────────────────
 \begin{frame}[standout]
-  Motivation
+  Task- and data-specific models
 \end{frame}
 
 \begin{frame}{Status quo: survey-specific classification}
@@ -211,7 +212,9 @@
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
       \centering
-      \includegraphics[width=\linewidth, height=0.78\textheight, keepaspectratio]{im_embedding.pdf}
+      \includegraphics[width=\linewidth, height=0.38\textheight, keepaspectratio]{im_embedding.pdf}
+      \par\vspace{0.4em}
+      \includegraphics[width=\linewidth, height=0.38\textheight, keepaspectratio]{astroclip.png}
     \end{column}
     \begin{column}{0.42\textwidth}
       \textbf{Cross-modal contrastive alignment}\\[0.6em]
@@ -316,25 +319,32 @@
         \!\left(\mathbf{x}_i - \underbrace{\mathrm{Dec}_\theta\!\left(\mathrm{Enc}_\phi(\mathbf{x}_i)\right)}_{\hat{\mathbf{x}}_i}\right)
       \right\|_2^2
   \end{equation*}
-  \vspace{0.4em}
-  \textbf{Spectrum tokenizer adds a mask loss:}
-  \begin{itemize}
-    \item Binary cross-entropy between predicted reliability map
-          $\hat{\mathbf{m}}(\lambda)$ and ground-truth sky/quality mask
-          $\mathbf{m}(\lambda)$
-    \item Likelihood-based, but no principled way to weight against the
-          flux NLL
-  \end{itemize}
+  \begin{alertblock}{Spectrum tokenizer adds a mask loss}
+    Binary cross-entropy between predicted reliability map
+    $\hat{\mathbf{m}}(\lambda)$ and ground-truth sky/quality mask
+    $\mathbf{m}(\lambda)$
+  \end{alertblock}
 \end{frame}
 
 \begin{frame}{Image tokenizer}
   \centering
-  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_image-autoencoding.pdf}
+  \includegraphics[width=\textwidth, height=0.68\textheight, keepaspectratio]{fig_image-autoencoding.pdf}
+  \begin{alertblock}{Architecture}
+    ResNet autoencoder (MagViT-style) \textbf{·}
+    FSQ \textbf{·}
+    Codebook size $2^{12}$
+  \end{alertblock}
 \end{frame}
 
 \begin{frame}{Spectrum tokenizer}
   \centering
-  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_spectrum-autoencoding.pdf}
+  \includegraphics[width=\textwidth, height=0.68\textheight, keepaspectratio]{fig_spectrum-autoencoding.pdf}
+  \begin{alertblock}{Architecture}
+    ConvNeXt V2 \textbf{·}
+    LFQ \textbf{·}
+    Codebook size $2^{10}$ \textbf{·}
+    Commitment loss $\beta_\mathrm{q} = 0.25$
+  \end{alertblock}
 \end{frame}
 
 \begin{frame}{Scalar tokenizer}
@@ -344,20 +354,24 @@
       \includegraphics[width=\linewidth]{scalar-quantization-binning.png}
     \end{column}
     \begin{column}{0.49\textwidth}
+      \small
       Map each scalar to a standard normal variate via the empirical CDF:
       \begin{equation*}
         z_i \;=\; \Phi^{-1}\!\bigl(F_x(x_i)\bigr)
       \end{equation*}
+      \vspace{-0.3em}
       Fixed centroids at equally spaced normal quantiles:
       \begin{equation*}
         c_k \;=\; \Phi^{-1}\!\!\left(\frac{k - \tfrac{1}{2}}{K}\right), \quad K = 1024
       \end{equation*}
+      \vspace{-0.3em}
       Reconstruction inverts the mapping:
       \begin{equation*}
         \hat{x}_i \;=\; F_x^{-1}\!\bigl(\Phi(c_i)\bigr)
       \end{equation*}
-      {\small No parameters learned; no loss required. Equal probability
-        mass per bin adapts automatically to long tails.}
+      \vspace{-0.2em}
+      No parameters learned; no loss required. Equal probability
+      mass per bin adapts automatically to long tails.
     \end{column}
   \end{columns}
 \end{frame}
@@ -393,9 +407,6 @@
       \end{enumerate}
     \end{column}
   \end{columns}
-  \vspace{0.4em}
-  Discretisation is necessary: cross-entropy over discrete tokens gives a
-  \textbf{proper probabilistic objective} — continuous latents do not.
 \end{frame}
 
 % ── §8 Model Training & Variants ──────────────────────────────────────────────
@@ -426,13 +437,23 @@
   \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_conditional-generation.pdf}
 \end{frame}
 
+% ── 9.1 Cross-modal generation ────────────────────────────────────────────────
+\begin{frame}{Cross-modal generation}
+  \centering
+  \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{fig_hsc_desi_transfer.pdf}
+  \begin{alertblock}{Unseen modality combination}
+    HSC images $\to$ DESI spectra was \textbf{never seen} during
+    pre-training — emergent cross-survey transfer.
+  \end{alertblock}
+\end{frame}
+
 % ── §9.2 Embedding-based downstream tasks ────────────────────────────────────
 \begin{frame}[standout]
   Downstream tasks via embeddings
 \end{frame}
 
 % ── §8.5 Embedding Extraction ─────────────────────────────────────────────────
-\begin{frame}{Embedding extraction: pooling}
+\begin{frame}{Pooling embeddings}
   \textbf{Protocol}: freeze the encoder; pool the contextualized output sequence
   $\mathbf{Z}=\{\mathbf{z}_1,\dots,\mathbf{z}_T\},\;\mathbf{z}_t\in\mathbb{R}^d$
   to a single object-level vector $\mathbf{e}\in\mathbb{R}^d$.\\[0.8em]
@@ -475,27 +496,7 @@
   \end{itemize}
 \end{frame}
 
-% ── 9.2 Galaxy Image Segmentation ────────────────────────────────────────────
-\begin{frame}{Galaxy image segmentation}
-  \centering
-  \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{fig_segmentation_qual_quant.pdf}
-  \begin{equation*}
-    \mathrm{IoU} \;=\;
-    \frac{|M_\text{pred}\cap M_\text{true}|}{|M_\text{pred}\cup M_\text{true}|}
-  \end{equation*}
-\end{frame}
 
-% ── 9.2 Stellar Parameter Estimation ─────────────────────────────────────────
-\begin{frame}{Stellar parameter estimation}
-  \centering
-  \includegraphics[width=0.98\textwidth]{tab_stellar_properties_full.pdf}
-\end{frame}
-
-% ── 9.2 Stellar Parameter Comparison ─────────────────────────────────────────
-\begin{frame}{Stellar parameter comparison}
-  \centering
-  \includegraphics[width=0.75\textwidth]{tab_stellar_properties_comparison.pdf}
-\end{frame}
 
 % ── 9.2 Low-Data Regime ───────────────────────────────────────────────────────
 \begin{frame}{Low-data regime}
@@ -503,43 +504,20 @@
   \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_scaling_figures.pdf}
 \end{frame}
 
-% ── 9.3 Retrieval Datasets ────────────────────────────────────────────────────
-\begin{frame}{Retrieval datasets}
-  \centering
-  \includegraphics[width=\textwidth]{tab_retrieval_query_stats.pdf}
-\end{frame}
-
 % ── 9.3 Rare Object Detection ─────────────────────────────────────────────────
 \begin{frame}{Rare object detection}
   \centering
-  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_retrieval_qual_quant.pdf}
-\end{frame}
-
-% ── 9.4 Emergent Transfer: HSC → DESI ────────────────────────────────────────
-\begin{frame}{Cross-modal generation}
-  \centering
-  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_hsc_desi_transfer.pdf}
+  \includegraphics[width=\textwidth, height=0.68\textheight, keepaspectratio]{fig_retrieval_qual_quant.pdf}
+  \vspace{2em}
+  {\small Retrieval by cosine similarity:\quad
+  $\mathrm{sim}(\mathbf{e}_q, \mathbf{e}_i)
+  = \dfrac{\mathbf{e}_q \cdot \mathbf{e}_i}{\|\mathbf{e}_q\|\,\|\mathbf{e}_i\|}$}
 \end{frame}
 
 % ── 9.4 Cross-Survey Morphology Transfer ─────────────────────────────────────
 \begin{frame}{Cross-survey morphology transfer}
-  \begin{columns}[T]
-    \begin{column}{0.48\textwidth}
-      {\small Train a GZ10 classifier on \textbf{Legacy Survey} embeddings.
-      Apply the \emph{same frozen head} — without fine-tuning — to
-      \textbf{HSC} embeddings.\\[0.5em]
-      Surveys differ in depth, filter set ($\{g,r,i,z,y\}$ vs.\
-      $\{g,r,i,z\}$), and pixel scale.}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      {\small
-      \includegraphics[width=\linewidth]{tab_transfer_ls_hsc.pdf}}
-      \vspace{0.5em}
-
-      {\small Zero-shot GZ10 accuracy (\%). LS = Legacy Survey (train),
-        HSC = eval. AION-1 embeddings are largely survey-invariant.}
-    \end{column}
-  \end{columns}
+  \centering
+  \includegraphics[width=\textwidth]{tab_transfer_ls_hsc.pdf}
 \end{frame}
 
 % ── §10 Future Work ───────────────────────────────────────────────────────────
@@ -593,7 +571,12 @@
   \end{itemize}
 \end{frame}
 
+% ══════════════════════════════════════════════════════════════════════════════
+\appendix
+
 % ── §12 Resources ─────────────────────────────────────────────────────────────
+\begingroup
+\molochset{progressbar=none}
 \begin{frame}[noframenumbering]{Resources}
   \textbf{Multimodal Universe}\\[0.2em]
   {\small\begin{tabular}{@{}ll@{}}
@@ -617,12 +600,38 @@
               {\texttt{huggingface.co/PolymathicAI}} \\
   \end{tabular}}
 \end{frame}
-
-% ══════════════════════════════════════════════════════════════════════════════
-\appendix
+\endgroup
 
 \begin{frame}[standout]
   Appendix
+\end{frame}
+
+% ── Appendix: Galaxy Image Segmentation ──────────────────────────────────────
+\begin{frame}{Galaxy image segmentation}
+  \centering
+  \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{fig_segmentation_qual_quant.pdf}
+  {\small Galaxy Zoo 3D bar \& spiral arm labels \parencite{masters2021gz3d}}
+  \begin{equation*}
+    \mathrm{IoU} \;=\;
+    \frac{|M_\text{pred}\cap M_\text{true}|}{|M_\text{pred}\cup M_\text{true}|}
+  \end{equation*}
+\end{frame}
+
+% ── Appendix: Stellar Parameters ──────────────────────────────────────────────
+\begin{frame}{Stellar parameter estimation}
+  \centering
+  \includegraphics[width=0.98\textwidth]{tab_stellar_properties_full.pdf}
+\end{frame}
+
+\begin{frame}{Stellar parameter prediction versus specialized model}
+  \centering
+  \includegraphics[width=0.75\textwidth]{tab_stellar_properties_comparison.pdf}
+\end{frame}
+
+% ── Appendix: Retrieval Datasets ──────────────────────────────────────────────
+\begin{frame}{Retrieval datasets}
+  \centering
+  \includegraphics[width=\textwidth]{tab_retrieval_query_stats.pdf}
 \end{frame}
 
 % ── Appendix: Latent Diffusion Models ────────────────────────────────────────
