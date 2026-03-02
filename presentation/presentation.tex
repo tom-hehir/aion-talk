@@ -137,6 +137,23 @@
   \end{center}
 \end{frame}
 
+\begin{frame}{Why move beyond task-specific models?}
+  \begin{itemize}
+    \item \textbf{Duplication of effort} — every new survey or science case
+          requires building, training, and maintaining a new model from scratch
+    \item \textbf{Scaling} — pre-train once on hundreds of millions of objects;
+          performance improves as data and model size grow
+    \item \textbf{Strong performance in the low-data regime} — rich pre-trained representations transfer
+          to downstream tasks even with $10^2$–$10^3$ labels
+    \item \textbf{Transfer \& generalisation} — a shared representation adapts
+          to new tasks and surveys without retraining
+    \item \textbf{Accessible science} — researchers can use AION-1
+          out-of-the-box instead of building their own models
+    \item \textbf{Leverage ML progress} — pre-trained foundation models have
+          transformed many fields; astronomy should benefit too
+  \end{itemize}
+\end{frame}
+
 % ── §4 Prior Foundation Model Efforts ─────────────────────────────────────────
 \begin{frame}[standout]
   Related work: pre-training for astronomy
@@ -360,7 +377,7 @@
   \begin{center}
     \begin{align*}
       \mathcal{L}(\theta)
-      &= -H(f, p_\theta) \\
+      &= -H\!\left(f(\mathbf{x}^{\mathrm{targ}} \mid \mathbf{x}^{\mathrm{cond}}),\; p_\theta(\mathbf{x}^{\mathrm{targ}} \mid \mathbf{x}^{\mathrm{cond}})\right) \\
       &= -\mathbb{E}_{(\mathbf{x}^{\mathrm{targ}},\,\mathbf{x}^{\mathrm{cond}})\sim f}
           \!\left[\log p_\theta(\mathbf{x}^{\mathrm{targ}} \mid \mathbf{x}^{\mathrm{cond}})\right] \\
       &\simeq -\sum_{i=1}^{N} \log p_\theta\!\left(\mathbf{x}_i^{\mathrm{targ}} \mid \mathbf{x}_i^{\mathrm{cond}}\right)
