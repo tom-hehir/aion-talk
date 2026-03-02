@@ -7,3 +7,9 @@
 
 - key: mentzer2023fsq
   arxiv: "2309.15505"
+
+# latent diffusion / autoencoders
+- key: rombach2021ldm
+  arxiv: "2112.10752"
+  journal: "CVPR 2022"
+  journal-url: https://openaccess.thecvf.com/content/CVPR2022/html/Rombach_High-Resolution_Image_Synthesis_With_Latent_Diffusion_Models_CVPR_2022_paper.html

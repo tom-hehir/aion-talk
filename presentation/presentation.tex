@@ -39,6 +39,7 @@
   {../resources/papers/astroclip2023/source/figures/}%
   {../resources/papers/4m2023/source/resources/}%
   {../resources/papers/mentzer2023fsq/source/figs/}%
+  {../resources/papers/rombach2021ldm/source/img/}%
   {../resources/papers/oord2017vqvae/source/figures/}%
   {../resources/papers/maskgit/source/figures/}%
   {../resources/rendered/tables/aion-1-paper/}%
@@ -70,11 +71,11 @@
   \titlepage
   \begin{tikzpicture}[remember picture, overlay]
     \node[anchor=south, yshift=10mm] at (current page.south) {%
-      \includegraphics[height=1.4em]{logo-cambridge.pdf}\hspace{1.2em}%
-      \includegraphics[height=1.4em]{logo-ioa.png}\hspace{1.2em}%
-      \includegraphics[height=1.4em]{logo-kicc.png}\hspace{1.2em}%
-      \includegraphics[height=1.4em]{logo-clare.pdf}\hspace{1.2em}%
-      \includegraphics[height=1.4em]{polymathic-logo.pdf}%
+      \includegraphics[height=2.1em]{logo-cambridge.pdf}\hspace{1.2em}%
+      \includegraphics[height=2.1em]{logo-ioa.png}\hspace{1.2em}%
+      \includegraphics[height=2.1em]{logo-kicc.png}\hspace{1.2em}%
+      \includegraphics[height=2.1em]{logo-clare.pdf}\hspace{1.2em}%
+      \includegraphics[height=2.1em]{polymathic-logo.pdf}%
     };
     \node[anchor=south, yshift=3mm] at (current page.south) {%
       \small\href{https://github.com/tom-hehir/aion-talk}%
@@ -108,47 +109,57 @@
 \end{frame}
 
 % ── §3 Status Quo ─────────────────────────────────────────────────────────────
-\begin{frame}{Status Quo: Task- and Data-Specific Models}
+\begin{frame}{Status Quo: Survey-Specific Classification}
   \begin{columns}[T]
-
-    \begin{column}{0.32\textwidth}
+    \begin{column}{0.50\textwidth}
       \centering
-      \includegraphics[height=0.42\textheight]{sketch.pdf}
-      \par\smallskip
-      {\small\textbf{Physical inductive bias}}\\[0.3em]
-      {\small
-        Architecture encodes redshift and instrument response explicitly
-        \parencite{melchior2023spender};
-        or via the training objective
-        \parencite{korber2023pinion}.
-      }
+      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{fig-braai3.png}
     \end{column}
+    \begin{column}{0.47\textwidth}
+      \textbf{Task- and data-specific models}\\[0.6em]
+      VGG6 on ZTF science/reference/difference image triplets for
+      real-bogus discrimination \parencite{duev2019realbogus}.\\[0.5em]
+      CNNs for strong gravitational lens finding
+      \parencite{metcalf2019lensfinding}.\\[0.5em]
+      Each classifier is coupled to a specific survey and task; new
+      surveys or science cases require retraining from scratch.
+    \end{column}
+  \end{columns}
+\end{frame}
 
-    \begin{column}{0.32\textwidth}
+\begin{frame}{Status Quo: Data-Specific Regression}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
       \centering
-      \includegraphics[height=0.42\textheight]{nn-sketch.png}
-      \par\smallskip
-      {\small\textbf{Data-specific regression}}\\[0.3em]
-      {\small
-        Multi-task net with probabilistic outputs for joint redshift and
-        galaxy property estimation on simulated MOONS spectra
-        \parencite{ginolfi2024moons}.
-        Bayesian SED emulation: \parencite{alsing2020speculator}.
-      }
+      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{nn-sketch.png}
     \end{column}
+    \begin{column}{0.47\textwidth}
+      \textbf{Task- and data-specific models}\\[0.6em]
+      Multi-task net with probabilistic outputs for joint redshift and
+      galaxy property estimation on simulated MOONS spectra
+      \parencite{ginolfi2024moons}.\\[0.5em]
+      Bayesian SED emulation \parencite{alsing2020speculator}: fast
+      surrogate for full spectral energy distribution fitting, but
+      trained for a fixed survey and parameter set.
+    \end{column}
+  \end{columns}
+\end{frame}
 
-    \begin{column}{0.32\textwidth}
+\begin{frame}{Status Quo: Physical Inductive Bias}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
       \centering
-      \includegraphics[height=0.42\textheight]{fig-braai3.png}
-      \par\smallskip
-      {\small\textbf{Survey-specific classification}}\\[0.3em]
-      {\small
-        VGG6 on ZTF science/reference/difference triplets for real-bogus
-        discrimination \parencite{duev2019realbogus};
-        CNNs for strong lens finding \parencite{metcalf2019lensfinding}.
-      }
+      \includegraphics[width=\linewidth, height=0.72\textheight, keepaspectratio]{sketch.pdf}
     \end{column}
-
+    \begin{column}{0.47\textwidth}
+      \textbf{Task- and data-specific models}\\[0.6em]
+      Architecture encodes redshift and instrument response
+      \textbf{explicitly} in the model design
+      \parencite{melchior2023spender}, or via the training objective
+      \parencite{korber2023pinion}.\\[0.5em]
+      Strong physical priors improve performance on the target task but
+      limit reuse across surveys or science cases.
+    \end{column}
   \end{columns}
 \end{frame}
 
@@ -204,6 +215,26 @@
   \end{columns}
 \end{frame}
 
+% ── Prior Work: AstroCLIP ────────────────────────────────────────────────────
+\begin{frame}{Prior Work: AstroCLIP}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering
+      \includegraphics[width=\linewidth, height=0.78\textheight, keepaspectratio]{im_embedding.pdf}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \textbf{Cross-modal contrastive alignment}\\[0.6em]
+      AstroCLIP \parencite{parker2024astroclip} aligns galaxy images and
+      spectra into a shared embedding space using a CLIP-style
+      contrastive objective.\\[0.5em]
+      Enables zero-shot cross-modal retrieval and downstream parameter
+      estimation without task-specific labels.\\[0.5em]
+      Extended to three modalities (image, spectrum, photometry)
+      in AstroM$^3$ \parencite{rizhko2024astromm}.
+    \end{column}
+  \end{columns}
+\end{frame}
+
 % ── §5 Introducing AION-1 ─────────────────────────────────────────────────────
 \begin{frame}{Introducing AION-1}
   \centering
@@ -236,7 +267,11 @@
   \begin{columns}[T]
     \begin{column}{0.52\textwidth}
       \centering
-      \includegraphics[width=\linewidth, height=0.78\textheight, keepaspectratio]{aion.png}
+      \includegraphics[width=\linewidth, height=0.42\textheight, keepaspectratio]{aion.png}
+      \par\smallskip
+      \includegraphics[width=\linewidth, height=0.34\textheight, keepaspectratio]{method_figure.pdf}
+      \par\smallskip
+      {\tiny 4M architecture \parencite{mizrahi2023}}
     \end{column}
     \begin{column}{0.45\textwidth}
       \textbf{Encoder token embedding}
@@ -256,6 +291,16 @@
       }
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{Tokenization: Autoencoders}
+  \centering
+  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{autoencoder_schema.jpg}
+  \par\smallskip
+  {\small An autoencoder compresses input $\mathbf{x}$ to a low-dimensional
+    latent code $\mathbf{z}$ via an encoder, then reconstructs $\hat{\mathbf{x}}$
+    via a decoder. Tokenisation uses the discrete latent codes as input tokens
+    for the transformer.}
 \end{frame}
 
 \begin{frame}{Tokenization: Discretising Continuous Data}
@@ -292,8 +337,8 @@
     \mathcal{L}_\mathrm{NLL}
     = \sum_i \frac{1}{2}
       \left\|
-        \mathbf{\Sigma}_i^{-\frac{1}{2}}\,\mathbf{m}_i
-        \!\left(\mathbf{x}_i - \mathrm{Dec}_\theta\!\left(\mathrm{Enc}_\phi(\mathbf{x}_i)\right)\right)
+        \boldsymbol{\Sigma}_i^{-\frac{1}{2}}\,\mathbf{m}_i
+        \!\left(\mathbf{x}_i - \underbrace{\mathrm{Dec}_\theta\!\left(\mathrm{Enc}_\phi(\mathbf{x}_i)\right)}_{\hat{\mathbf{x}}_i}\right)
       \right\|_2^2
   \end{equation*}
   \vspace{0.4em}
@@ -658,6 +703,17 @@
 
 % ══════════════════════════════════════════════════════════════════════════════
 \appendix
+
+% ── Appendix: Latent Diffusion Models ────────────────────────────────────────
+\begin{frame}{Latent Diffusion Models}
+  \centering
+  \includegraphics[trim=0 705 305 2, clip, width=\textwidth, height=0.78\textheight, keepaspectratio]{final_figure.pdf}
+  \par\smallskip
+  {\small LDMs apply a diffusion process in the latent space of a
+    pretrained autoencoder, enabling high-resolution synthesis at a
+    fraction of the compute cost of pixel-space diffusion.
+    \parencite{rombach2021ldm}}
+\end{frame}
 
 % ── Appendix: VQ-VAE ──────────────────────────────────────────────────────────
 \begin{frame}{VQ-VAE}

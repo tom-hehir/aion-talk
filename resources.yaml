@@ -19,6 +19,7 @@ arxiv-papers-source:
   # §7 Architecture / tokenization figures
   mentzer2023fsq: https://arxiv.org/abs/2309.15505
   oord2017vqvae: https://arxiv.org/abs/1711.00937
+  rombach2021ldm: https://arxiv.org/abs/2112.10752
   # Appendix
   maskgit: https://arxiv.org/abs/2202.04200
 
@@ -34,3 +35,8 @@ images:
   logo-kicc.png: https://raw.githubusercontent.com/williamjameshandley/talks/ioa_2026/logos/kicc.png
   # Title slide — Clare College arms (Wikimedia Commons)
   logo-clare.svg: https://upload.wikimedia.org/wikipedia/commons/6/65/Clare_College_arms.svg
+  # Autoencoder schema (Keras blog)
+  autoencoder_schema.jpg: https://blog.keras.io/img/ae/autoencoder_schema.jpg
+  # Autoencoder / VAE architecture diagrams (Lilian Weng blog; Medium)
+  autoencoder-architecture.png: https://lilianweng.github.io/posts/2018-08-12-vae/autoencoder-architecture.png
+  vae-architecture.png: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*eLpUA2m64oa7e71UpjxBWg.png"
