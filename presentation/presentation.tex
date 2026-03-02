@@ -17,6 +17,7 @@
 % ── packages ──────────────────────────────────────────────────────────────────
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor}
 \usepackage{tikz}
@@ -256,20 +257,29 @@
 % ── §6 Data ───────────────────────────────────────────────────────────────────
 \begin{frame}{Data}
   \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
+    \begin{column}{0.44\textwidth}
       \centering
       \includegraphics[width=\linewidth]{aion_fig2_real_samples_no_logo.png}
     \end{column}
-    \begin{column}{0.47\textwidth}
-      39 modalities, ${\sim}200$M observations of stars, galaxies,
-      and quasars from the \textbf{Multimodal Universe}
-      \parencite{multimodaluniverse2024}.\\[0.8em]
-      \textbf{Modality types:}
-      \begin{itemize}
-        \item Multiband images
-        \item Optical spectra
-        \item Scalar properties \& measurements
-      \end{itemize}
+    \begin{column}{0.54\textwidth}
+      {\small 39 modalities, ${\sim}200$M observations of stars, galaxies,
+        and quasars from the \textbf{Multimodal Universe}
+        \parencite{multimodaluniverse2024}.}\\[0.4em]
+      \small
+      \begin{tabularx}{\linewidth}{@{}lX@{}}
+        \toprule
+        \textbf{Survey} & \textbf{Modalities} \\ \midrule
+        Legacy Survey &
+          4-band images; $g,r,i,z$ fluxes; WISE $W1$–$W4$; $E(B{-}V)$;
+          ellipticity $(e_1,e_2)$; $R_{\rm eff}$ \\[3pt]
+        HSC &
+          5-band images; $g,r,i,z,y$ fluxes \& extinction; shape catalog \\[3pt]
+        SDSS & Optical spectrum; redshift $z$ \\[3pt]
+        DESI & Optical spectrum; redshift $z$ \\[3pt]
+        Gaia &
+          BP/RP spectra; parallax $\varpi$; sky coords;
+          $G$, BP, RP fluxes \\ \bottomrule
+      \end{tabularx}
     \end{column}
   \end{columns}
 \end{frame}
@@ -444,27 +454,52 @@
 % ── §8 Model Training & Variants ──────────────────────────────────────────────
 \begin{frame}{Model family \& training}
   \begin{columns}[T]
-    \begin{column}{0.54\textwidth}
+    \begin{column}{0.50\textwidth}
       \centering
       \includegraphics[width=\linewidth]{eval_loss.png}
       \par\smallskip
       {\small Eval loss vs.\ training steps for three model sizes, with and
         without the Gaia stellar set.}
     \end{column}
-    \begin{column}{0.43\textwidth}
-      \textbf{Model variants}\\[0.4em]
+    \begin{column}{0.48\textwidth}
+      \centering
       \includegraphics[width=\linewidth]{tab_model-size.pdf}
-      \vspace{0.8em}
-
-      \textbf{Training setup}
-      \begin{itemize}\small
-        \item AdamW ($\beta_1{=}0.9$, $\beta_2{=}0.95$, wd\,$0.05$)
-        \item Warmup + cosine decay; peak lr $2\!\times\!10^{-4}$
-        \item 205k steps, batch 8192, bfloat16, FSDP ZeRO-2
-        \item 64–288 H100 GPUs (1.5–3.5 days)
-      \end{itemize}
     \end{column}
   \end{columns}
+  \vspace{0.4em}
+  {\small\textbf{Training:} AdamW ($\beta_1{=}0.9$, $\beta_2{=}0.95$, wd\,$0.05$),
+    warmup + cosine decay, peak lr $2\!\times\!10^{-4}$, 205k steps, batch 8192,
+    bfloat16, FSDP ZeRO-2, 64–288 H100 GPUs (1.5–3.5 days).}
+\end{frame}
+
+% ── §8.5 Embedding Extraction ─────────────────────────────────────────────────
+\begin{frame}{Embedding extraction: pooling}
+  \textbf{Protocol}: freeze the encoder; pool the contextualized output sequence
+  $\mathbf{Z}=\{\mathbf{z}_1,\dots,\mathbf{z}_T\},\;\mathbf{z}_t\in\mathbb{R}^d$
+  to a single object-level vector $\mathbf{e}\in\mathbb{R}^d$.\\[0.8em]
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Mean pooling}
+      \begin{equation*}
+        \mathbf{e} \;=\; \frac{1}{T}\sum_{t=1}^{T}\mathbf{z}_t
+      \end{equation*}
+      {\small Parameter-free. Used for morphology classification and
+        similarity retrieval.}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Attentive pooling}
+      \begin{equation*}
+        \mathbf{A} = \mathrm{softmax}\!\Bigl(\tfrac{\mathbf{Q}\mathbf{K}^\top}{\sqrt{d}}\Bigr),\quad
+        \mathbf{e} = \mathbf{A}\mathbf{V}
+      \end{equation*}
+      {\small $\mathbf{Q},\mathbf{K},\mathbf{V}$: learnable projections.
+        Used for galaxy and stellar property estimation.}
+    \end{column}
+  \end{columns}
+  \vspace{0.6em}
+  {\small\textbf{Multi-modal embeddings:} concatenate tokens from any subset
+    of modalities before the frozen encoder — cross-modal context was learned
+    during pre-training. No extra fusion module required.}
 \end{frame}
 
 % ── §9 Downstream Tasks ───────────────────────────────────────────────────────
@@ -521,21 +556,19 @@
 
 % ── 9.2 Galaxy Morphology Classification ─────────────────────────────────────
 \begin{frame}{Galaxy morphology classification}
+  {\small GZ10 dataset: 10 classes, ${\sim}8\,000$ galaxies.
+    Frozen AION-1 encoder $+$ lightweight MLP head.}
+  \vspace{0.3em}
   \begin{columns}[T]
-    \begin{column}{0.42\textwidth}
-      {\small GZ10 dataset: 10 classes, ${\sim}8\,000$ galaxies.
-        Frozen AION-1 encoder $+$ lightweight MLP head.}
-      \vspace{0.5em}
-
-      {\small
-      \includegraphics[width=\linewidth]{tab_wrap_acc.pdf}}
+    \begin{column}{0.50\textwidth}
+      \centering
+      \includegraphics[width=0.92\linewidth]{tab_wrap_acc.pdf}
     \end{column}
-    \begin{column}{0.55\textwidth}
+    \begin{column}{0.48\textwidth}
       {\small
         \begin{itemize}
           \item AION-1-L matches ZooBot within 2.4 pp despite seeing
                 two orders of magnitude fewer labeled galaxy images
-                during inference
           \item ZooBot was pre-trained on ${\sim}300\text{k}$ galaxy images
                 with GZ-DECaLS volunteer labels \parencite{walmsley2022gzdecals};
                 acts as an approximate upper bound
@@ -583,6 +616,18 @@
   \includegraphics[width=0.98\textwidth]{tab_stellar_properties_full.pdf}
 \end{frame}
 
+% ── 9.2 Stellar Parameter Comparison ─────────────────────────────────────────
+\begin{frame}{Stellar parameters: comparison with specialist model}
+  {\small Transfer to APOGEE stellar labels from Gaia XP coefficients only
+    (first 32 BP + 32 RP coefficients).
+    AION-1-B is \emph{never} pre-trained on APOGEE data; the baseline
+    \parencite{leung2023stellar} is explicitly pre-trained on APOGEE.
+    Metric: standard deviation of residuals ($\downarrow$).}
+  \vspace{0.5em}
+  \centering
+  \includegraphics[width=0.75\textwidth]{tab_stellar_properties_comparison.pdf}
+\end{frame}
+
 % ── 9.2 Low-Data Regime ───────────────────────────────────────────────────────
 \begin{frame}{Low-data regime}
   \begin{columns}[T]
@@ -615,6 +660,17 @@
   }
 \end{frame}
 
+% ── 9.3 Retrieval Datasets ────────────────────────────────────────────────────
+\begin{frame}{Retrieval datasets}
+  {\small High-confidence query sets for the rare object retrieval experiments.
+    Citizen-science morphologies from Galaxy Zoo–DECaLS
+    \parencite{walmsley2022gzdecals}; strong lenses from HSC lens-finding
+    catalogs cross-matched with Legacy Survey.}
+  \vspace{0.5em}
+  \centering
+  \includegraphics[width=\textwidth]{tab_retrieval_query_stats.pdf}
+\end{frame}
+
 % ── 9.3 Rare Object Detection ─────────────────────────────────────────────────
 \begin{frame}{Rare object detection}
   \begin{columns}[T]
@@ -625,13 +681,16 @@
     \begin{column}{0.53\textwidth}
       \textbf{Cosine-similarity retrieval} in embedding space.
       Zero-shot, no task-specific labels.
-      \vspace{0.4em}
+      \vspace{0.3em}
 
       \begin{align*}
-        \mathrm{DCG@}k &= \sum_{i=1}^{k}\tfrac{2^{r_i}-1}{\log_2(i+1)} \\[4pt]
+        S_c(\mathbf{x}_q,\mathbf{x}_c) &=
+          \frac{\mathbf{x}_q^{\mathsf{T}}\mathbf{x}_c}
+               {\|\mathbf{x}_q\|_2\,\|\mathbf{x}_c\|_2} \\[3pt]
+        \mathrm{DCG@}k &= \sum_{i=1}^{k}\tfrac{2^{r_i}-1}{\log_2(i+1)} \\[3pt]
         \mathrm{nDCG@}k &= \tfrac{\mathrm{DCG@}k}{\mathrm{IDCG@}k}
       \end{align*}
-      \vspace{0.2em}
+      \vspace{0.1em}
 
       {\small
       \includegraphics[width=\linewidth]{tab_retrieval-scores.pdf}}

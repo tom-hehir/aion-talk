@@ -131,6 +131,8 @@ def build_wrapper(docclass_line: str, preamble_lines: list[str], env: str, table
         *preview_lines,
         r"\begin{document}",
         *body_lines,
+        r"\bibliographystyle{plainnat}",
+        r"\bibliography{mmoma.bib}",
         r"\end{document}",
     ]
     return "\n".join(wrapper_lines) + "\n"
@@ -167,18 +169,29 @@ def render_table(source: Path, label: str, out_dir: Path) -> None:
     env["TEXFONTS"] = tex_paths + env.get("TEXFONTS", "")
     env["TTFONTS"] = tex_paths + env.get("TTFONTS", "")
     env["OPENTYPEFONTS"] = tex_paths + env.get("OPENTYPEFONTS", "")
+    env["BIBINPUTS"] = paper_dir + ":" + env.get("BIBINPUTS", "")
 
-    cmd = [
-        "pdflatex",
-        "-interaction=nonstopmode",
-        "-halt-on-error",
-        "-output-directory",
-        str(out_dir),
-        str(tex_path),
-    ]
-    result = subprocess.run(cmd, cwd=out_dir, env=env)
-    if result.returncode != 0:
-        raise RuntimeError(f"pdflatex failed for {label}")
+    def run_pdflatex() -> None:
+        cmd = [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory",
+            str(out_dir),
+            str(tex_path),
+        ]
+        result = subprocess.run(cmd, cwd=out_dir, env=env)
+        if result.returncode != 0:
+            raise RuntimeError(f"pdflatex failed for {label}")
+
+    run_pdflatex()
+
+    # Run bibtex to resolve \cite{} commands, then recompile.
+    aux_path = out_dir / f"{safe_label}.aux"
+    if aux_path.exists() and r"\bibdata" in aux_path.read_text():
+        subprocess.run(["bibtex", safe_label], cwd=out_dir, env=env)
+        run_pdflatex()
+        run_pdflatex()
 
     if not pdf_path.exists():
         raise RuntimeError(f"Expected PDF not produced: {pdf_path}")
