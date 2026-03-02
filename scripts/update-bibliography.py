@@ -74,16 +74,22 @@ def inject_journal(bibtex: str, paper: dict) -> str:
     return bibtex
 
 
-def papers_from_yaml(path: Path) -> list[tuple[str, dict]]:
-    """Return [(category_name, paper_dict), ...] preserving order."""
+def papers_from_yaml(path: Path) -> list[dict]:
+    """Return [paper_dict, ...] preserving order.
+
+    Accepts both flat list files and legacy category-dict files.
+    """
     with open(path) as f:
         data = yaml.safe_load(f)
+    if not data:
+        return []
+    if isinstance(data, list):
+        return data
+    # Legacy: {category: [paper, ...], ...}
     result = []
-    for category, papers in data.items():
-        if not isinstance(papers, list):
-            continue
-        for paper in papers:
-            result.append((category, paper))
+    for papers in data.values():
+        if isinstance(papers, list):
+            result.extend(papers)
     return result
 
 
@@ -101,7 +107,7 @@ def main() -> None:
         all_entries.append(f"% {yaml_file.stem}")
         all_entries.append(f"% {'─' * 74}\n")
 
-        for category, paper in papers_from_yaml(yaml_file):
+        for paper in papers_from_yaml(yaml_file):
             key = paper["key"]
             if key in seen_keys:
                 print(f"  skip  {key} (duplicate)")

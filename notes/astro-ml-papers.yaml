@@ -2,98 +2,82 @@
 # Run `make bibliography` to regenerate the .bib file from these entries.
 # To fetch arXiv source (e.g. for figures), add the key to arxiv-papers-source in resources.yaml.
 
-anomaly-detection:
-  - key: storeyfisher2021anomaly
-    label: GAN anomaly detection in HSC
-    arxiv: "2105.02434"
-    journal: "MNRAS 508 (2021)"
-    journal-url: https://academic.oup.com/mnras/article/508/2/2946/6369368
-    description: Wasserstein GAN pipeline applied to ~1M HSC galaxy images, recovering mergers, tidal features, and rare systems.
+# anomaly-detection
+- key: storeyfisher2021anomaly
+  arxiv: "2105.02434"
+  journal: "MNRAS 508 (2021)"
+  journal-url: https://academic.oup.com/mnras/article/508/2/2946/6369368
 
-parameter-estimation:
-  - key: alsing2020speculator
-    label: SPECULATOR SED emulator
-    arxiv: "1911.11778"
-    journal: "ApJS (2020)"
-    journal-url: https://iopscience.iop.org/article/10.3847/1538-4365/ab917f
-    description: PCA + neural network emulator of stellar population synthesis models; 10³–10⁴× speed-up for SED fitting.
+# parameter-estimation
+- key: alsing2020speculator
+  arxiv: "1911.11778"
+  journal: "ApJS (2020)"
+  journal-url: https://iopscience.iop.org/article/10.3847/1538-4365/ab917f
 
-  - key: hahn2023provabgs
-    label: PROVABGS probabilistic SED fitting
-    arxiv: "2306.06318"
-    journal: "ApJ (2024)"
-    journal-url: https://iopscience.iop.org/article/10.3847/1538-4357/ad19c8
-    description: Probabilistic stellar mass function for DESI BGS galaxies using hierarchical Bayesian SED inference.
+- key: hahn2023provabgs
+  arxiv: "2306.06318"
+  journal: "ApJ (2024)"
+  journal-url: https://iopscience.iop.org/article/10.3847/1538-4357/ad19c8
 
-  - key: jespersen2022mangrove
-    label: "Mangrove: galaxies from merger trees"
-    arxiv: "2210.13473"
-    journal: "ApJ (2022)"
-    journal-url: https://iopscience.iop.org/article/10.3847/1538-4357/ac9b18
-    description: Graph neural network emulator mapping dark matter merger trees to galaxy properties, 10,000× faster than semi-analytic models.
+- key: jespersen2022mangrove
+  arxiv: "2210.13473"
+  journal: "ApJ (2022)"
+  journal-url: https://iopscience.iop.org/article/10.3847/1538-4357/ac9b18
 
-  - key: spuriomancini2022cosmopower
-    label: CosmoPower cosmological emulator
-    arxiv: "2106.03846"
-    journal: "MNRAS 511 (2022)"
-    journal-url: https://academic.oup.com/mnras/article/511/2/1771/6505144
-    description: Neural emulators for matter and CMB power spectra; up to 10⁴× speed-up for Bayesian cosmological inference.
+- key: spuriomancini2022cosmopower
+  arxiv: "2106.03846"
+  journal: "MNRAS 511 (2022)"
+  journal-url: https://academic.oup.com/mnras/article/511/2/1771/6505144
 
-  - key: korber2023pinion
-    label: PINION reionization emulator
-    arxiv: "2208.13803"
-    journal: "MNRAS (2023)"
-    journal-url: https://academic.oup.com/mnras/article/521/1/902/7059216
-    description: Physics-informed neural network emulator for 4D hydrogen reionization history from N-body density fields.
+- key: korber2023pinion
+  arxiv: "2208.13803"
+  journal: "MNRAS (2023)"
+  journal-url: https://academic.oup.com/mnras/article/521/1/902/7059216
 
-  - key: luciesmith2019halos
-    label: Interpretable ML for halo formation
-    arxiv: "1906.06339"
-    journal: "MNRAS 490 (2019)"
-    journal-url: https://academic.oup.com/mnras/article/490/1/331/5570617
-    description: Interpretable ML framework mapping initial conditions to halo masses; finds tidal shear adds no significant predictive power over density alone.
+- key: luciesmith2019halos
+  arxiv: "1906.06339"
+  journal: "MNRAS 490 (2019)"
+  journal-url: https://academic.oup.com/mnras/article/490/1/331/5570617
 
-  - key: kane2025europium
-    label: Europium abundances from GALAH
-    arxiv: "2512.02125"
-    journal: "MNRAS (2025)"
-    journal-url: https://academic.oup.com/mnras/advance-article/doi/10.1093/mnras/stag209/8444584
-    description: CNN label-transfer catalogue of europium abundances for ~119,000 GALAH DR4 stars.
+- key: kane2025europium
+  arxiv: "2512.02125"
+  journal: "MNRAS (2025)"
+  journal-url: https://academic.oup.com/mnras/advance-article/doi/10.1093/mnras/stag209/8444584
 
-  - key: ginolfi2024moons
-    label: Multi-task net for MOONS spectra
-    arxiv: "2410.22420"
-    journal: "A&A (2025)"
-    journal-url: https://www.aanda.org/articles/aa/full_html/2025/01/aa52799-24/aa52799-24.html
-    description: Multi-task neural net with probabilistic outputs for joint redshift and galaxy property estimation; applied to simulated MOONS spectra.
+- key: ginolfi2024moons
+  arxiv: "2410.22420"
+  journal: "A&A (2025)"
+  journal-url: https://www.aanda.org/articles/aa/full_html/2025/01/aa52799-24/aa52799-24.html
 
-morphology-classification:
-  - key: dieleman2015galaxymorphology
-    label: CNN galaxy morphology (Galaxy Zoo)
-    arxiv: "1503.07077"
-    journal: "MNRAS 450 (2015)"
-    journal-url: https://academic.oup.com/mnras/article/450/2/1441/979677
-    description: Rotation-invariant CNN for Galaxy Zoo morphology; near-perfect accuracy on high-agreement images.
+# morphology-classification
+- key: dieleman2015galaxymorphology
+  arxiv: "1503.07077"
+  journal: "MNRAS 450 (2015)"
+  journal-url: https://academic.oup.com/mnras/article/450/2/1441/979677
 
-spectroscopy:
-  - key: melchior2023spender
-    label: SPENDER galaxy spectra autoencoder
-    arxiv: "2211.07890"
-    journal: "AJ (2023)"
-    journal-url: https://iopscience.iop.org/article/10.3847/1538-3881/ace0ff
-    description: Convolutional autoencoder for encoding, reconstructing, and super-resolving galaxy spectra at arbitrary redshift.
+- key: dominguezsanchez2018morphology
+  arxiv: "1711.05744"
+  journal: "MNRAS 476 (2018)"
+  journal-url: https://academic.oup.com/mnras/article-lookup/doi/10.1093/mnras/sty338
 
-  - key: cheng2022lya
-    label: CNN for Lyα forest
-    arxiv: "2209.02142"
-    journal: "MNRAS (2022)"
-    journal-url: https://academic.oup.com/mnras/article/517/1/755/6702734
-    description: CNN trained on simulated spectra to identify low-column-density Lyman-α absorbers in quasar spectra.
+- key: duev2019realbogus
+  arxiv: "1907.11259"
+  journal: "MNRAS 489 (2019)"
+  journal-url: https://academic.oup.com/mnras/article-lookup/doi/10.1093/mnras/stz2357
 
-lensing:
-  - key: metcalf2019lensfinding
-    label: Strong lens finding challenge
-    arxiv: "1802.03609"
-    journal: "A&A 625 (2019)"
-    journal-url: https://www.aanda.org/articles/aa/full_html/2019/05/aa32797-18/aa32797-18.html
-    description: Benchmark of CNN and other classifiers for strong gravitational lens finding at survey scale.
+# spectroscopy
+- key: melchior2023spender
+  arxiv: "2211.07890"
+  journal: "AJ (2023)"
+  journal-url: https://iopscience.iop.org/article/10.3847/1538-3881/ace0ff
+
+- key: cheng2022lya
+  arxiv: "2209.02142"
+  journal: "MNRAS (2022)"
+  journal-url: https://academic.oup.com/mnras/article/517/1/755/6702734
+
+# lensing
+- key: metcalf2019lensfinding
+  arxiv: "1802.03609"
+  journal: "A&A 625 (2019)"
+  journal-url: https://www.aanda.org/articles/aa/full_html/2019/05/aa32797-18/aa32797-18.html

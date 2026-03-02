@@ -81,19 +81,15 @@ def prompt_choice(heading: str, options: list[str]) -> str:
 
 
 def append_entry(path: Path, entry: dict) -> None:
-    """Append entry at the end of the file with category-item indentation.
-
-    The 2-space indent means YAML parses it as belonging to the last
-    category block — no need to track or prompt for categories.
-    """
+    """Append entry as a top-level list item at the end of the file."""
     with open(path) as f:
         content = f.read()
 
     lines = [""]
-    lines.append(f"  - key: {entry['key']}")
-    lines.append(f"    arxiv: \"{entry['arxiv']}\"")
+    lines.append(f"- key: {entry['key']}")
+    lines.append(f"  arxiv: \"{entry['arxiv']}\"")
     if entry.get("journal-url"):
-        lines.append(f"    journal-url: {entry['journal-url']}")
+        lines.append(f"  journal-url: {entry['journal-url']}")
     snippet = "\n".join(lines) + "\n"
 
     with open(path, "w") as f:
