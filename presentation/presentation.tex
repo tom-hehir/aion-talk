@@ -121,19 +121,19 @@
   \begin{columns}[c]
     \begin{column}{0.47\textwidth}
       \centering
-      \includegraphics[width=\linewidth, height=0.36\textheight, keepaspectratio]{fig-braai3.png}\\[0.2em]
-      {\tiny Real-bogus classification \parencite{duev2019realbogus}}
+      \includegraphics[width=\linewidth, height=0.46\textheight, keepaspectratio]{fig-braai3.png}\\[0.2em]
+      {\tiny Transient classification \parencite{duev2019realbogus}}
     \end{column}
     \begin{column}{0.47\textwidth}
       \centering
-      \includegraphics[width=\linewidth, height=0.36\textheight, keepaspectratio]{nn-sketch.png}\\[0.2em]
+      \includegraphics[width=\linewidth, height=0.46\textheight, keepaspectratio]{nn-sketch.png}\\[0.2em]
       {\tiny Redshift \& property estimation \parencite{ginolfi2024moons}}
     \end{column}
   \end{columns}
   \vfill
   \begin{center}
-    \includegraphics[width=0.50\textwidth, height=0.36\textheight, keepaspectratio]{sketch.pdf}\\[0.2em]
-    {\tiny Physical inductive bias \parencite{melchior2023spender}}
+    \includegraphics[width=0.55\textwidth, height=0.46\textheight, keepaspectratio]{sketch.pdf}\\[0.2em]
+    {\tiny Spender \parencite{melchior2023spender}}
   \end{center}
 \end{frame}
 
@@ -200,13 +200,19 @@
 
 \begin{frame}{Overview}
   \centering
-  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_main-figure.pdf}
+  \includegraphics[width=\textwidth, height=0.58\textheight, keepaspectratio]{fig_main-figure.pdf}
+  \begin{alertblock}{Training pipeline}
+    \begin{enumerate}\small
+      \item \textbf{Tokenization} — compress each modality into discrete tokens via modality-specific autoencoders
+      \item \textbf{Masked modelling} — predict masked tokens from arbitrary subsets of observed tokens across modalities
+    \end{enumerate}
+  \end{alertblock}
 \end{frame}
 
 \begin{frame}{Capabilities \& contributions}
   \textbf{Emergent behaviours} (\S1)
   \begin{itemize}\small
-    \item \textbf{Emergent Physical Understanding} — solves non-trivial scientific tasks with a simple linear head on learned representations
+    \item \textbf{Emergent Physical Understanding} — solves non-trivial scientific tasks with minimal/zero fine-tuning on learned representations
     \item \textbf{Superior Performance in the Low-Data Regime} — competitive results with orders of magnitude less data than supervised counterparts
     \item \textbf{Flexible Data Fusion} — arbitrary combinations of observations; cross-modal conditional generation
     \item \textbf{Physical Structure of the Latent Space} — embedding space organizes along physically meaningful directions; powerful rare-object retrieval
@@ -360,24 +366,24 @@
       &\simeq -\sum_{i=1}^{N} \log p_\theta\!\left(\mathbf{x}_i^{\mathrm{targ}} \mid \mathbf{x}_i^{\mathrm{cond}}\right)
     \end{align*}
   \end{center}
-  \vspace{0.3em}
+  \vspace{0.4em}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \textbf{Input} (budget: 256 tokens)
       \begin{enumerate}\small
-        \item Select primary modality at random
-        \item Uniformly sample a \# of tokens $n$
-        \item Randomly sample $n$ tokens from that modality
-        \item Fill remainder by randomly sampling tokens from all other modalities
+        \item Pick a primary modality at random
+        \item Sample how many tokens $n$ to take (uniform)
+        \item Draw $n$ tokens from that modality
+        \item Fill remaining $256-n$ slots by sampling from all other modalities
       \end{enumerate}
     \end{column}
     \begin{column}{0.48\textwidth}
       \textbf{Output} (budget: 128 tokens)
       \begin{enumerate}\small
-        \item Select primary modality at random (may differ from input)
-        \item Sample \# of tokens $n$ via Beta distribution (skewed low)
-        \item Randomly sample $n$ tokens from that modality
-        \item Fill remainder by randomly sampling tokens from all other modalities
+        \item Pick a primary modality at random (may differ from input)
+        \item Sample how many tokens $n$ to predict ($\mathrm{Beta}$, skewed low)
+        \item Draw $n$ tokens from that modality
+        \item Fill remaining $128-n$ slots by sampling from all other modalities
       \end{enumerate}
     \end{column}
   \end{columns}
@@ -524,46 +530,30 @@
 \begin{frame}{Future work}
   \textbf{Architecture}
   \begin{itemize}
-    \item Replace quantised tokens with \textbf{continuous tokens} to lift
-          the information ceiling imposed by codebook discretisation
-    \item Better decoder: current masked-token decoder does not produce a
-          proper conditional distribution given the encoder embedding —
-          candidates include autoregressive modelling, diffusion-based
-          decoding, or dropping decoding entirely in favour of a
-          \textbf{JEPA-style} objective
-    \item Better pooling: mean pooling is suboptimal; consider
-          self-supervised discriminative post-training for
-          task-aware summary embeddings
+    \item \textbf{Continuous tokens} — remove codebook information ceiling
+    \item \textbf{Better decoder} — autoregressive, diffusion, or JEPA-style (drop decoder)
+    \item \textbf{Better pooling} — \texttt{[CLS]} token and contrastive fine-tuning for summary embeddings
   \end{itemize}
-  \vspace{0.5em}
-  \textbf{Community adoption}
+  \vspace{0.6em}
+  \textbf{Deployment}
   \begin{itemize}
-    \item Integration into survey pipelines as a source of ML-inferred
-          data products
-    \item Best use-cases today: \textbf{embeddings} for parameter estimation
-          and \textbf{similarity retrieval} — generation not yet recommended
-          for production use
+    \item Integration into survey pipelines as a source of ML-inferred data products
+    \item \textbf{Embeddings \& retrieval} today; generation not yet production-ready
   \end{itemize}
 \end{frame}
 
 % ── §11 Conclusions ───────────────────────────────────────────────────────────
 \begin{frame}{Conclusions}
   \begin{itemize}
-    \item \textbf{Integrates} imaging, spectroscopy, and scalar data across
-          five large-scale surveys via modality-specific tokenisation and a
-          shared masked-modelling objective
-    \item \textbf{Achieves or surpasses state-of-the-art} on galaxy and
-          stellar parameter estimation, morphology classification, image
+    \item \textbf{Unified model} across imaging, spectroscopy, and scalars
+          from five surveys
+    \item \textbf{State-of-the-art} on parameter estimation, morphology,
           segmentation, and spectral super-resolution
-    \item \textbf{Excels in the low-data regime} — competitive performance
-          with $10^2$–$10^3$ labels, two to three orders of magnitude fewer
-          than fully supervised baselines
-    \item \textbf{Enables zero-shot semantic retrieval} of rare objects
-          (mergers, strong gravitational lenses) without task-specific labels
-    \item \textbf{Enables cross-survey transfer}: representations are largely
-          agnostic to instrument-specific characteristics
-    \item A scalable, open-source blueprint for multimodal foundation models
-          in other scientific domains
+    \item \textbf{Low-data regime} — competitive with $10^2$–$10^3$ labels
+    \item \textbf{Zero-shot retrieval} of rare objects without task-specific
+          labels
+    \item \textbf{Cross-survey transfer} — instrument-agnostic representations
+    \item Open-source blueprint for multimodal foundation models in science
   \end{itemize}
 \end{frame}
 
@@ -696,7 +686,7 @@
     \parencite{leung2023stellar} was \textbf{explicitly pre-trained} on APOGEE stellar
     parameters and Gaia XP coefficients — the exact task being evaluated.
     AION-1-B is frozen, contains no APOGEE data, and uses only 5000 labels with a
-    simple linear head; yet outperforms across all parameters.
+    minimal fine-tuning; yet outperforms across all parameters.
   \end{alertblock}
 \end{frame}
 
