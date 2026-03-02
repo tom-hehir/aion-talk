@@ -27,7 +27,15 @@
 % \addbibresource{../resources/aion-1-paper/mmoma.bib}
 
 % ── graphicspath ──────────────────────────────────────────────────────────────
-\graphicspath{{../resources/papers/aion-1-paper/source/figures/}{../resources/}{../resources/images/}{../resources/papers/}}
+\graphicspath{%
+  {../resources/papers/aion-1-paper/source/figures/}%
+  {../resources/papers/melchior2023spender/source/figures/}%
+  {../resources/papers/ginolfi2024moons/source/figures/}%
+  {../resources/papers/duev2019realbogus/source/}%
+  {../resources/}%
+  {../resources/images/}%
+  {../resources/papers/}%
+}
 
 % ── moloch customisation ──────────────────────────────────────────────────────
 \molochset{progressbar=frametitle}
@@ -69,6 +77,51 @@
   \href{https://polymathic-ai.org}{%
     \includegraphics[height=1.2em]{polymathic-logo.pdf}%
   }
+\end{frame}
+
+% ── §3 Status Quo ─────────────────────────────────────────────────────────────
+\begin{frame}{Status Quo: Task- and Data-Specific Models}
+  \begin{columns}[T]
+
+    \begin{column}{0.32\textwidth}
+      \centering
+      \includegraphics[height=0.42\textheight]{sketch.pdf}
+      \par\smallskip
+      {\small\textbf{Physical inductive bias}}\\[0.3em]
+      {\small
+        Architecture encodes redshift and instrument response explicitly
+        \parencite{melchior2023spender};
+        or via the training objective
+        \parencite{korber2023pinion}.
+      }
+    \end{column}
+
+    \begin{column}{0.32\textwidth}
+      \centering
+      \includegraphics[height=0.42\textheight]{nn-sketch.png}
+      \par\smallskip
+      {\small\textbf{Data-specific regression}}\\[0.3em]
+      {\small
+        Multi-task net with probabilistic outputs for joint redshift and
+        galaxy property estimation on simulated MOONS spectra
+        \parencite{ginolfi2024moons}.
+        Bayesian SED emulation: \parencite{alsing2020speculator}.
+      }
+    \end{column}
+
+    \begin{column}{0.32\textwidth}
+      \centering
+      \includegraphics[height=0.42\textheight]{fig-braai3.png}
+      \par\smallskip
+      {\small\textbf{Survey-specific classification}}\\[0.3em]
+      {\small
+        VGG6 on ZTF science/reference/difference triplets for real-bogus
+        discrimination \parencite{duev2019realbogus};
+        CNNs for strong lens finding \parencite{metcalf2019lensfinding}.
+      }
+    \end{column}
+
+  \end{columns}
 \end{frame}
 
 \end{document}
