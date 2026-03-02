@@ -11,3 +11,14 @@ papers:
       - tab:retrieval_query_stats
       - tab:retrieval-scores
       - tab:transfer_ls_hsc
+      - fig:main-figure
+      - fig:mmu-components
+      - fig:aion-loss-and-sizes
+      - fig:image-autoencoding
+      - fig:spectrum-autoencoding
+      - fig:redshift
+      - fig:conditional-generation
+      - fig:segmentation_qual_quant
+      - fig:scaling_figures
+      - fig:retrieval_qual_quant
+      - fig:hsc_desi_transfer

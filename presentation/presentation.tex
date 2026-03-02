@@ -21,6 +21,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usepackage{appendixnumberbeamer}
 
 % ── bibliography ──────────────────────────────────────────────────────────────
 \usepackage[backend=biber, style=authoryear, maxnames=2]{biblatex}
@@ -170,10 +171,10 @@
 
 % ── §4 Prior Foundation Model Efforts ─────────────────────────────────────────
 \begin{frame}[standout]
-  Prior Work
+  Pre-trained models in astronomy
 \end{frame}
 
-\begin{frame}{Prior work: supervised pre-training}
+\begin{frame}{Multitask supervised pre-training with rich labels}
   \begin{columns}[T]
     \begin{column}{0.45\textwidth}
       \centering
@@ -193,7 +194,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Prior work: contrastive learning}
+\begin{frame}{Contrastive learning (unimodal)}
   \centering
   \includegraphics[width=\textwidth]{network_illustration.pdf}
   \par\smallskip
@@ -206,7 +207,7 @@
 \end{frame}
 
 % ── Prior Work: AstroCLIP ─────────────────────────────────────────────────────
-\begin{frame}{Prior work: multimodal contrastive learning}
+\begin{frame}{Contrastive learning (multimodal)}
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
       \centering
@@ -225,7 +226,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Prior work: generative models}
+\begin{frame}{Generative models}
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
       \centering
@@ -251,49 +252,28 @@
 
 \begin{frame}{Overview}
   \centering
-  \includegraphics[width=\textwidth, height=0.82\textheight, keepaspectratio]{aion.png}
+  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_main-figure.pdf}
 \end{frame}
 
 % ── §6 Data ───────────────────────────────────────────────────────────────────
 \begin{frame}{Data}
-  \begin{columns}[T]
-    \begin{column}{0.44\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{aion_fig2_real_samples_no_logo.png}
-    \end{column}
-    \begin{column}{0.54\textwidth}
-      {\small 39 modalities, ${\sim}200$M observations of stars, galaxies,
-        and quasars from the \textbf{Multimodal Universe}
-        \parencite{multimodaluniverse2024}.}\\[0.4em]
-      \small
-      \begin{tabularx}{\linewidth}{@{}lX@{}}
-        \toprule
-        \textbf{Survey} & \textbf{Modalities} \\ \midrule
-        Legacy Survey &
-          4-band images; $g,r,i,z$ fluxes; WISE $W1$–$W4$; $E(B{-}V)$;
-          ellipticity $(e_1,e_2)$; $R_{\rm eff}$ \\[3pt]
-        HSC &
-          5-band images; $g,r,i,z,y$ fluxes \& extinction; shape catalog \\[3pt]
-        SDSS & Optical spectrum; redshift $z$ \\[3pt]
-        DESI & Optical spectrum; redshift $z$ \\[3pt]
-        Gaia &
-          BP/RP spectra; parallax $\varpi$; sky coords;
-          $G$, BP, RP fluxes \\ \bottomrule
-      \end{tabularx}
-    \end{column}
-  \end{columns}
+  \centering
+  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_mmu-components.pdf}
 \end{frame}
 
 % ── §7 Architecture & Objective ───────────────────────────────────────────────
 \begin{frame}{Architecture}
   \begin{columns}[T]
     \begin{column}{0.52\textwidth}
-      \centering
-      \includegraphics[width=\linewidth, height=0.42\textheight, keepaspectratio]{aion.png}
-      \par\smallskip
-      \includegraphics[width=\linewidth, height=0.34\textheight, keepaspectratio]{method_figure.pdf}
-      \par\smallskip
-      {\tiny 4M architecture \parencite{mizrahi2023}}
+      \begin{minipage}[t][0.82\textheight][s]{\linewidth}
+        \centering
+        \vfill
+        \includegraphics[width=\linewidth, height=0.42\textheight, keepaspectratio]{aion.png}
+        \vfill
+        \includegraphics[width=\linewidth, height=0.34\textheight, keepaspectratio]{method_figure.pdf}
+        \vfill
+        \mbox{}
+      \end{minipage}
     \end{column}
     \begin{column}{0.45\textwidth}
       \textbf{Encoder token embedding}
@@ -307,9 +287,7 @@
       {\small
         $\mathbf{m}_i$: learnable modality embedding, one per modality
         \emph{and} survey (encodes instrument provenance).\\[0.4em]
-        $\mathbf{p}_t$: positional embedding.\\[0.4em]
-        Decoder omits $\mathrm{Embed}_i(x_t^i)$ — it receives only
-        modality $+$ position, not the token value.
+        $\mathbf{p}_t$: positional embedding.
       }
     \end{column}
   \end{columns}
@@ -324,8 +302,7 @@
   \centering
   \includegraphics[width=0.78\textwidth, height=0.78\textheight, keepaspectratio]{overview_v2_a.pdf}
   \par\smallskip
-  {\small \textbf{FSQ \parencite{mentzer2023fsq}}: project latent into
-    an integer grid $L_1\!\times\!\cdots\!\times\!L_d$; no codebook collapse.}
+  {\small \textbf{Finite Scalar Quantization} \parencite{mentzer2023fsq}}
 \end{frame}
 
 \begin{frame}{Tokenization: tokenizer objective}
@@ -352,12 +329,12 @@
 
 \begin{frame}{Image tokenizer}
   \centering
-  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{legacy_survey_comparison.png}
+  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_image-autoencoding.pdf}
 \end{frame}
 
 \begin{frame}{Spectrum tokenizer}
   \centering
-  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{spectrum_autoencoding.png}
+  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_spectrum-autoencoding.pdf}
 \end{frame}
 
 \begin{frame}{Scalar tokenizer}
@@ -423,23 +400,35 @@
 
 % ── §8 Model Training & Variants ──────────────────────────────────────────────
 \begin{frame}{Model family \& training}
-  \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{eval_loss.png}
-      \par\smallskip
-      {\small Eval loss vs.\ training steps for three model sizes, with and
-        without the Gaia stellar set.}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{tab_model-size.pdf}
-    \end{column}
+  \centering
+  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_aion-loss-and-sizes.pdf}
+\end{frame}
+
+% ── §9 Downstream Tasks ───────────────────────────────────────────────────────
+\begin{frame}[standout]
+  Generative downstream tasks
+\end{frame}
+
+% ── 9.1 Out-of-the-Box: Redshift Estimation ───────────────────────────────────
+\begin{frame}{Galaxy redshift estimation (generative)}
+  \begin{columns}
+    \begin{column}{0.33\textwidth}\centering{\footnotesize Photometry only}\end{column}
+    \begin{column}{0.33\textwidth}\centering{\footnotesize $+$ Multiband image}\end{column}
+    \begin{column}{0.33\textwidth}\centering{\footnotesize $+$ DESI spectrum}\end{column}
   \end{columns}
-  \vspace{0.4em}
-  {\small\textbf{Training:} AdamW ($\beta_1{=}0.9$, $\beta_2{=}0.95$, wd\,$0.05$),
-    warmup + cosine decay, peak lr $2\!\times\!10^{-4}$, 205k steps, batch 8192,
-    bfloat16, FSDP ZeRO-2, 64–288 H100 GPUs (1.5–3.5 days).}
+  \centering
+  \includegraphics[width=\textwidth, height=0.80\textheight, keepaspectratio]{fig_redshift.pdf}
+\end{frame}
+
+% ── 9.1 Out-of-the-Box: Spectral Super-Resolution ────────────────────────────
+\begin{frame}{Spectral super-resolution}
+  \centering
+  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_conditional-generation.pdf}
+\end{frame}
+
+% ── §9.2 Embedding-based downstream tasks ────────────────────────────────────
+\begin{frame}[standout]
+  Downstream tasks via embeddings
 \end{frame}
 
 % ── §8.5 Embedding Extraction ─────────────────────────────────────────────────
@@ -453,8 +442,6 @@
       \begin{equation*}
         \mathbf{e} \;=\; \frac{1}{T}\sum_{t=1}^{T}\mathbf{z}_t
       \end{equation*}
-      {\small Parameter-free. Used for morphology classification and
-        similarity retrieval.}
     \end{column}
     \begin{column}{0.48\textwidth}
       \textbf{Attentive pooling}
@@ -462,45 +449,9 @@
         \mathbf{A} = \mathrm{softmax}\!\Bigl(\tfrac{\mathbf{Q}\mathbf{K}^\top}{\sqrt{d}}\Bigr),\quad
         \mathbf{e} = \mathbf{A}\mathbf{V}
       \end{equation*}
-      {\small $\mathbf{Q},\mathbf{K},\mathbf{V}$: learnable projections.
-        Used for galaxy and stellar property estimation.}
+      {\small ($\mathbf{Q},\mathbf{K},\mathbf{V}$ are learnable projections)}
     \end{column}
   \end{columns}
-\end{frame}
-
-% ── §9 Downstream Tasks ───────────────────────────────────────────────────────
-\begin{frame}[standout]
-  Results
-\end{frame}
-
-% ── 9.1 Out-of-the-Box: Redshift Estimation ───────────────────────────────────
-\begin{frame}{Galaxy redshift estimation}
-  \begin{columns}[T]
-    \begin{column}{0.32\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{redshift_photometry.png}
-      \par\smallskip
-      {\footnotesize Photometry only}
-    \end{column}
-    \begin{column}{0.32\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{redshift_image.png}
-      \par\smallskip
-      {\footnotesize $+$ Multiband image}
-    \end{column}
-    \begin{column}{0.32\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{redshift_spectrum.png}
-      \par\smallskip
-      {\footnotesize $+$ DESI spectrum}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% ── 9.1 Out-of-the-Box: Spectral Super-Resolution ────────────────────────────
-\begin{frame}{Spectral super-resolution}
-  \centering
-  \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{spectrum_superresolution.pdf}
 \end{frame}
 
 % ── 9.2 Galaxy Parameter Estimation ──────────────────────────────────────────
@@ -511,52 +462,27 @@
 
 % ── 9.2 Galaxy Morphology Classification ─────────────────────────────────────
 \begin{frame}{Galaxy morphology classification}
-  \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
-      \centering
-      \includegraphics[width=0.92\linewidth]{tab_wrap_acc.pdf}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      {\small
-        \begin{itemize}
-          \item AION-1-L matches ZooBot within 2.4 pp despite seeing
-                two orders of magnitude fewer labeled galaxy images
-          \item ZooBot was pre-trained on ${\sim}300\text{k}$ galaxy images
-                with GZ-DECaLS volunteer labels \parencite{walmsley2022gzdecals};
-                acts as an approximate upper bound
-          \item DINOv2 trained on natural images transfers poorly to
-                galaxy morphology ($-15.8$ pp vs.\ AION-1-L)
-        \end{itemize}
-      }
-    \end{column}
-  \end{columns}
+  \centering
+  \includegraphics[width=\textwidth]{tab_wrap_acc.pdf}
+  \begin{itemize}\small
+    \item AION-1-L matches ZooBot within 2.4 pp despite seeing
+          two orders of magnitude fewer labeled galaxy images
+    \item ZooBot was pre-trained on ${\sim}300\text{k}$ galaxy images
+          with GZ-DECaLS volunteer labels \parencite{walmsley2022gzdecals};
+          acts as an approximate upper bound
+    \item DINOv2 trained on natural images transfers poorly to
+          galaxy morphology ($-15.8$ pp vs.\ AION-1-L)
+  \end{itemize}
 \end{frame}
 
 % ── 9.2 Galaxy Image Segmentation ────────────────────────────────────────────
 \begin{frame}{Galaxy image segmentation}
-  \begin{columns}[T]
-    \begin{column}{0.54\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{aion_gz3d_vis_top.pdf}\\[1mm]
-      \includegraphics[width=\linewidth]{aion_gz3d_vis_bot.pdf}
-    \end{column}
-    \begin{column}{0.43\textwidth}
-      Galaxy Zoo 3D citizen-science spiral arm and bar annotations.
-      Lightweight convolutional upsampler on frozen AION-1 embeddings.
-      \vspace{0.6em}
-
-      \begin{equation*}
-        \mathrm{IoU}
-        \;=\;
-        \frac{|M_\text{pred}\cap M_\text{true}|}
-             {|M_\text{pred}\cup M_\text{true}|}
-      \end{equation*}
-      \vspace{0.3em}
-
-      {\small
-      \includegraphics[width=\linewidth]{tab_segmentation_iou.pdf}}
-    \end{column}
-  \end{columns}
+  \centering
+  \includegraphics[width=\textwidth, height=0.72\textheight, keepaspectratio]{fig_segmentation_qual_quant.pdf}
+  \begin{equation*}
+    \mathrm{IoU} \;=\;
+    \frac{|M_\text{pred}\cap M_\text{true}|}{|M_\text{pred}\cup M_\text{true}|}
+  \end{equation*}
 \end{frame}
 
 % ── 9.2 Stellar Parameter Estimation ─────────────────────────────────────────
@@ -573,28 +499,8 @@
 
 % ── 9.2 Low-Data Regime ───────────────────────────────────────────────────────
 \begin{frame}{Low-data regime}
-  \begin{columns}[T]
-    \begin{column}{0.32\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{galaxy_scaling.png}
-    \end{column}
-    \begin{column}{0.32\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{gz10.png}
-    \end{column}
-    \begin{column}{0.32\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{desiddpayne_feh_scaling.pdf}
-    \end{column}
-  \end{columns}
-  \vspace{0.4em}
-  {\small
-    With $10^2\!-\!10^3$ labels: AION-1 reaches $R^2\!\sim\!0.5$ and
-    ${\geq}80\%$ morphology accuracy; supervised baselines remain near
-    zero or below 70\%.\\[0.3em]
-    AION-1 also saturates at ${\sim}10^3\!-\!10^4$ examples — an order of
-    magnitude faster than supervised models.
-  }
+  \centering
+  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_scaling_figures.pdf}
 \end{frame}
 
 % ── 9.3 Retrieval Datasets ────────────────────────────────────────────────────
@@ -605,41 +511,14 @@
 
 % ── 9.3 Rare Object Detection ─────────────────────────────────────────────────
 \begin{frame}{Rare object detection}
-  \begin{columns}[T]
-    \begin{column}{0.44\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{retrieval_figure.png}
-    \end{column}
-    \begin{column}{0.53\textwidth}
-      \textbf{Cosine-similarity retrieval} in embedding space.
-      Zero-shot, no task-specific labels.
-      \vspace{0.3em}
-
-      \begin{align*}
-        S_c(\mathbf{x}_q,\mathbf{x}_c) &=
-          \frac{\mathbf{x}_q^{\mathsf{T}}\mathbf{x}_c}
-               {\|\mathbf{x}_q\|_2\,\|\mathbf{x}_c\|_2} \\[3pt]
-        \mathrm{DCG@}k &= \sum_{i=1}^{k}\tfrac{2^{r_i}-1}{\log_2(i+1)} \\[3pt]
-        \mathrm{nDCG@}k &= \tfrac{\mathrm{DCG@}k}{\mathrm{IDCG@}k}
-      \end{align*}
-      \vspace{0.1em}
-
-      {\small
-      \includegraphics[width=\linewidth]{tab_retrieval-scores.pdf}}
-    \end{column}
-  \end{columns}
+  \centering
+  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_retrieval_qual_quant.pdf}
 \end{frame}
 
 % ── 9.4 Emergent Transfer: HSC → DESI ────────────────────────────────────────
 \begin{frame}{Cross-modal generation}
   \centering
-  \includegraphics[width=0.88\textwidth]{hsc_from_desi.png}
-  \par\smallskip
-  \begin{alertblock}{}
-    \centering
-    HSC–DESI pairs were \textbf{never seen during pre-training}: the model
-    infers the mapping transitively via shared intermediate surveys.
-  \end{alertblock}
+  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_hsc_desi_transfer.pdf}
 \end{frame}
 
 % ── 9.4 Cross-Survey Morphology Transfer ─────────────────────────────────────
@@ -715,7 +594,7 @@
 \end{frame}
 
 % ── §12 Resources ─────────────────────────────────────────────────────────────
-\begin{frame}{Resources}
+\begin{frame}[noframenumbering]{Resources}
   \textbf{Multimodal Universe}\\[0.2em]
   {\small\begin{tabular}{@{}ll@{}}
     Paper   & \href{https://arxiv.org/abs/2412.02527}{arXiv:2412.02527} \\
