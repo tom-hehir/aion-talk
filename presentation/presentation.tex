@@ -48,7 +48,10 @@
 % ── metadata ──────────────────────────────────────────────────────────────────
 \title{AION-1: Omnimodal Foundation Model for Astronomical Sciences}
 \author{Tom Hehir}
-\institute{Institute of Astronomy, University of Cambridge}
+\institute{Institute of Astronomy, University of Cambridge \\
+           Kavli Institute for Cosmology, Cambridge \\
+           Clare College \\
+           Polymathic AI}
 \date{2 March 2026}
 
 % ── convenience macros ────────────────────────────────────────────────────────
@@ -60,6 +63,13 @@
 \begin{frame}[plain, noframenumbering]
   \titlepage
   \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south, yshift=10mm] at (current page.south) {%
+      \includegraphics[height=1.4em]{logo-cambridge.pdf}\hspace{1.2em}%
+      \includegraphics[height=1.4em]{logo-ioa.png}\hspace{1.2em}%
+      \includegraphics[height=1.4em]{logo-kicc.png}\hspace{1.2em}%
+      \includegraphics[height=1.4em]{logo-clare.pdf}\hspace{1.2em}%
+      \includegraphics[height=1.4em]{polymathic-logo.pdf}%
+    };
     \node[anchor=south, yshift=3mm] at (current page.south) {%
       \small\href{https://github.com/tom-hehir/aion-talk}%
       {\texttt{github.com/tom-hehir/aion-talk}}%

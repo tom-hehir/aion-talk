@@ -24,3 +24,9 @@ images:
   # §3 Abstract slide — shields.io badges
   badge-arxiv.svg: "https://img.shields.io/badge/arXiv-2510.17960-B31B1B.svg?style=flat"
   badge-neurips.svg: "https://img.shields.io/badge/NeurIPS-2025-b3b3b3.svg?style=flat&labelColor=68448B"
+  # Title slide — affiliation logos (williamjameshandley/talks@ioa_2026)
+  logo-cambridge.pdf: https://raw.githubusercontent.com/williamjameshandley/talks/ioa_2026/logos/University_of_Cambridge.pdf
+  logo-ioa.png: https://raw.githubusercontent.com/williamjameshandley/talks/ioa_2026/logos/ioa.png
+  logo-kicc.png: https://raw.githubusercontent.com/williamjameshandley/talks/ioa_2026/logos/kicc.png
+  # Title slide — Clare College arms (Wikimedia Commons)
+  logo-clare.svg: https://upload.wikimedia.org/wikipedia/commons/6/65/Clare_College_arms.svg
