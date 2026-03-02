@@ -646,4 +646,74 @@
   \end{columns}
 \end{frame}
 
+% ── §10 Future Work ───────────────────────────────────────────────────────────
+\begin{frame}{Future Work}
+  \textbf{Architecture}
+  \begin{itemize}
+    \item Replace quantised tokens with \textbf{continuous tokens} to lift
+          the information ceiling imposed by codebook discretisation
+    \item Better decoder: current masked-token decoder does not produce a
+          proper conditional distribution given the encoder embedding —
+          candidates include autoregressive modelling, diffusion-based
+          decoding, or dropping decoding entirely in favour of a
+          \textbf{JEPA-style} objective
+    \item Better pooling: mean pooling is suboptimal; consider
+          self-supervised discriminative post-training for
+          task-aware summary embeddings
+  \end{itemize}
+  \vspace{0.5em}
+  \textbf{Community adoption}
+  \begin{itemize}
+    \item Integration into survey pipelines as a source of ML-inferred
+          data products
+    \item Best use-cases today: \textbf{embeddings} for parameter estimation
+          and \textbf{similarity retrieval} — generation not yet recommended
+          for production use
+  \end{itemize}
+\end{frame}
+
+% ── §11 Conclusions ───────────────────────────────────────────────────────────
+\begin{frame}{Conclusions}
+  \begin{itemize}
+    \item \textbf{Integrates} imaging, spectroscopy, and scalar data across
+          five large-scale surveys via modality-specific tokenisation and a
+          shared masked-modelling objective
+    \item \textbf{Achieves or surpasses state-of-the-art} on galaxy and
+          stellar parameter estimation, morphology classification, image
+          segmentation, and spectral super-resolution
+    \item \textbf{Excels in the low-data regime} — competitive performance
+          with $10^2$–$10^3$ labels, two to three orders of magnitude fewer
+          than fully supervised baselines
+    \item \textbf{Enables zero-shot semantic retrieval} of rare objects
+          (mergers, strong gravitational lenses) without task-specific labels
+    \item \textbf{Enables cross-survey transfer}: representations are largely
+          agnostic to instrument-specific characteristics
+    \item A scalable, open-source blueprint for multimodal foundation models
+          in other scientific domains
+  \end{itemize}
+\end{frame}
+
+% ── §12 Resources ─────────────────────────────────────────────────────────────
+\begin{frame}{Resources}
+  \textbf{Multimodal Universe} \parencite{multimodaluniverse2024}\\[0.2em]
+  {\small\begin{tabular}{@{}ll@{}}
+    Paper   & \href{https://arxiv.org/abs/2412.02527}{arXiv:2412.02527} \\
+    Repo    & \href{https://github.com/MultimodalUniverse/MultimodalUniverse}%
+              {\texttt{github.com/MultimodalUniverse}} \\
+    Data    & \href{https://huggingface.co/MultimodalUniverse}%
+              {\texttt{huggingface.co/MultimodalUniverse}} \\
+  \end{tabular}}
+
+  \vspace{0.8em}
+  \textbf{AION-1}\\[0.2em]
+  {\small\begin{tabular}{@{}ll@{}}
+    Paper   & \href{https://arxiv.org/abs/2510.17960}{arXiv:2510.17960}
+              (NeurIPS 2025) \\
+    Repo    & \href{https://github.com/PolymathicAI/AION}%
+              {\texttt{github.com/PolymathicAI/AION}} \\
+    Weights & \href{https://huggingface.co/PolymathicAI}%
+              {\texttt{huggingface.co/PolymathicAI}} \\
+  \end{tabular}}
+\end{frame}
+
 \end{document}
