@@ -212,7 +212,7 @@
 
 % ── §5 Introducing AION-1 ─────────────────────────────────────────────────────
 \begin{frame}[standout]
-  AION-1
+  AION-1: large-scale multimodal generative pre-training
 \end{frame}
 
 \begin{frame}{Overview}
@@ -227,19 +227,27 @@
 \end{frame}
 
 \begin{frame}{Capabilities \& contributions}
-  \textbf{Emergent behaviours} (\S1)
   \begin{itemize}\small
-    \item \textbf{Emergent Physical Understanding} — solves non-trivial scientific tasks with minimal/zero fine-tuning on learned representations
-    \item \textbf{Superior Performance in the Low-Data Regime} — competitive results with orders of magnitude less data than supervised counterparts
-    \item \textbf{Flexible Data Fusion} — arbitrary combinations of observations; cross-modal conditional generation
-    \item \textbf{Physical Structure of the Latent Space} — embedding space organizes along physically meaningful directions; powerful rare-object retrieval
-  \end{itemize}
-  \vspace{0.4em}
-  \textbf{Contributions} (\S1.1)
-  \begin{itemize}\small
-    \item Token-based multimodal foundation models: 300M–3B parameters
-    \item Bespoke tokenization for heterogeneous multi-survey astronomical data
-    \item Competitive to state-of-the-art with simple probing; significantly outperforms supervised baselines in the low-data regime
+    \item \textbf{Multimodal foundation model} — token-based architecture
+          (300M–3B parameters) unifying imaging, spectroscopy, and scalars
+          across five large-scale surveys via bespoke tokenisation
+    \item \textbf{Emergent physical understanding} — solves non-trivial
+          scientific tasks with minimal/zero fine-tuning
+    \item \textbf{Benefits from scale} — performance improves with model
+          and data size
+    \item \textbf{State-of-the-art} on all downstream tasks — parameter
+          estimation, morphology, segmentation, and spectral super-resolution
+    \item \textbf{Strong low-data performance} — outperforms supervised
+          baselines by orders of magnitude in the low-data regime
+    \item \textbf{Flexible data fusion} — arbitrary combinations of
+          observations; cross-modal conditional generation
+    \item \textbf{Physically structured latent space} — embeddings organised
+          along physically meaningful directions; powerful rare-object retrieval
+    \item \textbf{Emergent survey-invariant representations} — zero-shot
+          transfer between surveys; transitive cross-modal mapping to
+          never-seen modality pairs (\S7.4)
+    \item \textbf{Handles real-world data complexity} — heterogeneity, noise,
+          instrument-specific peculiarities; approach applicable beyond astronomy
   \end{itemize}
 \end{frame}
 
@@ -377,7 +385,7 @@
   \begin{center}
     \begin{align*}
       \mathcal{L}(\theta)
-      &= -H\!\left(f(\mathbf{x}^{\mathrm{targ}} \mid \mathbf{x}^{\mathrm{cond}}),\; p_\theta(\mathbf{x}^{\mathrm{targ}} \mid \mathbf{x}^{\mathrm{cond}})\right) \\
+      &= -H\!\left[f(\mathbf{x}^{\mathrm{targ}} \mid \mathbf{x}^{\mathrm{cond}}),\; p_\theta(\mathbf{x}^{\mathrm{targ}} \mid \mathbf{x}^{\mathrm{cond}})\right] \\
       &= -\mathbb{E}_{(\mathbf{x}^{\mathrm{targ}},\,\mathbf{x}^{\mathrm{cond}})\sim f}
           \!\left[\log p_\theta(\mathbf{x}^{\mathrm{targ}} \mid \mathbf{x}^{\mathrm{cond}})\right] \\
       &\simeq -\sum_{i=1}^{N} \log p_\theta\!\left(\mathbf{x}_i^{\mathrm{targ}} \mid \mathbf{x}_i^{\mathrm{cond}}\right)
@@ -541,37 +549,38 @@
 
 % ── §10 Future Work ───────────────────────────────────────────────────────────
 \begin{frame}[standout]
-  Conclusions
+  Future work
 \end{frame}
 
 \begin{frame}{Future work}
-  \textbf{Architecture}
   \begin{itemize}
     \item \textbf{Continuous tokens} — remove codebook information ceiling
     \item \textbf{Better decoder} — autoregressive, diffusion, or JEPA-style (drop decoder)
     \item \textbf{Better pooling} — \texttt{[CLS]} token and contrastive fine-tuning for summary embeddings
   \end{itemize}
-  \vspace{0.6em}
-  \textbf{Deployment}
-  \begin{itemize}
-    \item Integration into survey pipelines as a source of ML-inferred data products
-    \item \textbf{Embeddings \& retrieval} today; generation not yet production-ready
-  \end{itemize}
 \end{frame}
 
 % ── §11 Conclusions ───────────────────────────────────────────────────────────
+\begin{frame}[standout]
+  Conclusions
+\end{frame}
+
 \begin{frame}{Conclusions}
-  \begin{itemize}
-    \item \textbf{Unified model} across imaging, spectroscopy, and scalars
-          from five surveys
-    \item \textbf{State-of-the-art} on parameter estimation, morphology,
-          segmentation, and spectral super-resolution
-    \item \textbf{Low-data regime} — competitive with $10^2$–$10^3$ labels
-    \item \textbf{Zero-shot retrieval} of rare objects without task-specific
-          labels
-    \item \textbf{Cross-survey transfer} — instrument-agnostic representations
-    \item Open-source blueprint for multimodal foundation models in science
+  \begin{itemize}\small
+    \item Foundation model pre-training works for \textbf{complex,
+          heterogeneous} astronomical data across five large-scale surveys
+    \item \textbf{State-of-the-art} on all downstream tasks with minimal
+          fine-tuning
+    \item \textbf{Emergent capabilities} — strong low-data performance,
+          zero-shot retrieval, and survey-invariant representations
+    \item \textbf{Scalable, open-source} blueprint for scientific foundation
+          models beyond astronomy
   \end{itemize}
+  \begin{alertblock}{Take-away}
+    AION-1 is a powerful, easy-to-use multimodal embedding model —
+    researchers can get state-of-the-art performance across surveys and
+    tasks without building their own models.
+  \end{alertblock}
 \end{frame}
 
 % ══════════════════════════════════════════════════════════════════════════════
@@ -603,6 +612,10 @@
     Weights & \href{https://huggingface.co/PolymathicAI}%
               {\texttt{huggingface.co/PolymathicAI}} \\
   \end{tabular}}
+  \vspace{0.6em}
+  \begin{alertblock}{Open source}
+    AION-1 is fully open source — paper, code, and weights are all publicly available.
+  \end{alertblock}
 \end{frame}
 \endgroup
 
