@@ -301,18 +301,36 @@
 
 \begin{frame}{Pre-Training Objective: Masked Token Modelling}
   \begin{center}
-    \begin{equation*}
+    \begin{align*}
       \mathcal{L}(\theta)
-      \;=\;
-      -\sum_{t=1}^{N}
-        \log\,p_\theta\!\left(\mathbf{x}_t^{\mathrm{tgt}}
-          \;\Big|\; \mathbf{x}^{\mathrm{obs}}\right)
-    \end{equation*}
+      &= -H(f, p_\theta) \\
+      &= -\mathbb{E}_{(\mathbf{x}^{\mathrm{targ}},\,\mathbf{x}^{\mathrm{cond}})\sim f}
+          \!\left[\log p_\theta(\mathbf{x}^{\mathrm{targ}} \mid \mathbf{x}^{\mathrm{cond}})\right] \\
+      &\simeq -\sum_{i=1}^{N} \log p_\theta\!\left(\mathbf{x}_i^{\mathrm{targ}} \mid \mathbf{x}_i^{\mathrm{cond}}\right)
+    \end{align*}
   \end{center}
   \vspace{0.3em}
-  Tokens are split into disjoint observed $\mathbf{x}^{\mathrm{obs}}$ and
-  target $\mathbf{x}^{\mathrm{tgt}}$ sets \emph{across all modalities},
-  so the model learns both intra- and cross-modal relationships.\\[0.6em]
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Input} (budget: 256 tokens)
+      \begin{enumerate}\small
+        \item Select primary modality at random
+        \item Uniformly sample a \# of tokens $n$
+        \item Randomly sample $n$ tokens from that modality
+        \item Fill remainder by randomly sampling tokens from all other modalities
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Output} (budget: 128 tokens)
+      \begin{enumerate}\small
+        \item Select primary modality at random (may differ from input)
+        \item Sample \# of tokens $n$ via Beta distribution (skewed low)
+        \item Randomly sample $n$ tokens from that modality
+        \item Fill remainder by randomly sampling tokens from all other modalities
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+  \vspace{0.4em}
   Discretisation is necessary: cross-entropy over discrete tokens gives a
   \textbf{proper probabilistic objective} — continuous latents do not.
 \end{frame}
