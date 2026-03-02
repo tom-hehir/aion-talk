@@ -502,12 +502,6 @@
 \begin{frame}{Galaxy morphology classification}
   \centering
   \includegraphics[width=\textwidth]{tab_wrap_acc.pdf}
-  \begin{itemize}\small
-    \item AION-1-L matches ZooBot within 2.4 pp despite seeing
-          two orders of magnitude fewer labeled galaxy images
-    \item DINOv2 trained on natural images transfers poorly to
-          galaxy morphology ($-15.8$ pp vs.\ AION-1-L)
-  \end{itemize}
   \begin{alertblock}{ZooBot as approximate upper bound}
     Pre-trained on ${\sim}300\text{k}$ galaxy images with GZ-DECaLS volunteer
     labels \parencite{walmsley2022gzdecals}
@@ -519,23 +513,36 @@
 % ── 9.2 Low-Data Regime ───────────────────────────────────────────────────────
 \begin{frame}{Low-data regime}
   \centering
-  \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{fig_scaling_figures.pdf}
+  \includegraphics[width=\textwidth, height=0.62\textheight, keepaspectratio]{fig_scaling_figures.pdf}
+  \begin{enumerate}\small
+    \item \textbf{Low-Data Performance} — with only $10^{2}\!-\!10^{3}$ labels, AION-1 reaches
+          $R^{2}\!\sim\!0.5$ for physical properties and ${\geq}80\%$ for morphology,
+          while supervised baselines remain near-zero $R^{2}$ or below $70\%$
+    \item \textbf{Faster Data Saturation} — AION-1 plateaus by ${\sim}10^{3}\!-\!10^{4}$
+          examples; baselines need an order of magnitude more data to approach similar performance
+  \end{enumerate}
 \end{frame}
 
 % ── 9.3 Rare Object Detection ─────────────────────────────────────────────────
 \begin{frame}{Rare object detection}
   \centering
   \includegraphics[width=\textwidth, height=0.68\textheight, keepaspectratio]{fig_retrieval_qual_quant.pdf}
-  \vspace{2em}
+  \vfill
   {\small Retrieval by cosine similarity:\quad
   $\mathrm{sim}(\mathbf{e}_q, \mathbf{e}_i)
   = \dfrac{\mathbf{e}_q \cdot \mathbf{e}_i}{\|\mathbf{e}_q\|\,\|\mathbf{e}_i\|}$}
+  \vfill
 \end{frame}
 
 % ── 9.4 Cross-Survey Morphology Transfer ─────────────────────────────────────
 \begin{frame}{Cross-survey morphology transfer}
   \centering
   \includegraphics[width=\textwidth]{tab_transfer_ls_hsc.pdf}
+  \begin{alertblock}{Survey-invariant representations}
+    Linear classifier trained on Legacy Survey embeddings achieves $84$–$86\%$
+    accuracy on HSC images \textbf{without any fine-tuning}, despite ${\sim}2\times$
+    depth difference, distinct filter sets, and different pixel scale.
+  \end{alertblock}
 \end{frame}
 
 % ── §10 Future Work ───────────────────────────────────────────────────────────
@@ -644,6 +651,12 @@
 \begin{frame}{Stellar parameter prediction versus specialized model}
   \centering
   \includegraphics[width=0.75\textwidth]{tab_stellar_properties_comparison.pdf}
+  \begin{alertblock}{Strong specialized baseline}
+    \parencite{leung2023stellar} was \textbf{explicitly pre-trained} on APOGEE stellar
+    parameters and Gaia XP coefficients — the exact task being evaluated.
+    AION-1-B is frozen, contains no APOGEE data, and uses only 5000 labels with a
+    simple linear head; yet outperforms across all parameters.
+  \end{alertblock}
 \end{frame}
 
 % ── Appendix: Retrieval Datasets ──────────────────────────────────────────────
