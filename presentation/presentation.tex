@@ -249,7 +249,7 @@
   AION-1
 \end{frame}
 
-\begin{frame}{Introducing AION-1}
+\begin{frame}{Overview}
   \centering
   \includegraphics[width=\textwidth, height=0.82\textheight, keepaspectratio]{aion.png}
 \end{frame}
@@ -285,7 +285,7 @@
 \end{frame}
 
 % ── §7 Architecture & Objective ───────────────────────────────────────────────
-\begin{frame}{Architecture: 4M}
+\begin{frame}{Architecture}
   \begin{columns}[T]
     \begin{column}{0.52\textwidth}
       \centering
@@ -318,38 +318,14 @@
 \begin{frame}{Tokenization: autoencoders}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{autoencoder_schema.jpg}
-  \par\smallskip
-  {\small An autoencoder compresses input $\mathbf{x}$ to a low-dimensional
-    latent code $\mathbf{z}$ via an encoder, then reconstructs $\hat{\mathbf{x}}$
-    via a decoder. Tokenisation uses the discrete latent codes as input tokens
-    for the transformer.}
 \end{frame}
 
 \begin{frame}{Tokenization: discrete codes}
-  \begin{columns}[T]
-    \begin{column}{0.54\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{overview_v2_a.pdf}
-      \par\smallskip
-      {\small \textbf{FSQ \parencite{mentzer2023fsq}}: project latent into
-        an integer grid $L_1\!\times\!\cdots\!\times\!L_d$; no codebook
-        collapse.}
-    \end{column}
-    \begin{column}{0.43\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{scalar-quantization-binning.png}
-      \par\smallskip
-      {\small \textbf{Scalar binning}: map via empirical CDF to
-        $\mathcal{N}(0,1)$, then equal-width bins $\Rightarrow$ equal
-        probability mass per bin.}
-    \end{column}
-  \end{columns}
+  \centering
+  \includegraphics[width=0.78\textwidth, height=0.78\textheight, keepaspectratio]{overview_v2_a.pdf}
   \par\smallskip
-  {\small
-    \textbf{Images}: FSQ (1024 codes)\enspace
-    \textbf{Spectra}: LFQ (1024 codes)\enspace
-    \textbf{Scalars}: CDF binning (1024 bins)
-  }
+  {\small \textbf{FSQ \parencite{mentzer2023fsq}}: project latent into
+    an integer grid $L_1\!\times\!\cdots\!\times\!L_d$; no codebook collapse.}
 \end{frame}
 
 \begin{frame}{Tokenization: tokenizer objective}
@@ -377,17 +353,11 @@
 \begin{frame}{Image tokenizer}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{legacy_survey_comparison.png}
-  \par\smallskip
-  {\small FSQ autoencoder on 9-channel multi-survey images.
-    Columns: original, reconstruction, Tractor model, $r$-band residuals.}
 \end{frame}
 
 \begin{frame}{Spectrum tokenizer}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{spectrum_autoencoding.png}
-  \par\smallskip
-  {\small LFQ autoencoder on DESI spectra. Top: flux (black = input,
-    red = reconstruction). Bottom: residuals in units of $\sigma$.}
 \end{frame}
 
 \begin{frame}{Scalar tokenizer}
@@ -496,10 +466,6 @@
         Used for galaxy and stellar property estimation.}
     \end{column}
   \end{columns}
-  \vspace{0.6em}
-  {\small\textbf{Multi-modal embeddings:} concatenate tokens from any subset
-    of modalities before the frozen encoder — cross-modal context was learned
-    during pre-training. No extra fusion module required.}
 \end{frame}
 
 % ── §9 Downstream Tasks ───────────────────────────────────────────────────────
@@ -508,29 +474,25 @@
 \end{frame}
 
 % ── 9.1 Out-of-the-Box: Redshift Estimation ───────────────────────────────────
-\begin{frame}{Galaxy redshift estimation (generative)}
-  {\small \textbf{Generation}: iterative masked decoding under a cosine
-    schedule (MaskGIT-style).  The redshift token is predicted from
-    increasingly rich conditioning contexts; posteriors contract accordingly.}
-  \vspace{0.3em}
+\begin{frame}{Galaxy redshift estimation}
   \begin{columns}[T]
     \begin{column}{0.32\textwidth}
       \centering
       \includegraphics[width=\linewidth]{redshift_photometry.png}
       \par\smallskip
-      {\footnotesize Photometry only\\(broad $p(z)$)}
+      {\footnotesize Photometry only}
     \end{column}
     \begin{column}{0.32\textwidth}
       \centering
       \includegraphics[width=\linewidth]{redshift_image.png}
       \par\smallskip
-      {\footnotesize $+$ Multiband image\\(tighter interval)}
+      {\footnotesize $+$ Multiband image}
     \end{column}
     \begin{column}{0.32\textwidth}
       \centering
       \includegraphics[width=\linewidth]{redshift_spectrum.png}
       \par\smallskip
-      {\footnotesize $+$ DESI spectrum\\(near-point estimate)}
+      {\footnotesize $+$ DESI spectrum}
     \end{column}
   \end{columns}
 \end{frame}
@@ -539,26 +501,16 @@
 \begin{frame}{Spectral super-resolution}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{spectrum_superresolution.pdf}
-  \par\smallskip
-  {\small Gaia BP/RP (low-res, red) $\to$ DESI spectrum posterior (blue)
-    vs.\ ground-truth (black). Key spectral lines are reproduced in location,
-    width, and amplitude.}
 \end{frame}
 
 % ── 9.2 Galaxy Parameter Estimation ──────────────────────────────────────────
 \begin{frame}{Galaxy parameter estimation}
-  {\small \textbf{Protocol}: freeze encoder; pool tokens; train lightweight MLP head.
-    $R^2$ on PROVABGS \parencite{hahn2023provabgs} (${\sim}120\text{k}$ galaxies).}
-  \vspace{0.3em}
   \centering
   \includegraphics[width=0.98\textwidth]{tab_galaxy_properties_full.pdf}
 \end{frame}
 
 % ── 9.2 Galaxy Morphology Classification ─────────────────────────────────────
 \begin{frame}{Galaxy morphology classification}
-  {\small GZ10 dataset: 10 classes, ${\sim}8\,000$ galaxies.
-    Frozen AION-1 encoder $+$ lightweight MLP head.}
-  \vspace{0.3em}
   \begin{columns}[T]
     \begin{column}{0.50\textwidth}
       \centering
@@ -609,21 +561,12 @@
 
 % ── 9.2 Stellar Parameter Estimation ─────────────────────────────────────────
 \begin{frame}{Stellar parameter estimation}
-  {\small Gaia + DESI stellar validation set (never seen during pre-training).
-    Frozen AION-1-B encoder $+$ cross-attention pooling $+$ linear probe. $R^2$.}
-  \vspace{0.3em}
   \centering
   \includegraphics[width=0.98\textwidth]{tab_stellar_properties_full.pdf}
 \end{frame}
 
 % ── 9.2 Stellar Parameter Comparison ─────────────────────────────────────────
-\begin{frame}{Stellar parameters: comparison with specialist model}
-  {\small Transfer to APOGEE stellar labels from Gaia XP coefficients only
-    (first 32 BP + 32 RP coefficients).
-    AION-1-B is \emph{never} pre-trained on APOGEE data; the baseline
-    \parencite{leung2023stellar} is explicitly pre-trained on APOGEE.
-    Metric: standard deviation of residuals ($\downarrow$).}
-  \vspace{0.5em}
+\begin{frame}{Stellar parameter comparison}
   \centering
   \includegraphics[width=0.75\textwidth]{tab_stellar_properties_comparison.pdf}
 \end{frame}
@@ -634,20 +577,14 @@
     \begin{column}{0.32\textwidth}
       \centering
       \includegraphics[width=\linewidth]{galaxy_scaling.png}
-      \par\smallskip
-      {\footnotesize Galaxy properties ($R^2$)}
     \end{column}
     \begin{column}{0.32\textwidth}
       \centering
       \includegraphics[width=\linewidth]{gz10.png}
-      \par\smallskip
-      {\footnotesize Morphology (accuracy)}
     \end{column}
     \begin{column}{0.32\textwidth}
       \centering
       \includegraphics[width=\linewidth]{desiddpayne_feh_scaling.pdf}
-      \par\smallskip
-      {\footnotesize Stellar properties ($R^2$)}
     \end{column}
   \end{columns}
   \vspace{0.4em}
@@ -662,11 +599,6 @@
 
 % ── 9.3 Retrieval Datasets ────────────────────────────────────────────────────
 \begin{frame}{Retrieval datasets}
-  {\small High-confidence query sets for the rare object retrieval experiments.
-    Citizen-science morphologies from Galaxy Zoo–DECaLS
-    \parencite{walmsley2022gzdecals}; strong lenses from HSC lens-finding
-    catalogs cross-matched with Legacy Survey.}
-  \vspace{0.5em}
   \centering
   \includegraphics[width=\textwidth]{tab_retrieval_query_stats.pdf}
 \end{frame}
@@ -699,14 +631,15 @@
 \end{frame}
 
 % ── 9.4 Emergent Transfer: HSC → DESI ────────────────────────────────────────
-\begin{frame}{Cross-modal generation (in unseen combinations!)}
+\begin{frame}{Cross-modal generation}
   \centering
   \includegraphics[width=0.88\textwidth]{hsc_from_desi.png}
   \par\smallskip
-  {\small AION-1 samples DESI spectra (blue) conditioned on HSC images (insets),
-    matching ground truth (black).\\
-    HSC–DESI pairs were \emph{never seen during pre-training}: the model
-    infers the mapping transitively via shared intermediate surveys.}
+  \begin{alertblock}{}
+    \centering
+    HSC–DESI pairs were \textbf{never seen during pre-training}: the model
+    infers the mapping transitively via shared intermediate surveys.
+  \end{alertblock}
 \end{frame}
 
 % ── 9.4 Cross-Survey Morphology Transfer ─────────────────────────────────────
@@ -817,32 +750,18 @@
 \begin{frame}{Semantic versus perceptual compression}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{generativevscompressive4.jpg}
-  \par\smallskip
-  {\small Illustrating perceptual and semantic compression: a generative model
-    must only model a low-dimensional latent space, leaving perceptual detail
-    to the decoder. \parencite{rombach2021ldm}}
 \end{frame}
 
 % ── Appendix: VQ-VAE ──────────────────────────────────────────────────────────
 \begin{frame}{VQ-VAE}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{Figure1_9.png}
-  \par\smallskip
-  {\small Left: VQ-VAE architecture. Right: embedding space — encoder output
-    $z(x)$ is mapped to the nearest codebook vector $e_2$; the gradient
-    $\nabla_z\mathcal{L}$ (red) pushes the encoder towards that entry.
-    \parencite{oord2017vqvae}}
 \end{frame}
 
 % ── Appendix: MaskGIT iterative decoding ─────────────────────────────────────
 \begin{frame}{MaskGIT}
   \centering
   \includegraphics[width=\textwidth, height=0.78\textheight, keepaspectratio]{iterative_decoding.pdf}
-  \par\smallskip
-  {\small Rows 1\,\&\,3: latent masks; rows 2\,\&\,4: generated samples.
-    MaskGIT fills tokens in parallel under a cosine mask schedule,
-    completing in 8 iterations vs.\ 256 for autoregressive decoding.
-    \parencite{chang2022maskgit}}
 \end{frame}
 
 \end{document}
