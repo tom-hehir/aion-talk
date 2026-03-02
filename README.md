@@ -3,6 +3,14 @@
 Beamer presentation of the AION-1 paper:
 > *AION-1: Omnimodal Foundation Model for Astronomical Sciences.* [arXiv:2510.17960](https://arxiv.org/abs/2510.17960)
 
+## Talk Abstract
+
+Modern astronomical surveys produce vast, heterogeneous datasets spanning multiband photometric images, spectroscopy, and rich metadata. While machine learning methods have achieved impressive results within individual modalities, most models remain specialised and task-specific, making it difficult to reuse them across surveys and scientific problems. In this talk, I will present AION-1, the first family of large-scale (up to 3.1B parameters) multimodal foundation models designed for the astronomical sciences.
+
+AION-1 employs modality-specific tokenizers to convert diverse inputs—images, spectra, and scalar properties—into a common representation space, where a transformer learns joint structure across modalities via masked-token modeling. We pretrain on over 200 million stars, galaxies, and quasars from five major surveys: Legacy Survey, HSC, SDSS, DESI, and Gaia, homogenising the treatment of observations with unique instrument signatures.
+
+AION-1 achieves state-of-the-art performance across a broad suite of downstream tasks, including physical property estimation, morphology classification, similarity search, image segmentation, and spectral super-resolution, with minimal task-specific finetuning. I will discuss its effectiveness in low-data regimes and its capacity to learn survey-agnostic universal representations. As a fully open-source framework, AION-1 provides a scalable blueprint for building multimodal foundation models capable of integrating heterogeneous observations across the physical sciences. All code, data, and weights are publicly available.
+
 ## Repository layout
 
 ```text
